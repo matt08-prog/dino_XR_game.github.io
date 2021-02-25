@@ -136,6 +136,7 @@ class App{
 
                 loader.load('arm.glb',
                     (gltf) => {
+                        gltf.scene.scale.set(0.1,0.1,0.1)
                         controller.add( gltf.scene )
                     }),
                     null,
