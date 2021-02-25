@@ -132,7 +132,7 @@ class App{
         switch ( data.targetRayMode ) {
             
             case 'tracked-pointer':
-                loader = new GLTFLoader().setPath('./')
+                loader = new GLTFLoader().setPath('./libs')
 
                 loader.load('arb.glb',
                     (gltf) => {
