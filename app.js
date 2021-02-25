@@ -139,7 +139,7 @@ class App{
                         // gltf.scene.scale.set(0.1,0.1,0.)
                         // controller.add( gltf.scene )
                         const arm = gltf.scene.children[2]
-                        const scale = 0.5
+                        const scale = 10
                         arm.scale.set(scale,scale,scale)
                         controller.add( arm )
                     }),
