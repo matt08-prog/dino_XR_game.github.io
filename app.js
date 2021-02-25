@@ -17,7 +17,7 @@ class App{
 		this.camera.position.set( 0, 1.6, 3 );
         
 		this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color( 0x505050 );
+        this.scene.background = new THREE.Color( 0x5f505f );
 
 		this.scene.add( new THREE.HemisphereLight( 0x606060, 0x404040 ) );
 
@@ -37,7 +37,6 @@ class App{
         this.controls.update();
         
         this.stats = new Stats();
-        document.body.appendChild( this.stats.dom );
         
         this.raycaster = new THREE.Raycaster();
         this.workingMatrix = new THREE.Matrix4();
@@ -76,49 +75,115 @@ class App{
             object.position.z = this.random( -2, 2 );
 
             this.room.add( object );
-
         }
+        
+        this.highlights = []
+        for ( let i = 0; i < 20; i++)
+        {
+            this.highlights.push(new THREE.Mesh( geometry, new THREE.MeshBasicMaterial({
+            color: 0xFFFFFF, side: THREE.BackSide })))
+            this.highlights[i].scale.set( 1.2, 1.2, 1.2 )
+            this.scene.add( this.highlights[i] )
+        }
+
+        this.rad = 1.2
     }
     
     setupXR(){
         this.renderer.xr.enabled = true;
         
         const button = new VRButton( this.renderer );
+        
+        this.controllers = this.buildControllers();
 
-        this.controllers = this.buildControllers()
+        const self = this
+
+        function onSelectStart(){
+            this.children[0].scale.z = 10
+            this.userData.selectPressed = true
+        }
+
+        function onSelectEnd() {
+            this.children[0].scale.z = 0
+            for(let i=0; i < this.highlights.length; i++)
+            {
+                self.highlights[i].visible = false
+            }
+            this.userData.selectPressed = false
+        }
+
+        this.controllers.forEach( ( controller ) => {
+            controller.addEventListener( 'selectstart', onSelectStart)
+            controller.addEventListener( 'selected', onSelectEnd)
+        })
+        
     }
     
     buildControllers(){
-        const controllerModelFactory = new XRControllerModelFactory()
-//testing again for the final and fitst time
+        const controllerModelFactory = new XRControllerModelFactory();
+        
         const geometry = new THREE.BufferGeometry().setFromPoints( [
             new THREE.Vector3(0,0,0),
             new THREE.Vector3(0,0,-1)
-        ])
-        const line = new THREE.Line( geometry )
-        line.name = 'line'
-        line.scale.z = 0
-
-        const controllers = []
-
-        for(let i=0; i<=1; i++){
-            const controller = this.renderer.xr.getController( i )
-            controller.add( line.clone() )
-            controller.userData.selectPressed = false
-            this.scene.add(controller)
-
-            controllers.push( controller )
-
-            const grip = this.renderer.xr.getControllerGrip( i )
-            grip.add( controllerModelFactory.createControllerModel( grip ))
-            this.scene.add( grip )
+        ]);
+        const line = new THREE.Line( geometry );
+        line.name = 'line';
+        line.scale.z = 0;
+        
+        const controllers = [];
+        
+        for(let i=0; i<2; i++){
+            const controller = this.renderer.xr.getController( i );
+            controller.add( line.clone() );
+            controller.userData.selectPressed = false;
+            this.scene.add(controller);
+            
+            controllers.push( controller );
+            
+            const grip = this.renderer.xr.getControllerGrip( i );
+            grip.add( controllerModelFactory.createControllerModel( grip ));
+            this.scene.add( grip );
         }
         
-        return controllers
+        return controllers;
     }
     
     handleController( controller ){
-        
+        if(controller.userData.selectPressed) {
+            controller.children[0].scale.z = 10
+
+            this.workingMatrix.identity().extractRotation( controller.matrixWorld)
+
+            this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld)
+
+            this.raycaster.ray.direction.set( 0, 0, -1).applyMatrix4( this.workingMatrix )
+
+            const intersects = this.raycaster.intersectObjects( this.room.children)
+
+            if (intersects.length > 0)
+            {
+                for(let i=0; i < intersects.length; i++)
+                {
+                    this.rad += 0.01
+                    intersects[i].object.add( this.highlights[i] )
+                    this.highlights[i].scale.x = this.rad
+                    this.highlights[i].scale.y = this.rad
+                    this.highlights[i].scale.z = this.rad
+
+                    this.highlights[i].visible = true
+                    //controller.children[0].scale.z = intersects[0].distance  
+                }
+            } else{
+                this.rad = 1.2
+                for(let i=0; i < this.highlights.length; i++)
+                {
+                    this.highlights[i].scale.x = this.rad
+                    this.highlights[i].scale.y = this.rad
+                    this.highlights[i].scale.z = this.rad                    
+                    this.highlights[i].visible = false
+                }
+            }
+        }
     }
     
     resize(){
