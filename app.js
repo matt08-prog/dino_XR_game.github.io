@@ -134,7 +134,7 @@ class App{
             case 'tracked-pointer':
                 loader = new GLTFLoader().setPath('./libs')
 
-                loader.load('arb.glb',
+                loader.load('arm.glb',
                     (gltf) => {
                         controller.add( gltf.scene )
                     }),
