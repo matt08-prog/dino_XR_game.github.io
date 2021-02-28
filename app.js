@@ -98,9 +98,9 @@ class App{
                 const bbox = new THREE.Box3().setFromObject( gltf.scene );
                 console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
                 
-                const earth = gltf.scene.children[2];
+                self.earth = gltf.scene.children[2];
                 const scale = 0.6;
-                earth.scale.set(scale, scale, scale);
+                self.earth.scale.set(scale, scale, scale);
 
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
