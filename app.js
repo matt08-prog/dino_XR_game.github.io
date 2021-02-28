@@ -112,16 +112,16 @@ class App{
                 
 				self.scene.add( gltf.scene );
                 
-                self.loadingBar.visible = false;
+                // self.loadingBar.visible = false;
 				
 				self.renderer.setAnimationLoop( self.render.bind(self));
 			},
-			// called while loading is progressing
-			function ( xhr ) {
+			// // called while loading is progressing
+			// function ( xhr ) {
 
-				self.loadingBar.progress = (xhr.loaded / xhr.total);
+			// 	self.loadingBar.progress = (xhr.loaded / xhr.total);
 				
-			},
+			// },
 			// called when loading has errors
 			function ( error ) {
 
