@@ -134,7 +134,7 @@ class App{
             
             case 'tracked-pointer':
 
-                loader = new GLTFLoader().setPath('./Assets');
+                loader = new GLTFLoader().setPath('./Assets/');
         
                 loader.load( 'lightArm.glb',
                     ( gltf ) => {
