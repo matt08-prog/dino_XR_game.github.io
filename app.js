@@ -139,7 +139,6 @@ class App{
         const self = this;
         
         function onSelectStart() {
-            this.chair.rotateY( 0.01 );
             this.userData.selectPressed = true;
             if (self.spotlight) self.spotlight.visible = true;
         }
@@ -203,6 +202,7 @@ class App{
     
     handleController( controller ){
         if (controller.userData.selectPressed ){
+            this.chair.rotateY( 0.01 );
             controller.children[0].scale.z = 10;
 
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
