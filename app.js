@@ -139,7 +139,7 @@ class App{
         const self = this;
         
         function onSelectStart() {
-            
+            this.chair.rotateY( 0.01 );
             this.userData.selectPressed = true;
             if (self.spotlight) self.spotlight.visible = true;
         }
