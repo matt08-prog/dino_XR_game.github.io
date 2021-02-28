@@ -56,31 +56,31 @@ class App{
     }
     
     initScene(){
-        this.radius = 0.08;
+        // this.radius = 0.08;
         
-        this.room = new THREE.LineSegments(
-					new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
-					new THREE.LineBasicMaterial( { color: 0x808080 } )
-				);
-        this.room.geometry.translate( 0, 3, 0 );
-        this.scene.add( this.room );
+        // this.room = new THREE.LineSegments(
+		// 			new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
+		// 			new THREE.LineBasicMaterial( { color: 0x808080 } )
+		// 		);
+        // this.room.geometry.translate( 0, 3, 0 );
+        // this.scene.add( this.room );
         
-        const geometry = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
+        // const geometry = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
 
-        for ( let i = 0; i < 200; i ++ ) {
+        // for ( let i = 0; i < 200; i ++ ) {
 
-            const object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+        //     const object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
-            object.position.x = this.random( -2, 2 );
-            object.position.y = this.random( -2, 2 );
-            object.position.z = this.random( -2, 2 );
+        //     object.position.x = this.random( -2, 2 );
+        //     object.position.y = this.random( -2, 2 );
+        //     object.position.z = this.random( -2, 2 );
 
-            this.room.add( object );
+        //     this.room.add( object );
 
-        }
+        // }
         
-        this.highlight = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xffffff, side: THREE.BackSide } ) );
-        this.highlight.scale.set(1.2, 1.2, 1.2);
+        // this.highlight = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xffffff, side: THREE.BackSide } ) );
+        // this.highlight.scale.set(1.2, 1.2, 1.2);
 
         this.loadGLTF()
     }
