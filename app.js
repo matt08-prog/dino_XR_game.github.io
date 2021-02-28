@@ -99,7 +99,7 @@ class App{
                 console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
                 
                 self.earth = gltf.scene;
-                const scale = 0.6;
+                const scale = 0.1;
                 self.earth.scale.set(scale, scale, scale);
 
                 gltf.scene.traverse( ( child ) => {
