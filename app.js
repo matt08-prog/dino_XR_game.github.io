@@ -142,6 +142,8 @@ class App{
                         const scale = 100
                         arm.scale.set(scale,scale,scale)
                         controller.add( arm )
+                        const bbox = new THREE.Box3.setFromObject( gltf.scene )
+                        console.log(`min:${vector3ToString(bbox.min, 2)} - max:${vector3ToString(bbox.max, 2)}`)
                     }),
                     null,
                     (error) => {
