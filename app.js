@@ -193,10 +193,10 @@ class App{
     
     handleController( controller ){
         if (controller.userData.selectPressed ){
-            this.chair.rotateY( 0.01 );
             controller.children[0].scale.z = 10;
 
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
+            this.earth.rotateY( 0.01 );
 
             this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
             this.raycaster.ray.direction.set( 0, 0, - 1 ).applyMatrix4( this.workingMatrix );
