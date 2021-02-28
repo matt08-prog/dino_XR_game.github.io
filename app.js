@@ -139,7 +139,7 @@ class App{
                         // gltf.scene.scale.set(0.1,0.1,0.)
                         // controller.add( gltf.scene )
                         const arm = gltf.scene.children[2]
-                        const scale = 100
+                        const scale = 5
                         arm.scale.set(scale,scale,scale)
                         controller.add( arm )
                         const bbox = new THREE.Box3().setFromObject( arm.scene );
