@@ -81,8 +81,51 @@ class App{
         
         this.highlight = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xffffff, side: THREE.BackSide } ) );
         this.highlight.scale.set(1.2, 1.2, 1.2);
+
+        this.loadGLTF()
     }
     
+    loadGLTF(){
+        const loader = new GLTFLoader( ).setPath('./Assets/');
+        const self = this;
+		
+		// Load a glTF resource
+		loader.load(
+			// resource URL
+			'earth.glb',
+			// called when the resource is loaded
+			function ( gltf ) {
+                const bbox = new THREE.Box3().setFromObject( gltf.scene );
+                console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
+                
+                gltf.scene.traverse( ( child ) => {
+                    if (child.isMesh){
+                        child.material.metalness = 0.2;
+                    }
+                })
+                self.chair = gltf.scene;
+                
+				self.scene.add( gltf.scene );
+                
+                self.loadingBar.visible = false;
+				
+				self.renderer.setAnimationLoop( self.render.bind(self));
+			},
+			// called while loading is progressing
+			function ( xhr ) {
+
+				self.loadingBar.progress = (xhr.loaded / xhr.total);
+				
+			},
+			// called when loading has errors
+			function ( error ) {
+
+				console.log( 'An error happened' );
+
+			}  
+        );
+    }
+
     setupXR(){
         this.renderer.xr.enabled = true;
         
