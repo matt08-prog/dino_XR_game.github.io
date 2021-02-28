@@ -102,6 +102,7 @@ class App{
                 const scale = 0.07;
                 self.earth.scale.set(scale, scale, scale);
                 self.earth.position.y = 1.0
+                self.earth.position.z = -2.0
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
                         child.material.metalness = 0.2;
