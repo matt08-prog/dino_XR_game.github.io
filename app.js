@@ -139,38 +139,26 @@ class App{
         
         const self = this;
         
+        this.controllers = this.buildControllers();
+        
         function onSelectStart() {
+            
+            this.children[0].scale.z = 10;
             this.userData.selectPressed = true;
-            if (self.spotlight) self.spotlight.visible = true;
         }
 
         function onSelectEnd() {
 
+            this.children[0].scale.z = 0;
             self.highlight.visible = false;
             this.userData.selectPressed = false;
-            if (self.spotlight) self.spotlight.visible = false;
             
         }
         
-        
-        this.controller = this.renderer.xr.getController( 0 );
-        this.controller.addEventListener( 'selectstart', onSelectStart );
-        this.controller.addEventListener( 'selectend', onSelectEnd );
-        this.controller.addEventListener( 'connected', function ( event ) {
-
-            self.buildController.call(self, event.data, this );
-
-        } );
-        this.controller.addEventListener( 'disconnected', function () {
-
-            while(this.children.length>0) this.remove( this.children[ 0 ] );
-            self.controller = null;
-
-        } );
-        this.scene.add( this.controller );
- 
-        this.scene.add(this.highlight);
-
+        this.controllers.forEach( (controller) => {
+            controller.addEventListener( 'selectstart', onSelectStart );
+            controller.addEventListener( 'selectend', onSelectEnd );
+        });
     }
     
     buildControllers() {
