@@ -104,6 +104,7 @@ class App{
             
         }
         
+        
         this.controller = this.renderer.xr.getController( 0 );
         this.controller.addEventListener( 'selectstart', onSelectStart );
         this.controller.addEventListener( 'selectend', onSelectEnd );
@@ -132,23 +133,37 @@ class App{
         switch ( data.targetRayMode ) {
             
             case 'tracked-pointer':
-                loader = new GLTFLoader().setPath('./Assets/')
 
-                loader.load('arm.glb',
-                    (gltf) => {
-                        // gltf.scene.scale.set(0.1,0.1,0.)
-                        // controller.add( gltf.scene )
-                        const arm = gltf.scene.children[2]
-                        const scale = 0.6
-                        arm.scale.set(scale,scale,scale)
-                        controller.add( arm )
-                        const bbox = new THREE.Box3().setFromObject( arm );
-                        console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
-                    }),
+                loader = new GLTFLoader().setPath('./Assets/');
+        
+                loader.load( 'arm.glb',
+                    ( gltf ) => {
+                        const flashLight = gltf.scene.children[2];
+                        const scale = 0.6;
+                        flashLight.scale.set(scale, scale, scale);
+                        controller.add( flashLight );
+                        self.spotlight = new THREE.Group();
+                        const spotlight = new THREE.SpotLight( 0xFFFFFF, 2, 12, Math.PI/15, 0.3 );
+                        geometry = new THREE.CylinderBufferGeometry(0.03, 1, 5, 32, 5, true);
+                        geometry.rotateX( Math.PI/2 );
+                        material = new SpotLightVolumetricMaterial();
+                        const cone = new THREE.Mesh( geometry, material );
+                        cone.translateZ( -2.6 );
+                    
+                        spotlight.position.set(0,0,0);
+                        spotlight.target.position.set(0,0,-1);
+                        self.spotlight.add( spotlight.target );
+                        self.spotlight.add( spotlight );
+                        self.spotlight.add( cone );
+                        
+                        controller.add(self.spotlight);
+                        self.spotlight.visible = false;
+                    },
                     null,
-                    (error) => {
-                        console.error(error)
+                    (error) =>  {
+                        console.error( 'An error occurred' );    
                     }
+                );
                 
                 break;
                 
