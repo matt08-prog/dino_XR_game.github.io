@@ -5,6 +5,8 @@ import { GLTFLoader } from './libs/three/jsm/GLTFLoader.js';
 import { Stats } from './libs/stats.module.js';
 import { OrbitControls } from './libs/three/jsm/OrbitControls.js';
 import { SpotLightVolumetricMaterial } from './libs/SpotLightVolumetricMaterial.js';
+import { XRControllerModelFactory } from './libs/three/jsm/XRControllerModelFactory.js';
+
 
 
 class App{
