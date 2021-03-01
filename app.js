@@ -394,7 +394,7 @@ class App{
     
     handleController( controller ){
         if (controller.userData.selectPressed ){
-            controller.children[0].scale.z = 10;
+            // controller.children[0].scale.z = 10;
             // selecting nodes for radio
             //********************************************************************************** */
             // this.workingMatrix.identity().extractRotation( controller.matrixWorld );
