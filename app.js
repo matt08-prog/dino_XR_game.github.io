@@ -216,13 +216,14 @@ class App{
                 // self.chair = gltf.scene;
                 
 				self.scene.add( gltf.scene );
-                // if (self.earth != undefined) {
-                //     self.objects.push(self.earth)
-                // }
-                if (gltf != undefined) {
+                if (self.earth != undefined) {
                     console.log("instance")
-                    self.objects.push(gltf)
+                    self.objects.push(self.earth)
                 }
+                // if (gltf != undefined) {
+                //     console.log("instance")
+                //     self.objects.push(gltf)
+                // }
 
                 // self.loadingBar.visible = false;
 				
