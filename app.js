@@ -417,14 +417,14 @@ class App{
                 controller.children[0].scale.z = 0;
             }
 
-            intersects = this.raycaster.intersectObjects( this.scene.children, true );
+            intersections = this.raycaster.intersectObjects( this.scene.children, true );
 
-            if (intersects.length>0){
+            if (intersections.length>0){
 
                 // intersects[0].object.add(this.highlight);
                 // this.highlight.visible = true;
-                controller.children[0].scale.z = intersects[0].distance;
-                controller.userData.selected = intersects[0].object;
+                controller.children[0].scale.z = intersections[0].distance;
+                controller.userData.selected = intersections[0].object;
             }else{
                 controller.children[0].scale.z = 0;
             }
