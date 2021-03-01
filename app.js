@@ -104,7 +104,7 @@ class App{
             body: { type: "text" }
         }
         const ui = new CanvasUI( { body: "" }, config );
-        ui.mesh.position.set(0, 2.0, -1);
+        ui.mesh.position.set(0, 2.0, -1.8);
         this.scene.add( ui.mesh );
         return ui;
     }
@@ -193,7 +193,7 @@ class App{
                 self.earth = gltf.scene;
                 const scale = 0.07;
                 self.earth.scale.set(scale, scale, scale);
-                self.earth.position.y = 4.0
+                self.earth.position.y = 2.0
                 self.earth.position.z = -1.0
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
