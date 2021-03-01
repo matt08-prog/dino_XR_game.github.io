@@ -6,7 +6,12 @@ import { Stats } from './libs/stats.module.js';
 import { OrbitControls } from './libs/three/jsm/OrbitControls.js';
 import { SpotLightVolumetricMaterial } from './libs/SpotLightVolumetricMaterial.js';
 import { XRControllerModelFactory } from './libs/three/jsm/XRControllerModelFactory.js';
-
+import { CanvasUI } from './libs/CanvasUI.js';
+import {
+	Constants as MotionControllerConstants,
+	fetchProfile,
+	MotionController
+} from './libs/three/jsm/motion-controllers.module.js';
 
 
 class App{
