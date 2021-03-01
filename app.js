@@ -217,8 +217,12 @@ class App{
                 // self.chair = gltf.scene;
                 
 				self.scene.add( gltf.scene );
-                self.objects.push(self.earth)
-                self.objects.push(gltf)
+                if (self.earth != undefined) {
+                    self.objects.push(self.earth)
+                }
+                if (gltf != undefined) {
+                    self.objects.push(gltf)
+                }
 
                 // self.loadingBar.visible = false;
 				
@@ -414,17 +418,17 @@ class App{
             this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
             this.raycaster.ray.direction.set( 0, 0, - 1 ).applyMatrix4( this.workingMatrix );
 
-            const intersects = this.raycaster.intersectObjects( this.earth.children, true );
+            // const intersects = this.raycaster.intersectObjects( this.earth.children, true );
 
-            if (intersects.length>0){
+            // if (intersects.length>0){
 
-                // intersects[0].object.add(this.highlight);
-                // this.highlight.visible = true;
-                controller.children[0].scale.z = intersects[0].distance;
-                controller.userData.selected = intersects[0].object;
-            }else{
-                controller.children[0].scale.z = 0;
-            }
+            //     // intersects[0].object.add(this.highlight);
+            //     // this.highlight.visible = true;
+            //     controller.children[0].scale.z = intersects[0].distance;
+            //     controller.userData.selected = intersects[0].object;
+            // }else{
+            //     controller.children[0].scale.z = 0;
+            // }
 
             const intersections = this.raycaster.intersectObjects( this.objects, true );
 
