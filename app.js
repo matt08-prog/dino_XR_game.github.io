@@ -188,6 +188,7 @@ class App{
         const self = this;
 		
 		// Load a glTF resource
+        self.objects = []
 		loader.load(
 			// resource URL
 			'earth.glb',
@@ -203,14 +204,22 @@ class App{
                 self.earth.position.z = -1.2
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
+                        console.log("metalize")
                         child.material.metalness = 0.5;
+                    }
+                    if(child instanceof THREE.Mesh) {
+                        console.log("instance")
+                        child.geometry.computeFaceNormals()
+                        child.material.side = THREE.DoubleSided
                     }
                 })
                 
                 // self.chair = gltf.scene;
                 
 				self.scene.add( gltf.scene );
-                
+                self.objects.push(self.earth)
+                self.objects.push(gltf)
+
                 // self.loadingBar.visible = false;
 				
 				self.renderer.setAnimationLoop( self.render.bind(self));
@@ -417,7 +426,7 @@ class App{
                 controller.children[0].scale.z = 0;
             }
 
-            const intersections = this.raycaster.intersectObjects( this.scene.children, true );
+            const intersections = this.raycaster.intersectObjects( objects, true );
 
             if (intersections.length>0){
 
