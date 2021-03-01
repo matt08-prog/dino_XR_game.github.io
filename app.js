@@ -140,8 +140,10 @@ class App{
         if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
             if (inputSource.handedness == "left") {
                 const inputSource = session.inputSources[0];
+                console.log("left")
             } else {
                 const inputSource = session.inputSources[1];
+                console.log("right")
             }
             const gamepad = inputSource.gamepad;
             try{
