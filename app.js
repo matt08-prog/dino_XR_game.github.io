@@ -208,7 +208,6 @@ class App{
                         child.material.metalness = 0.5;
                     }
                     if(child instanceof THREE.Mesh) {
-                        console.log("instance")
                         child.geometry.computeFaceNormals()
                         child.material.side = THREE.DoubleSided
                     }
@@ -217,10 +216,11 @@ class App{
                 // self.chair = gltf.scene;
                 
 				self.scene.add( gltf.scene );
-                if (self.earth != undefined) {
-                    self.objects.push(self.earth)
-                }
+                // if (self.earth != undefined) {
+                //     self.objects.push(self.earth)
+                // }
                 if (gltf != undefined) {
+                    console.log("instance")
                     self.objects.push(gltf)
                 }
 
