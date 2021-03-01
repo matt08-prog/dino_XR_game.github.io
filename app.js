@@ -417,7 +417,7 @@ class App{
                 controller.children[0].scale.z = 0;
             }
 
-            intersections = this.raycaster.intersectObjects( this.scene.children, true );
+            const intersections = this.raycaster.intersectObjects( this.scene.children, true );
 
             if (intersections.length>0){
 
