@@ -203,7 +203,7 @@ class App{
                 self.earth.position.z = -1.2
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
-                        child.material.metalness = 0.2;
+                        child.material.metalness = 0.5;
                     }
                 })
                 
@@ -402,7 +402,7 @@ class App{
             this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
             this.raycaster.ray.direction.set( 0, 0, - 1 ).applyMatrix4( this.workingMatrix );
 
-            const intersects = this.raycaster.intersectObjects( this.scene.children, true );
+            const intersects = this.raycaster.intersectObjects( this.scene, true );
 
             if (intersects.length>0){
 
