@@ -394,6 +394,9 @@ class App{
     
     handleController( controller ){
         if (controller.userData.selectPressed ){
+            for (i in this.scene.children) {
+                console.log(i.name)
+            }
             // selecting nodes for radio
             //********************************************************************************** */
 
