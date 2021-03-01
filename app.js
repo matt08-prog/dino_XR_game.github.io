@@ -65,6 +65,8 @@ class App{
     }
     
     initScene(){
+        this.dir = 0
+
         this.radius = 0.08;
         
         this.room = new THREE.LineSegments(
@@ -156,9 +158,11 @@ class App{
                         this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
                         this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
                         if (this.buttonStates[key].xAxis < 0) {
-                            this.earth.rotateY(-0.1)
+                            this.dir = -1
+                        } else if (this.buttonStates[key].xAxis > 0){
+                            this.dir = 0
                         } else {
-                            this.earth.rotateY(0.1)
+                            this.dir = 1
                         }
                         this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
                     }else{
@@ -414,6 +418,12 @@ class App{
 	render( ) {   
         const dt = this.clock.getDelta();
         
+        if (this.dir == -1) {
+            this.earth.rotateY(-0.1)
+        } else if(this.dir == 1) {
+            this.earth.rotateY(0.1)
+        }
+
         if (this.renderer.xr.isPresenting){
             const self = this; 
             if (this.controllers ){
