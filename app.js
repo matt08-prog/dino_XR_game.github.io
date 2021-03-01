@@ -168,7 +168,7 @@ class App{
                     this.updateUI();
                 });
             }catch(e){
-                console.warn("An error occurred setting the ui");
+                console.warn(e);
             }
         }
     }
