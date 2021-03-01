@@ -136,7 +136,7 @@ class App{
     updateGamepadState(){
         const session = this.renderer.xr.getSession();
         
-        if (session.inputSource.handedness == "left") {
+        if (inputSource.handedness == "left") {
             const inputSource = session.inputSources[0];
         } else {
             const inputSource = session.inputSources[1];
