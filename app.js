@@ -104,7 +104,7 @@ class App{
             body: { type: "text" }
         }
         const ui = new CanvasUI( { body: "" }, config );
-        ui.mesh.position.set(0, 1.5, -1);
+        ui.mesh.position.set(0, 2.0, -1);
         this.scene.add( ui.mesh );
         return ui;
     }
@@ -194,7 +194,7 @@ class App{
                 const scale = 0.07;
                 self.earth.scale.set(scale, scale, scale);
                 self.earth.position.y = 1.0
-                self.earth.position.z = -2.0
+                self.earth.position.z = -1.5
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
                         child.material.metalness = 0.2;
