@@ -199,7 +199,7 @@ class App{
                 self.earth = gltf.scene;
                 const scale = 0.07;
                 self.earth.scale.set(scale, scale, scale);
-                self.earth.position.y = 2.0
+                self.earth.position.y = 0.7
                 self.earth.position.z = -1.0
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
