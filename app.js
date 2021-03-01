@@ -419,9 +419,9 @@ class App{
         const dt = this.clock.getDelta();
         
         if (this.dir == -1) {
-            this.earth.rotateY(-0.1)
+            this.earth.rotateY(-0.01)
         } else if(this.dir == 1) {
-            this.earth.rotateY(0.1)
+            this.earth.rotateY(0.01)
         }
 
         if (this.renderer.xr.isPresenting){
