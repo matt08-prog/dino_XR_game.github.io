@@ -191,9 +191,10 @@ class App{
         }
     }
     addNode(radius){
-        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
+        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.07, 2 );
         const node = new THREE.Mesh( nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-
+        // const nodeScale = 0.07;
+        // node.scale.set(nodeScale, nodeScale, nodeScale);
         node.position.x = 0;
         node.position.y = 1.1;
         node.position.z = -1.2;
@@ -225,7 +226,7 @@ class App{
     loadGLTF(){
         const loader = new GLTFLoader( ).setPath('./Assets/');
         const self = this;
-        this.addNode(0.5)
+        this.addNode(0.3)
 
 		// Load a glTF resource
         self.objects = []
@@ -234,9 +235,6 @@ class App{
 			'earth.glb',
 			// called when the resource is loaded
 			function ( gltf ) {
-                const bbox = new THREE.Box3().setFromObject( gltf.scene );
-                console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
-                
                 self.earth = gltf.scene;
                 const scale = 0.07;
                 self.earth.scale.set(scale, scale, scale);
@@ -260,6 +258,8 @@ class App{
                     console.log("instance")
                     self.objects.push(self.earth)
                 }
+                const bbox = new THREE.Box3().setFromObject( self.earth );
+                console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
                 // if (gltf != undefined) {
                 //     console.log("instance")
                 //     self.objects.push(gltf)
