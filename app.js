@@ -225,7 +225,7 @@ class App{
     loadGLTF(){
         const loader = new GLTFLoader( ).setPath('./Assets/');
         const self = this;
-        this.addNode(0.36)
+        this.addNode(0.39)
 
 		// Load a glTF resource
         self.objects = []
