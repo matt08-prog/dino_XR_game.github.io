@@ -66,6 +66,7 @@ class App{
     
     initScene(){
         this.dir = 0
+        this.rad = 2.5
 
         this.radius = 0.08;
         const geometry = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
@@ -169,6 +170,13 @@ class App{
                             this.dir = 1
                         } else {
                             this.dir = 0
+                        }
+                        if (this.buttonStates[key].yAxis < 0) {
+                            this.rad -= 0.01
+                            this.addNode(rad)
+                        } else if (this.buttonStates[key].yAxis > 0){
+                            this.rad +=0.01
+                            this.addNode(rad)
                         }
                         this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
                     }else{
@@ -399,7 +407,8 @@ class App{
             let trigger = false, squeeze = false;
             
             Object.keys( info.right ).forEach( (key) => {
-                if (key.indexOf('trigger')!=-1) trigger = true;                   if (key.indexOf('squeeze')!=-1) squeeze = true;      
+                if (key.indexOf('trigger')!=-1) trigger = true;                   
+                if (key.indexOf('squeeze')!=-1) squeeze = true;      
             });
             
             if (trigger){
@@ -421,7 +430,8 @@ class App{
             let trigger = false, squeeze = false;
             
             Object.keys( info.left ).forEach( (key) => {
-                if (key.indexOf('trigger')!=-1) trigger = true;                   if (key.indexOf('squeeze')!=-1) squeeze = true;      
+                if (key.indexOf('trigger')!=-1) trigger = true; 
+                if (key.indexOf('squeeze')!=-1) squeeze = true;      
             });
             
             if (trigger){
