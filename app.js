@@ -95,21 +95,20 @@ class App{
         // self.earth.rotation.y = 90
         var self = this
         var loader = new THREE.TextureLoader();
+        var earth = new THREE.Group();
         loader.load( './Assets/sphere.jpg', function ( texture ) {
             
             var geometry = new THREE.SphereGeometry( 0.4, 50, 50 );
         
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
-            self.earth = new THREE.Mesh( geometry, material );
-            self.earth.position.y = 1.1
-            self.earth.position.z = -1.2
+            self.globe = new THREE.Mesh( geometry, material );
+            self.globe.position.y = 1.1
+            self.globe.position.z = -1.2
             // earth.rotation.y = 90
-            self.scene.add( self.earth );
-        
+            self.earth.add( self.globe );
         } )
-
         this.addNode(0.4)
-
+        this.scene.add( earth )
         // this.room = new THREE.LineSegments(
 		// 			new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
 		// 			new THREE.LineBasicMaterial( { color: 0x808080 } )
@@ -237,7 +236,7 @@ class App{
 	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
 	    node.position.z += this.calcPosFromLatLonRad( lat, lon, radius)[2]
 
-        this.scene.add( node );
+        this.globe.add( node );
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
