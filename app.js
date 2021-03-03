@@ -107,7 +107,10 @@ class App{
             self.earth.add( self.globe );
         } )
 
-
+        $.getJSON("./Assets/coords.json", function(data) {
+            var allQuestions = data;
+            console.log(allQuestions)
+        })
         this.addNode(this.radius, self)
         this.scene.add( this.earth )
 
