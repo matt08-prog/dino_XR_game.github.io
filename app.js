@@ -191,7 +191,7 @@ class App{
         }
     }
     addNode(radius){
-        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.07, 2 );
+        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.02, 2 );
         const node = new THREE.Mesh( nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
         // const nodeScale = 0.07;
         // node.scale.set(nodeScale, nodeScale, nodeScale);
@@ -201,7 +201,6 @@ class App{
 
         var lat = 61.497
 	    var lon = 23.76
-	    // var radius = 5.5
 	
 	    node.position.x += this.calcPosFromLatLonRad( lat, lon, radius)[0]
 	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
@@ -226,7 +225,7 @@ class App{
     loadGLTF(){
         const loader = new GLTFLoader( ).setPath('./Assets/');
         const self = this;
-        this.addNode(0.3)
+        this.addNode(0.45)
 
 		// Load a glTF resource
         self.objects = []
@@ -240,6 +239,7 @@ class App{
                 self.earth.scale.set(scale, scale, scale);
                 self.earth.position.y = 1.1
                 self.earth.position.z = -1.2
+                self.earth.rotation.y = 90
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
                         console.log("metalize")
