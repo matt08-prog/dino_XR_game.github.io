@@ -87,6 +87,29 @@ class App{
         object1.position.z = -1.2;
 
         this.scene.add( object1 );
+
+        // var earthGeometry = new THREE.IcosahedronBufferGeometry( 2, 2 );
+        // var earth = new THREE.Mesh( earthGeometry, new THREE.MeshStandardMaterial(  );
+        // self.earth.position.y = 1.1
+        // self.earth.position.z = -1.2
+        // self.earth.rotation.y = 90
+
+        var loader = new THREE.TextureLoader();
+        loader.load( './Assets/sphere.jpg', function ( texture ) {
+        
+            var geometry = new THREE.SphereGeometry( 2, 20, 20 );
+        
+            var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+            var earth = new THREE.Mesh( geometry, material );
+            self.earth.position.y = 1.1
+            self.earth.position.z = -1.2
+            self.earth.rotation.y = 90
+            scene.add( mesh );
+        
+        } )
+
+        this.addNode(0.39)
+
         // this.room = new THREE.LineSegments(
 		// 			new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
 		// 			new THREE.LineBasicMaterial( { color: 0x808080 } )
