@@ -47,7 +47,8 @@ class App{
         this.controls.update();
         
         this.stats = new Stats();
-        
+        document.body.appendChild( this.stats.dom );
+
         this.raycaster = new THREE.Raycaster();
         this.workingMatrix = new THREE.Matrix4();
         this.workingVector = new THREE.Vector3();
@@ -117,10 +118,6 @@ class App{
             })
         })
         this.scene.add( this.earth )
-
-        
-
-
 
         // this.room = new THREE.LineSegments(
 		// 			new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
