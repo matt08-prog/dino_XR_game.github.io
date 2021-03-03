@@ -191,7 +191,7 @@ class App{
         }
     }
     addNode(radius){
-        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.02, 2 );
+        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.005, 2 );
         const node = new THREE.Mesh( nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
         // const nodeScale = 0.07;
         // node.scale.set(nodeScale, nodeScale, nodeScale);
@@ -225,7 +225,7 @@ class App{
     loadGLTF(){
         const loader = new GLTFLoader( ).setPath('./Assets/');
         const self = this;
-        this.addNode(0.45)
+        this.addNode(0.4)
 
 		// Load a glTF resource
         self.objects = []
