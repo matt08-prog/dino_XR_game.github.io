@@ -191,6 +191,7 @@ class App{
             const gamepad = inputSource.gamepad;
             try{
                 Object.entries( this.buttonStates ).forEach( ( [ key, value ] ) => {
+                    // console.log(key)
                     const buttonIndex = this.gamepadIndices[key].button;
                     if ( key.indexOf('touchpad')!=-1 || key.indexOf('thumbstick')!=-1){
                         const xAxisIndex = this.gamepadIndices[key].xAxis;
@@ -395,7 +396,7 @@ class App{
         }
 
         function onSelectEnd( ){
-            this.children[0].scale.z = 0;
+            // this.children[0].scale.z = 0;
             this.userData.selectPressed = false;
             this.userData.selected = undefined;
         }
@@ -506,17 +507,17 @@ class App{
             //     controller.children[0].scale.z = 0;
             // }
 
-            const intersections = this.raycaster.intersectObjects( this.objects, true );
+            // const intersections = this.raycaster.intersectObjects( this.objects, true );
 
-            if (intersections.length>0){
+            // if (intersections.length>0){
 
-                // intersects[0].object.add(this.highlight);
-                // this.highlight.visible = true;
-                controller.children[0].scale.z = intersections[0].distance;
-                controller.userData.selected = intersections[0].object;
-            }else{
-                controller.children[0].scale.z = 0;
-            }
+            //     // intersects[0].object.add(this.highlight);
+            //     // this.highlight.visible = true;
+            //     controller.children[0].scale.z = intersections[0].distance;
+            //     controller.userData.selected = intersections[0].object;
+            // }else{
+            //     controller.children[0].scale.z = 0;
+            // }
         }
     }
     
