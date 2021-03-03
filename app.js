@@ -93,9 +93,9 @@ class App{
         // self.earth.position.y = 1.1
         // self.earth.position.z = -1.2
         // self.earth.rotation.y = 90
-        var self = this
         var loader = new THREE.TextureLoader();
-        var earth = new THREE.Group();
+        this.earth = new THREE.Group();
+        var self = this
         loader.load( './Assets/sphere.jpg', function ( texture ) {
             
             var geometry = new THREE.SphereGeometry( 0.4, 50, 50 );
@@ -107,7 +107,7 @@ class App{
             // earth.rotation.y = 90
             self.earth.add( self.globe );
         } )
-        this.addNode(0.4)
+        this.addNode(0.4, self)
         this.scene.add( earth )
         // this.room = new THREE.LineSegments(
 		// 			new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
@@ -220,7 +220,7 @@ class App{
             }
         })
     }
-    addNode(radius){
+    addNode(radius, self){
         const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.005, 2 );
         const node = new THREE.Mesh( nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
         // const nodeScale = 0.07;
@@ -236,7 +236,7 @@ class App{
 	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
 	    node.position.z += this.calcPosFromLatLonRad( lat, lon, radius)[2]
 
-        this.earth.add( node );
+        self.earth.add( node );
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
