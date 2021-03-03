@@ -140,11 +140,11 @@ class App{
     createUI(){
         const config = {
             panelSize: { height: 0.5 },
-            height: 256,
+            height: 500,
             body: { type: "text" }
         }
         const ui = new CanvasUI( { body: "" }, config );
-        ui.mesh.position.set(0, 2.0, -1.8);
+        ui.mesh.position.set(0, 3.0, -1.8);
         this.scene.add( ui.mesh );
         return ui;
     }
@@ -342,7 +342,7 @@ class App{
                     info[key] = components;
                 });
 
-                self.createButtonStates( info.right );
+                self.createButtonStates( info );
                 
                 console.log( JSON.stringify(info) );
 
