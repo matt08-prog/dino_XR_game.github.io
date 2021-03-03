@@ -241,7 +241,7 @@ class App{
         self.objects = []
 		loader.load(
 			// resource URL
-			'earth.glb',
+			'earth1.glb',
 			// called when the resource is loaded
 			function ( gltf ) {
                 self.earth = gltf.scene;
