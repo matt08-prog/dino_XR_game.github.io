@@ -172,13 +172,13 @@ class App{
                             this.dir = 0
                         }
                         this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
-                        if (this.buttonStates[key].yAxis < 0) {
-                            this.rad -= 0.01
-                            this.addNode(rad)
-                        } else if (this.buttonStates[key].yAxis > 0){
-                            this.rad +=0.01
-                            this.addNode(rad)
-                        }
+                        // if (this.buttonStates[key].yAxis < 0) {
+                        //     this.rad -= 0.01
+                        //     this.addNode(rad)
+                        // } else if (this.buttonStates[key].yAxis > 0){
+                        //     this.rad +=0.01
+                        //     this.addNode(rad)
+                        // }
                     }else{
                         this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
                     }
@@ -225,7 +225,7 @@ class App{
     loadGLTF(){
         const loader = new GLTFLoader( ).setPath('./Assets/');
         const self = this;
-        this.addNode(2.5)
+        this.addNode(0.5)
 
 		// Load a glTF resource
         self.objects = []
