@@ -97,7 +97,7 @@ class App{
         var loader = new THREE.TextureLoader();
         loader.load( './Assets/sphere.jpg', function ( texture ) {
             
-            var geometry = new THREE.SphereGeometry( 2, 20, 20 );
+            var geometry = new THREE.SphereGeometry( 0.8, 50, 50 );
         
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
             var earth = new THREE.Mesh( geometry, material );
