@@ -201,11 +201,11 @@ class App{
                             this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
                             this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
                             if (this.buttonStates[key].xAxis < 0) {
-                                // self.dir = -1
+                                self.dir = -1
                             } else if (this.buttonStates[key].xAxis > 0){
-                                // self.dir = 1
+                                self.dir = 1
                             } else {
-                                // self.dir = 0
+                                self.dir = 0
                             }
                             this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
                         }else{
