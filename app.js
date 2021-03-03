@@ -110,12 +110,14 @@ class App{
         $.getJSON("./Assets/coords.json", function(data) {
             self.allQuestions = data;
             console.log(self.allQuestions)
+        }).then( () => {
+            self.allQuestions.forEach( (value) => {
+                this.addNode(value.latitude, value.longitude, this.radius, self)
+            })
         })
         this.scene.add( this.earth )
 
-        self.allQuestions.forEach( (value) => {
-            this.addNode(value.latitude, value.longitude, this.radius, self)
-        })
+        
 
 
 
