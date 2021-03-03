@@ -177,17 +177,17 @@ class App{
     
     updateGamepadState(){
         const session = this.renderer.xr.getSession();
-        const inputSource = session.inputSources[1];
+        const inputSource = session.inputSources;
         
         if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
             console.log(inputSource.handedness)
-            if (inputSource.handedness == "left") {
-                const inputSource = session.inputSources[0];
-                console.log("left     0")
-            } else {
-                const inputSource = session.inputSources[1];
-                console.log("right    1")
-            }
+            // if (inputSource.handedness == "left") {
+            //     const inputSource = session.inputSources[0];
+            //     console.log("left     0")
+            // } else {
+            //     const inputSource = session.inputSources[1];
+            //     console.log("right    1")
+            // }
             const gamepad = inputSource.gamepad;
             try{
                 Object.entries( this.buttonStates ).forEach( ( [ key, value ] ) => {
@@ -342,7 +342,7 @@ class App{
                     info[key] = components;
                 });
 
-                self.createButtonStates( info );
+                self.createButtonStates( info.right );
                 
                 console.log( JSON.stringify(info) );
 
