@@ -179,6 +179,7 @@ class App{
         const session = this.renderer.xr.getSession();
         const inputSrc = session.inputSources;
         inputSrc.forEach(( inputSource ) => {
+            console.log(inputSource)
             if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
                 console.log(inputSource.handedness)
                 // if (inputSource.handedness == "left") {
