@@ -177,52 +177,46 @@ class App{
     
     updateGamepadState(){
         const session = this.renderer.xr.getSession();
-        const inputSource = session.inputSources;
-        
-        if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
-            console.log(inputSource.handedness)
-            // if (inputSource.handedness == "left") {
-            //     const inputSource = session.inputSources[0];
-            //     console.log("left     0")
-            // } else {
-            //     const inputSource = session.inputSources[1];
-            //     console.log("right    1")
-            // }
-            const gamepad = inputSource.gamepad;
-            try{
-                Object.entries( this.buttonStates ).forEach( ( [ key, value ] ) => {
-                    // console.log(key)
-                    const buttonIndex = this.gamepadIndices[key].button;
-                    if ( key.indexOf('touchpad')!=-1 || key.indexOf('thumbstick')!=-1){
-                        const xAxisIndex = this.gamepadIndices[key].xAxis;
-                        const yAxisIndex = this.gamepadIndices[key].yAxis;
-                        this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
-                        this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
-                        if (this.buttonStates[key].xAxis < 0) {
-                            this.dir = -1
-                        } else if (this.buttonStates[key].xAxis > 0){
-                            this.dir = 1
-                        } else {
-                            this.dir = 0
+        const inputSrc = session.inputSources;
+        inputSrc.forEach(( inputSource ) => {
+            if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
+                console.log(inputSource.handedness)
+                // if (inputSource.handedness == "left") {
+                //     const inputSource = session.inputSources[0];
+                //     console.log("left     0")
+                // } else {
+                //     const inputSource = session.inputSources[1];
+                //     console.log("right    1")
+                // }
+                const gamepad = inputSource.gamepad;
+                try{
+                    Object.entries( this.buttonStates ).forEach( ( [ key, value ] ) => {
+                        // console.log(key)
+                        const buttonIndex = this.gamepadIndices[key].button;
+                        if ( key.indexOf('touchpad')!=-1 || key.indexOf('thumbstick')!=-1){
+                            const xAxisIndex = this.gamepadIndices[key].xAxis;
+                            const yAxisIndex = this.gamepadIndices[key].yAxis;
+                            this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
+                            this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
+                            if (this.buttonStates[key].xAxis < 0) {
+                                this.dir = -1
+                            } else if (this.buttonStates[key].xAxis > 0){
+                                this.dir = 1
+                            } else {
+                                this.dir = 0
+                            }
+                            this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
+                        }else{
+                            this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
                         }
-                        this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
-                        // if (this.buttonStates[key].yAxis < 0) {
-                        //     this.rad -= 0.01
-                        //     this.addNode(rad)
-                        // } else if (this.buttonStates[key].yAxis > 0){
-                        //     this.rad +=0.01
-                        //     this.addNode(rad)
-                        // }
-                    }else{
-                        this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
-                    }
-                    
-                    this.updateUI();
-                });
-            }catch(e){
-                console.warn(e);
+                        
+                        this.updateUI();
+                    });
+                }catch(e){
+                    console.warn(e);
+                }
             }
-        }
+        })
     }
     addNode(radius){
         const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.005, 2 );
