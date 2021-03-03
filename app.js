@@ -107,9 +107,10 @@ class App{
             self.earth.add( self.globe );
         } )
 
+        this.nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.002, 2 );
         $.getJSON("./Assets/coords.json", function(data) {
             self.allQuestions = data;
-            console.log(self.allQuestions)
+            //console.log(self.allQuestions)
         }).then( () => {
             self.allQuestions.forEach( (value) => {
                 this.addNode(value.latitude, value.longitude, this.radius, self)
@@ -148,6 +149,17 @@ class App{
         // this.loadGLTF()
         this.ui = this.createUI();
     }
+
+    addNode(lat, lon, radius, self){
+        const node = new THREE.Mesh( self.nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+	
+	    node.position.x += this.calcPosFromLatLonRad( lat, lon, radius)[0]
+	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
+	    node.position.z += this.calcPosFromLatLonRad( lat, lon, radius)[2]
+
+        self.earth.add( node );
+    }
+
     createUI(){
         const config = {
             panelSize: { height: 0.5 },
@@ -191,9 +203,9 @@ class App{
         const inputSrc = session.inputSources;
         var self = this
         inputSrc.forEach(( inputSource ) => {
-            console.log(inputSource)
+            //console.log(inputSource)
             if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
-                console.log(inputSource.handedness)
+                //(inputSource.handedness)
                 // if (inputSource.handedness == "left") {
                 //     const inputSource = session.inputSources[0];
                 //     console.log("left     0")
@@ -231,24 +243,6 @@ class App{
                 }
             }
         })
-    }
-    addNode(lat, lon, radius, self){
-        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.005, 2 );
-        const node = new THREE.Mesh( nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-        // const nodeScale = 0.07;
-        // node.scale.set(nodeScale, nodeScale, nodeScale);
-        // node.position.x = 0;
-        // node.position.y = 1.1;
-        // node.position.z = -1.2;
-
-        // var lat = 61.497
-	    // var lon = 23.76
-	
-	    node.position.x += this.calcPosFromLatLonRad( lat, lon, radius)[0]
-	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
-	    node.position.z += this.calcPosFromLatLonRad( lat, lon, radius)[2]
-
-        self.earth.add( node );
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
@@ -337,7 +331,7 @@ class App{
             const info = {};
             
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {
-                console.log( JSON.stringify(profile));
+               // console.log( JSON.stringify(profile));
                 
                 info.name = profile.profileId;
                 info.targetRayMode = event.data.targetRayMode;
@@ -352,7 +346,7 @@ class App{
 
                 self.createButtonStates( info.right );
                 
-                console.log( JSON.stringify(info) );
+                //console.log( JSON.stringify(info) );
 
                 self.updateControllers( info );
 
