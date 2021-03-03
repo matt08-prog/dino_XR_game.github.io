@@ -236,7 +236,7 @@ class App{
 	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
 	    node.position.z += this.calcPosFromLatLonRad( lat, lon, radius)[2]
 
-        this.globe.add( node );
+        this.earth.add( node );
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
