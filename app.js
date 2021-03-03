@@ -97,18 +97,18 @@ class App{
         var loader = new THREE.TextureLoader();
         loader.load( './Assets/sphere.jpg', function ( texture ) {
             
-            var geometry = new THREE.SphereGeometry( 0.8, 50, 50 );
+            var geometry = new THREE.SphereGeometry( 0.4, 50, 50 );
         
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
             var earth = new THREE.Mesh( geometry, material );
             earth.position.y = 1.1
             earth.position.z = -1.2
-            earth.rotation.y = 90
+            // earth.rotation.y = 90
             self.scene.add( earth );
         
         } )
 
-        this.addNode(0.39)
+        this.addNode(0.4)
 
         // this.room = new THREE.LineSegments(
 		// 			new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
