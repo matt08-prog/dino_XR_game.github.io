@@ -100,7 +100,7 @@ class App{
             var geometry = new THREE.SphereGeometry( 0.4, 50, 50 );
         
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
-            var earth = new THREE.Mesh( geometry, material );
+            self.earth = new THREE.Mesh( geometry, material );
             earth.position.y = 1.1
             earth.position.z = -1.2
             // earth.rotation.y = 90
