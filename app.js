@@ -239,7 +239,7 @@ class App{
                 self.earth.scale.set(scale, scale, scale);
                 self.earth.position.y = 1.1
                 self.earth.position.z = -1.2
-                // self.earth.rotation.y = 90
+                self.earth.rotation.y = 90
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
                         console.log("metalize")
