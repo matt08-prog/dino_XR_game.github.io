@@ -69,8 +69,8 @@ class App{
         this.rad = 2.5
 
         this.radius = 0.08;
-        const geometry = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
-        const object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+        var geometry = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
+        var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
         object.position.x = 0;
         object.position.y = 0;
@@ -79,14 +79,14 @@ class App{
         this.scene.add( object );
 
         this.radius = 0.08;
-        geometry = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
-        object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+        geometry1 = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
+        object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
-        object.position.x = 0;
-        object.position.y = 1.1;
-        object.position.z = -1.2;
+        object1.position.x = 0;
+        object1.position.y = 1.1;
+        object1.position.z = -1.2;
 
-        this.scene.add( object );
+        this.scene.add( object1 );
         // this.room = new THREE.LineSegments(
 		// 			new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
 		// 			new THREE.LineBasicMaterial( { color: 0x808080 } )
