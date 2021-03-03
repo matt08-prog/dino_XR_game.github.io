@@ -178,6 +178,7 @@ class App{
     updateGamepadState(){
         const session = this.renderer.xr.getSession();
         const inputSrc = session.inputSources;
+        var self = this
         inputSrc.forEach(( inputSource ) => {
             console.log(inputSource)
             if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
@@ -199,13 +200,13 @@ class App{
                             const yAxisIndex = this.gamepadIndices[key].yAxis;
                             this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
                             this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
-                            if (this.buttonStates[key].xAxis < 0) {
-                                this.dir = -1
-                            } else if (this.buttonStates[key].xAxis > 0){
-                                this.dir = 1
-                            } else {
-                                this.dir = 0
-                            }
+                            // if (this.buttonStates[key].xAxis < 0) {
+                            //     this.dir = -1
+                            // } else if (this.buttonStates[key].xAxis > 0){
+                            //     this.dir = 1
+                            // } else {
+                            //     this.dir = 0
+                            // }
                             this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
                         }else{
                             this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
