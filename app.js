@@ -108,7 +108,7 @@ class App{
             self.earth.add( self.globe );
         } )
         this.addNode(0.4, self)
-        this.scene.add( earth )
+        this.scene.add( this.earth )
         // this.room = new THREE.LineSegments(
 		// 			new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
 		// 			new THREE.LineBasicMaterial( { color: 0x808080 } )
