@@ -79,8 +79,8 @@ class App{
         this.scene.add( object );
 
         this.radius = 0.08;
-        geometry1 = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
-        object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+        var geometry1 = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
+        var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
         object1.position.x = 0;
         object1.position.y = 1.1;
