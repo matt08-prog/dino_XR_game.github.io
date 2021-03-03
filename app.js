@@ -104,7 +104,7 @@ class App{
             earth.position.y = 1.1
             earth.position.z = -1.2
             earth.rotation.y = 90
-            scene.add( mesh );
+            scene.add( earth );
         
         } )
 
