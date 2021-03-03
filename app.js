@@ -144,7 +144,7 @@ class App{
             body: { type: "text" }
         }
         const ui = new CanvasUI( { body: "" }, config );
-        ui.mesh.position.set(0, 3.0, -1.8);
+        ui.mesh.position.set(0, 2.0, -1.8);
         this.scene.add( ui.mesh );
         return ui;
     }
