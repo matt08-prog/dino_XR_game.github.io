@@ -95,16 +95,14 @@ class App{
         // self.earth.rotation.y = 90
         var loader = new THREE.TextureLoader();
         this.earth = new THREE.Group();
+        this.earth.position.y = 1.1
+        this.earth.position.z = -1.2
+
         var self = this
         loader.load( './Assets/sphere.jpg', function ( texture ) {
-            
             var geometry = new THREE.SphereGeometry( 0.4, 50, 50 );
-        
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
             self.globe = new THREE.Mesh( geometry, material );
-            self.globe.position.y = 1.1
-            self.globe.position.z = -1.2
-            // earth.rotation.y = 90
             self.earth.add( self.globe );
         } )
         this.addNode(0.4, self)
@@ -225,9 +223,9 @@ class App{
         const node = new THREE.Mesh( nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
         // const nodeScale = 0.07;
         // node.scale.set(nodeScale, nodeScale, nodeScale);
-        node.position.x = 0;
-        node.position.y = 1.1;
-        node.position.z = -1.2;
+        // node.position.x = 0;
+        // node.position.y = 1.1;
+        // node.position.z = -1.2;
 
         var lat = 61.497
 	    var lon = 23.76
@@ -252,67 +250,67 @@ class App{
     
     }
 
-    loadGLTF(){
-        const loader = new GLTFLoader( ).setPath('./Assets/');
-        const self = this;
-        this.addNode(0.39)
+    // loadGLTF(){
+    //     const loader = new GLTFLoader( ).setPath('./Assets/');
+    //     const self = this;
+    //     this.addNode(0.39)
 
-		// Load a glTF resource
-        self.objects = []
-		loader.load(
-			// resource URL
-			'earth2.glb',
-			// called when the resource is loaded
-			function ( gltf ) {
-                self.earth = gltf.scene;
-                const scale = 0.07;
-                self.earth.scale.set(scale, scale, scale);
-                self.earth.position.y = 1.1
-                self.earth.position.z = -1.2
-                self.earth.rotation.y = 90
-                gltf.scene.traverse( ( child ) => {
-                    if (child.isMesh){
-                        console.log("metalize")
-                        child.material.metalness = 0.5;
-                    }
-                    if(child instanceof THREE.Mesh) {
-                        child.geometry.computeFaceNormals()
-                        child.material.side = THREE.DoubleSided
-                    }
-                })
+	// 	// Load a glTF resource
+    //     self.objects = []
+	// 	loader.load(
+	// 		// resource URL
+	// 		'earth2.glb',
+	// 		// called when the resource is loaded
+	// 		function ( gltf ) {
+    //             self.earth = gltf.scene;
+    //             const scale = 0.07;
+    //             self.earth.scale.set(scale, scale, scale);
+    //             self.earth.position.y = 1.1
+    //             self.earth.position.z = -1.2
+    //             self.earth.rotation.y = 90
+    //             gltf.scene.traverse( ( child ) => {
+    //                 if (child.isMesh){
+    //                     console.log("metalize")
+    //                     child.material.metalness = 0.5;
+    //                 }
+    //                 if(child instanceof THREE.Mesh) {
+    //                     child.geometry.computeFaceNormals()
+    //                     child.material.side = THREE.DoubleSided
+    //                 }
+    //             })
                 
-                // self.chair = gltf.scene;
+    //             // self.chair = gltf.scene;
                 
-				self.scene.add( gltf.scene );
-                if (self.earth != undefined) {
-                    console.log("instance")
-                    self.objects.push(self.earth)
-                }
-                const bbox = new THREE.Box3().setFromObject( self.earth );
-                console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
-                // if (gltf != undefined) {
-                //     console.log("instance")
-                //     self.objects.push(gltf)
-                // }
+	// 			self.scene.add( gltf.scene );
+    //             if (self.earth != undefined) {
+    //                 console.log("instance")
+    //                 self.objects.push(self.earth)
+    //             }
+    //             const bbox = new THREE.Box3().setFromObject( self.earth );
+    //             console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
+    //             // if (gltf != undefined) {
+    //             //     console.log("instance")
+    //             //     self.objects.push(gltf)
+    //             // }
 
-                // self.loadingBar.visible = false;
+    //             // self.loadingBar.visible = false;
 				
-				self.renderer.setAnimationLoop( self.render.bind(self));
-			},
-			// // called while loading is progressing
-			// function ( xhr ) {
+	// 			self.renderer.setAnimationLoop( self.render.bind(self));
+	// 		},
+	// 		// // called while loading is progressing
+	// 		// function ( xhr ) {
 
-			// 	self.loadingBar.progress = (xhr.loaded / xhr.total);
+	// 		// 	self.loadingBar.progress = (xhr.loaded / xhr.total);
 				
-			// },
-			// called when loading has errors
-			function ( error ) {
+	// 		// },
+	// 		// called when loading has errors
+	// 		function ( error ) {
 
-				console.log( error );
+	// 			console.log( error );
 
-			}  
-        );
-    }
+	// 		}  
+    //     );
+    // }
 
     setupXR(){
         this.renderer.xr.enabled = true;
