@@ -182,6 +182,37 @@ class App{
             }
         }
     }
+    addNode(){
+        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.5, 2 );
+        const node = new THREE.Mesh( nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+
+        node.position.x = 0;
+        node.position.y = 1.1;
+        node.position.z = -1.2;
+
+        var lat = 61.497
+	    var lon = 23.76
+	    var radius = 5.5
+	
+	    node.position.x += this.calcPosFromLatLonRad( lat, lon, radius)[0]
+	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
+	    node.position.z += this.calcPosFromLatLonRad( lat, lon, radius)[2]
+
+        this.scene.add( node );
+    }
+
+    calcPosFromLatLonRad(lat,lon,radius){
+  
+        var phi   = (90-lat)*(Math.PI/180)
+        var theta = (lon+180)*(Math.PI/180)
+        
+        x = -((radius) * Math.sin(phi)*Math.cos(theta))
+        z = ((radius) * Math.sin(phi)*Math.sin(theta))
+        y = ((radius) * Math.cos(phi))
+      
+        return [x,y,z]
+    
+    }
 
     loadGLTF(){
         const loader = new GLTFLoader( ).setPath('./Assets/');
@@ -202,6 +233,7 @@ class App{
                 self.earth.scale.set(scale, scale, scale);
                 self.earth.position.y = 1.1
                 self.earth.position.z = -1.2
+                this.addNode()
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
                         console.log("metalize")
