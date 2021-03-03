@@ -108,11 +108,15 @@ class App{
         } )
 
         $.getJSON("./Assets/coords.json", function(data) {
-            var allQuestions = data;
-            console.log(allQuestions)
+            self.allQuestions = data;
+            console.log(self.allQuestions)
         })
-        this.addNode(this.radius, self)
         this.scene.add( this.earth )
+
+        self.allQuestions.forEach( (value) => {
+            this.addNode(value.latitude, value.longitude, this.radius, self)
+        })
+
 
 
         // this.room = new THREE.LineSegments(
@@ -226,7 +230,7 @@ class App{
             }
         })
     }
-    addNode(radius, self){
+    addNode(lat, lon, radius, self){
         const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.005, 2 );
         const node = new THREE.Mesh( nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
         // const nodeScale = 0.07;
@@ -235,8 +239,8 @@ class App{
         // node.position.y = 1.1;
         // node.position.z = -1.2;
 
-        var lat = 61.497
-	    var lon = 23.76
+        // var lat = 61.497
+	    // var lon = 23.76
 	
 	    node.position.x += this.calcPosFromLatLonRad( lat, lon, radius)[0]
 	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
