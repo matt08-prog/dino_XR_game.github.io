@@ -93,10 +93,10 @@ class App{
         // self.earth.position.y = 1.1
         // self.earth.position.z = -1.2
         // self.earth.rotation.y = 90
-
+        var self = this
         var loader = new THREE.TextureLoader();
         loader.load( './Assets/sphere.jpg', function ( texture ) {
-        
+            
             var geometry = new THREE.SphereGeometry( 2, 20, 20 );
         
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
@@ -104,7 +104,7 @@ class App{
             earth.position.y = 1.1
             earth.position.z = -1.2
             earth.rotation.y = 90
-            this.scene.add( earth );
+            self.scene.add( earth );
         
         } )
 
