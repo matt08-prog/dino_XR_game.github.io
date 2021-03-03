@@ -217,7 +217,8 @@ class App{
     loadGLTF(){
         const loader = new GLTFLoader( ).setPath('./Assets/');
         const self = this;
-		
+        this.addNode()
+
 		// Load a glTF resource
         self.objects = []
 		loader.load(
@@ -233,7 +234,6 @@ class App{
                 self.earth.scale.set(scale, scale, scale);
                 self.earth.position.y = 1.1
                 self.earth.position.z = -1.2
-                this.addNode()
                 gltf.scene.traverse( ( child ) => {
                     if (child.isMesh){
                         console.log("metalize")
