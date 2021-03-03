@@ -171,6 +171,7 @@ class App{
                         } else {
                             this.dir = 0
                         }
+                        this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
                         if (this.buttonStates[key].yAxis < 0) {
                             this.rad -= 0.01
                             this.addNode(rad)
@@ -178,7 +179,6 @@ class App{
                             this.rad +=0.01
                             this.addNode(rad)
                         }
-                        this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
                     }else{
                         this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
                     }
