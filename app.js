@@ -206,9 +206,9 @@ class App{
         var phi   = (90-lat)*(Math.PI/180)
         var theta = (lon+180)*(Math.PI/180)
         
-        x = -((radius) * Math.sin(phi)*Math.cos(theta))
-        z = ((radius) * Math.sin(phi)*Math.sin(theta))
-        y = ((radius) * Math.cos(phi))
+        var x = -((radius) * Math.sin(phi)*Math.cos(theta))
+        var z = ((radius) * Math.sin(phi)*Math.sin(theta))
+        var y = ((radius) * Math.cos(phi))
       
         return [x,y,z]
     
