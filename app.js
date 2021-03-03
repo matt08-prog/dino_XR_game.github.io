@@ -101,9 +101,9 @@ class App{
         
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
             var earth = new THREE.Mesh( geometry, material );
-            self.earth.position.y = 1.1
-            self.earth.position.z = -1.2
-            self.earth.rotation.y = 90
+            earth.position.y = 1.1
+            earth.position.z = -1.2
+            earth.rotation.y = 90
             scene.add( mesh );
         
         } )
@@ -134,7 +134,7 @@ class App{
         // this.highlight.scale.set(1.2, 1.2, 1.2);
         // this.scene.add(this.highlight);
 
-        this.loadGLTF()
+        // this.loadGLTF()
         this.ui = this.createUI();
     }
     createUI(){
