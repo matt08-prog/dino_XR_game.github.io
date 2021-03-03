@@ -182,8 +182,8 @@ class App{
             }
         }
     }
-    addNode(){
-        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.5, 2 );
+    addNode(radius){
+        const nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
         const node = new THREE.Mesh( nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
         node.position.x = 0;
@@ -192,7 +192,7 @@ class App{
 
         var lat = 61.497
 	    var lon = 23.76
-	    var radius = 5.5
+	    // var radius = 5.5
 	
 	    node.position.x += this.calcPosFromLatLonRad( lat, lon, radius)[0]
 	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
@@ -217,7 +217,7 @@ class App{
     loadGLTF(){
         const loader = new GLTFLoader( ).setPath('./Assets/');
         const self = this;
-        this.addNode()
+        this.addNode(2.5)
 
 		// Load a glTF resource
         self.objects = []
