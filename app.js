@@ -109,7 +109,7 @@ class App{
         } )
 
         //this.nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.002, 2 );
-        this.nodeGeometry = new THREE.BoxGeometry(0.002, 0.002, 1)
+        this.nodeGeometry = new THREE.BoxGeometry(0.002, 0.002, 0.01)
         this.nodeMaterial = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } )
         this.geom = new THREE.Geometry()
         $.getJSON("./Assets/coords.json", function(data) {
@@ -155,9 +155,9 @@ class App{
     addNode(lat, lon, radius, self){
         const node = new THREE.Mesh( self.nodeGeometry, self.nodeMaterial );
 	
-	    node.position.x += this.calcPosFromLatLonRad( lat, lon, radius)[0]
-	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
-	    node.position.z += this.calcPosFromLatLonRad( lat, lon, radius)[2]
+	    node.position.x = this.calcPosFromLatLonRad( lat, lon, radius)[0]
+	    node.position.y = 1.1 + this.calcPosFromLatLonRad( lat, lon, radius)[1]
+	    node.position.z = this.calcPosFromLatLonRad( lat, lon, radius)[2] - 1.2
         node.lookAt(new THREE.Vector3(0, 1.1, -1.2))
 
         //self.earth.add( node );
