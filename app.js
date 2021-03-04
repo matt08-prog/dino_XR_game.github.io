@@ -160,7 +160,7 @@ class App{
 	    node.position.y = 1.1 + this.calcPosFromLatLonRad( lat, lon, radius)[1]
 	    node.position.z = this.calcPosFromLatLonRad( lat, lon, radius)[2] - 1.2
         node.lookAt(new THREE.Vector3(0, 1.1, -1.2))
-        node.rotation.x = 90
+        node.rotation.z = 90
 
         //self.earth.add( node );
         node.updateMatrix()
