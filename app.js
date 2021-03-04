@@ -108,7 +108,10 @@ class App{
             self.earth.add( self.globe );
         } )
 
-        this.nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.002, 2 );
+        //this.nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.002, 2 );
+        this.nodeGeometry = new THREE.BoxGeometry(0.002, 0.002, 1)
+        this.nodeMaterial = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } )
+        this.geom = new THREE.Geometry()
         $.getJSON("./Assets/coords.json", function(data) {
             self.allQuestions = data;
             //console.log(self.allQuestions)
@@ -116,6 +119,8 @@ class App{
             self.allQuestions.forEach( (value) => {
                 this.addNode(value.latitude, value.longitude, this.radius, self)
             })
+            var total = new THREE.Mesh(this.geom, new THREE.MeshFaceMaterial())
+            self.scene.add(total)
         })
         this.scene.add( this.earth )
 
@@ -148,13 +153,15 @@ class App{
     }
 
     addNode(lat, lon, radius, self){
-        const node = new THREE.Mesh( self.nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+        const node = new THREE.Mesh( self.nodeGeometry, this.nodeMaterial );
 	
 	    node.position.x += this.calcPosFromLatLonRad( lat, lon, radius)[0]
 	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
 	    node.position.z += this.calcPosFromLatLonRad( lat, lon, radius)[2]
+        node.lookAt(new THREE.Vector3(0, 1.1, -1.2))
 
-        self.earth.add( node );
+        //self.earth.add( node );
+        THREE.GeometryUtils.merge(geom, node)
     }
 
     createUI(){
