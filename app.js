@@ -161,7 +161,7 @@ class App{
         node.lookAt(new THREE.Vector3(0, 1.1, -1.2))
 
         //self.earth.add( node );
-        THREE.GeometryUtils.merge(geom, node)
+        THREE.GeometryUtils.merge(self.geom, node)
     }
 
     createUI(){
