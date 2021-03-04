@@ -153,7 +153,7 @@ class App{
     }
 
     addNode(lat, lon, radius, self){
-        const node = new THREE.Mesh( self.nodeGeometry, this.nodeMaterial );
+        const node = new THREE.Mesh( self.nodeGeometry, self.nodeMaterial );
 	
 	    node.position.x += this.calcPosFromLatLonRad( lat, lon, radius)[0]
 	    node.position.y += this.calcPosFromLatLonRad( lat, lon, radius)[1]
