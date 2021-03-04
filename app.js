@@ -109,8 +109,9 @@ class App{
         } )
 
         //this.nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.002, 2 );
-        this.nodeGeometry = new THREE.BoxGeometry(0.002, 0.002, 0.01)
-        this.nodeMaterial = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } )
+        //this.nodeGeometry = new THREE.BoxGeometry(0.002, 0.002, 0.01)
+        this.nodeGeometry = new THREE.CylinderGeometry(0.002, 0.002, 0.01)
+        this.nodeMaterial = new THREE.MeshLambertMaterial( { color: 0x00FF82 } )
         this.geom = new THREE.Geometry()
         $.getJSON("./Assets/coords.json", function(data) {
             self.allQuestions = data;
