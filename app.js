@@ -159,8 +159,8 @@ class App{
         const node = new THREE.Mesh( self.nodeGeometry, self.nodeMaterial );
 	
 	    node.position.x = this.calcPosFromLatLonRad( lat, lon, radius)[0]
-	    node.position.y = 1.1 + this.calcPosFromLatLonRad( lat, lon, radius)[1]
-	    node.position.z = this.calcPosFromLatLonRad( lat, lon, radius)[2] - 1.2
+	    node.position.y = this.calcPosFromLatLonRad( lat, lon, radius)[1]
+	    node.position.z = this.calcPosFromLatLonRad( lat, lon, radius)[2]
         node.lookAt(new THREE.Vector3(0, 1.1, -1.2))
         self.positions.push(new THREE.Vector3(node.position.x, node.position.y, node.position.z))
 
