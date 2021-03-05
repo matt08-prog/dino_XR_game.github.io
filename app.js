@@ -235,7 +235,7 @@ class App{
                             const yAxisIndex = this.gamepadIndices[key].yAxis;
                             this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
                             this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
-                            this.rotateSphere(this)
+                            self.rotateSphere(this)
                             this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
                         }else{
                             this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
