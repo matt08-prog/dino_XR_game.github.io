@@ -260,7 +260,6 @@ class App{
             }
         })
         console.log(this.buttonStates["xr_standard_trigger"])
-
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
@@ -443,7 +442,7 @@ class App{
     handleController( controller ){
         if (controller.userData.selectPressed ){
             for (var i in this.scene.children) {
-                console.log(i.name)
+                //console.log(i.name)
             }
             // selecting nodes for radio
             //********************************************************************************** */
