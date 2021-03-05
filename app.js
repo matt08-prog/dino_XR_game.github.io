@@ -352,7 +352,7 @@ class App{
         const self = this;
         
         function onSelectStart( ){
-            if (self.nodeSelected == true) {
+            if (self.nodeSelected == false) {
                 this.userData.selectPressed = true;
             }
         }
