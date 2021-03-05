@@ -99,6 +99,7 @@ class App{
         this.earth = new THREE.Group();
         this.earth.position.y = 1.1
         this.earth.position.z = -1.2
+        this.positions = {}
 
         var self = this
         loader.load( './Assets/sphere.jpg', function ( texture ) {
@@ -160,6 +161,7 @@ class App{
 	    node.position.y = 1.1 + this.calcPosFromLatLonRad( lat, lon, radius)[1]
 	    node.position.z = this.calcPosFromLatLonRad( lat, lon, radius)[2] - 1.2
         node.lookAt(new THREE.Vector3(0, 1.1, -1.2))
+        self.positions.push(new THREE.Vector3(node.position.x, node.position.y, node.position.z))
 
         //self.earth.add( node );
         node.updateMatrix()
@@ -504,17 +506,17 @@ class App{
             this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
             this.raycaster.ray.direction.set( 0, 0, - 1 ).applyMatrix4( this.workingMatrix );
 
-            // const intersects = this.raycaster.intersectObjects( this.earth.children, true );
+            const intersects = this.raycaster.intersectObjects( this.earth.children, true );
 
-            // if (intersects.length>0){
+            if (intersects.length>0){
 
-            //     // intersects[0].object.add(this.highlight);
-            //     // this.highlight.visible = true;
-            //     controller.children[0].scale.z = intersects[0].distance;
-            //     controller.userData.selected = intersects[0].object;
-            // }else{
-            //     controller.children[0].scale.z = 0;
-            // }
+                intersects[0].object.add(this.highlight);
+                this.highlight.visible = true;
+                controller.children[0].scale.z = intersects[0].distance;
+                controller.userData.selected = intersects[0].object;
+            }else{
+                controller.children[0].scale.z = 0;
+            }
 
             // const intersections = this.raycaster.intersectObjects( this.objects, true );
 
