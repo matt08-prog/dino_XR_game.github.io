@@ -199,9 +199,10 @@ class App{
         })
         
         this.buttonStates = buttonStates;
-        this.buttonStates.forEach( (it) => {
-            console.log(it)
-        })
+        console.log(this.buttonStates)
+        // this.buttonStates.forEach( (it) => {
+        //     console.log(it)
+        // })
     }
     
     updateUI(){
