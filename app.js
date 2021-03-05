@@ -253,7 +253,10 @@ class App{
                             // if (this.buttonStates[key])
                         }
                         //console.log(this.buttonStates[key].xr_standard_trigger)
-                        if(this.buttonStates[key].a_button == 1) {
+                        // if(this.buttonStates[key].a_button == 1) {
+                        //     self.nodeSelected = true
+                        // }
+                        if(this.buttonStates[key].xr_standard_trigger == 1) {
                             self.nodeSelected = true
                         }
                         this.updateUI();
@@ -351,6 +354,8 @@ class App{
     updateControllers(info){
         const self = this;
         
+        console.log(this.nodeSelected)
+
         function onSelectStart( ){
             if (self.nodeSelected == false) {
                 this.userData.selectPressed = true;
