@@ -235,14 +235,7 @@ class App{
                             const yAxisIndex = this.gamepadIndices[key].yAxis;
                             this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
                             this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
-                            // self.dir = -1
-                            if (this.buttonStates[key].xAxis < 0) {
-                                self.dir = -1
-                            } else if (this.buttonStates[key].xAxis > 0){
-                                self.dir = 1
-                            } else {
-                                self.dir = 0
-                            }
+                            this.rotateSphere(this)
                             this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
                         }else{
                             this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
@@ -255,6 +248,16 @@ class App{
                 }
             }
         })
+    }
+
+    rotateSphere(self) {
+        if (self.buttonStates[key].xAxis < 0) {
+            this.dir = -1
+        } else if (self.buttonStates[key].xAxis > 0){
+            this.dir = 1
+        } else {
+            this.dir = 0
+        }
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
