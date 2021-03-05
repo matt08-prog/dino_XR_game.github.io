@@ -252,7 +252,7 @@ class App{
                             this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
                             // if (this.buttonStates[key])
                         }
-                        console.log(this.buttonStates[key])
+                        console.log(this.buttonStates)
                         // if(this.buttonStates[key].a_button == 1) {
                         //     self.nodeSelected = true
                         // }
