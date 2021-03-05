@@ -66,7 +66,6 @@ class App{
     }
     
     initScene(){
-        this.nodeSelected = false
         this.dir = 0
         this.rad = 2.5
 
@@ -253,13 +252,7 @@ class App{
                             // if (this.buttonStates[key])
                         }
                         console.log(this.buttonStates[key].xr_standard_trigger)
-                        // if(this.buttonStates[key].a_button == 1) {
-                        //     self.nodeSelected = true
-                        // }
-                        if(this.buttonStates[key].xr_standard_trigger == 1) {
-                            console.log("changed")
-                            self.nodeSelected = true
-                        }
+
                         this.updateUI();
                     });
                 }catch(e){
@@ -356,9 +349,7 @@ class App{
         const self = this;
         
         function onSelectStart( ){
-            if (self.nodeSelected == false) {
-                this.userData.selectPressed = true;
-            }
+            this.userData.selectPressed = true;
         }
 
         function onSelectEnd( ){
@@ -493,8 +484,7 @@ class App{
     
 	render( ) {   
         const dt = this.clock.getDelta();
-        console.log(this.nodeSelected)
-
+        
         if (this.dir == -1) {
             this.earth.rotateY(-0.01)
         } else if(this.dir == 1) {
