@@ -257,6 +257,7 @@ class App{
                         //     self.nodeSelected = true
                         // }
                         if(this.buttonStates[key].xr_standard_trigger == 1) {
+                            console.log("changed")
                             self.nodeSelected = true
                         }
                         this.updateUI();
