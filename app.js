@@ -259,6 +259,8 @@ class App{
                 }
             }
         })
+        console.log(this.buttonStates["xr_standard_trigger"])
+
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
