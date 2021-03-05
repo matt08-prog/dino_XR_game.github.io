@@ -268,68 +268,6 @@ class App{
     
     }
 
-    // loadGLTF(){
-    //     const loader = new GLTFLoader( ).setPath('./Assets/');
-    //     const self = this;
-    //     this.addNode(0.39)
-
-	// 	// Load a glTF resource
-    //     self.objects = []
-	// 	loader.load(
-	// 		// resource URL
-	// 		'earth2.glb',
-	// 		// called when the resource is loaded
-	// 		function ( gltf ) {
-    //             self.earth = gltf.scene;
-    //             const scale = 0.07;
-    //             self.earth.scale.set(scale, scale, scale);
-    //             self.earth.position.y = 1.1
-    //             self.earth.position.z = -1.2
-    //             self.earth.rotation.y = 90
-    //             gltf.scene.traverse( ( child ) => {
-    //                 if (child.isMesh){
-    //                     console.log("metalize")
-    //                     child.material.metalness = 0.5;
-    //                 }
-    //                 if(child instanceof THREE.Mesh) {
-    //                     child.geometry.computeFaceNormals()
-    //                     child.material.side = THREE.DoubleSided
-    //                 }
-    //             })
-                
-    //             // self.chair = gltf.scene;
-                
-	// 			self.scene.add( gltf.scene );
-    //             if (self.earth != undefined) {
-    //                 console.log("instance")
-    //                 self.objects.push(self.earth)
-    //             }
-    //             const bbox = new THREE.Box3().setFromObject( self.earth );
-    //             console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
-    //             // if (gltf != undefined) {
-    //             //     console.log("instance")
-    //             //     self.objects.push(gltf)
-    //             // }
-
-    //             // self.loadingBar.visible = false;
-				
-	// 			self.renderer.setAnimationLoop( self.render.bind(self));
-	// 		},
-	// 		// // called while loading is progressing
-	// 		// function ( xhr ) {
-
-	// 		// 	self.loadingBar.progress = (xhr.loaded / xhr.total);
-				
-	// 		// },
-	// 		// called when loading has errors
-	// 		function ( error ) {
-
-	// 			console.log( error );
-
-	// 		}  
-    //     );
-    // }
-
     setupXR(){
         this.renderer.xr.enabled = true;
         
@@ -408,7 +346,7 @@ class App{
         }
 
         function onSelectEnd( ){
-            // this.children[0].scale.z = 0;
+            this.children[0].scale.z = 0;
             this.userData.selectPressed = false;
             this.userData.selected = undefined;
         }
