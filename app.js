@@ -354,8 +354,6 @@ class App{
     updateControllers(info){
         const self = this;
         
-        console.log(this.nodeSelected)
-
         function onSelectStart( ){
             if (self.nodeSelected == false) {
                 this.userData.selectPressed = true;
@@ -494,7 +492,8 @@ class App{
     
 	render( ) {   
         const dt = this.clock.getDelta();
-        
+        console.log(this.nodeSelected)
+
         if (this.dir == -1) {
             this.earth.rotateY(-0.01)
         } else if(this.dir == 1) {
