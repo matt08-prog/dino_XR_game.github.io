@@ -199,6 +199,9 @@ class App{
         })
         
         this.buttonStates = buttonStates;
+        this.buttonStates.forEach( (it) => {
+            console.log(it)
+        })
     }
     
     updateUI(){
@@ -245,6 +248,7 @@ class App{
                             this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
                         }else{
                             this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
+                            // if (this.buttonStates[key])
                         }
                         
                         this.updateUI();
