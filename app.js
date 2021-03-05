@@ -253,7 +253,7 @@ class App{
                             // if (this.buttonStates[key])
                         }
                         // console.log(this.buttonStates)
-                        if(this.buttonStates.a_button == 1) {
+                        if(this.buttonStates.a_button == 1 && this.buttonStates.xr_standard_trigger == 1) {
                             self.nodeSelected = true
                         }
                         // if(this.buttonStates[key].xr_standard_trigger == 1) {
@@ -466,6 +466,10 @@ class App{
                 this.highlight.visible = true;
                 controller.children[0].scale.z = intersects[0].distance;
                 controller.userData.selected = intersects[0].object;
+                console.log(intersects[0])
+                if(this.nodeSelected == true) {
+
+                }
             }else{
                 controller.children[0].scale.z = 0;
             }
