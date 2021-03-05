@@ -252,7 +252,7 @@ class App{
                             this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
                             // if (this.buttonStates[key])
                         }
-                        //console.log(this.buttonStates[key].xr_standard_trigger)
+                        console.log(this.buttonStates[key].xr_standard_trigger)
                         // if(this.buttonStates[key].a_button == 1) {
                         //     self.nodeSelected = true
                         // }
