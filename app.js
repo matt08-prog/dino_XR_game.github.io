@@ -122,7 +122,8 @@ class App{
                 this.addNode(value.latitude, value.longitude, this.radius, self)
             })
             var total = new THREE.Mesh(self.geom, self.nodeMaterial)
-            self.scene.add(total)
+            // self.scene.add(total)
+            self.earth.add(total)
         })
         this.scene.add( this.earth )
 
