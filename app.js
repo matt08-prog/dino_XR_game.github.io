@@ -251,7 +251,8 @@ class App{
                             this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
                             // if (this.buttonStates[key])
                         }
-                        
+                        console.log(this.buttonStates[key].xr_standard_trigger)
+
                         this.updateUI();
                     });
                 }catch(e){
@@ -259,7 +260,6 @@ class App{
                 }
             }
         })
-        console.log(this.buttonStates.xr_standard_trigger)
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
@@ -441,9 +441,6 @@ class App{
     
     handleController( controller ){
         if (controller.userData.selectPressed ){
-            for (var i in this.scene.children) {
-                //console.log(i.name)
-            }
             // selecting nodes for radio
             //********************************************************************************** */
 
