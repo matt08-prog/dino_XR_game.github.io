@@ -463,7 +463,12 @@ class App{
                     this.loading = true
                     console.log(intersects[0])
                     var dists = []
-                    var shortestDist = 100
+                    var shortestDist = 10000
+
+                    console.log(`positions: ${self.positions.length()}, data: ${self.allQuestions.length}`)
+                    console.log(self.positions)
+                    console.log(self.allQuestions)
+
                     self.positions.forEach ( (pos) => {
                         dists.push(self.distanceVector(pos, new THREE.Vector3(
                             intersects[0].x,
