@@ -123,36 +123,14 @@ class App{
                 this.addNode(value.latitude, value.longitude, this.radius, self)
             })
             var total = new THREE.Mesh(self.geom, self.nodeMaterial)
-            // self.scene.add(total)
             self.earth.add(total)
         })
         this.scene.add( this.earth )
-
-        // this.room = new THREE.LineSegments(
-		// 			new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ),
-		// 			new THREE.LineBasicMaterial( { color: 0x808080 } )
-		// 		);
-        // this.room.geometry.translate( 0, 3, 0 );
-        // this.scene.add( this.room );
-        
-
-        // for ( let i = 0; i < 200; i ++ ) {
-
-        //     const object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-
-        //     object.position.x = this.random( -2, 2 );
-        //     object.position.y = this.random( -2, 2 );
-        //     object.position.z = this.random( -2, 2 );
-
-        //     this.room.add( object );
-
-        // }
 
         this.highlight = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: 0xffffff, side: THREE.BackSide } ) );
         this.highlight.scale.set(1.2, 1.2, 1.2);
         this.scene.add(this.highlight);
 
-        // this.loadGLTF()
         this.ui = this.createUI();
     }
 
@@ -200,7 +178,7 @@ class App{
         })
         
         this.buttonStates = buttonStates;
-        console.log(this.buttonStates)
+        //console.log(this.buttonStates)
         // this.buttonStates.forEach( (it) => {
         //     console.log(it)
         // })
@@ -448,6 +426,15 @@ class App{
         }
     }
     
+    distanceVector( v1, v2 )
+    {
+        var dx = v1.x - v2.x;
+        var dy = v1.y - v2.y;
+        var dz = v1.z - v2.z;
+    
+        return Math.sqrt( dx * dx + dy * dy + dz * dz );
+    }
+
     handleController( controller ){
         if (controller.userData.selectPressed ){
             // selecting nodes for radio
@@ -466,9 +453,16 @@ class App{
                 this.highlight.visible = true;
                 controller.children[0].scale.z = intersects[0].distance;
                 controller.userData.selected = intersects[0].object;
-                console.log(intersects[0])
                 if(this.nodeSelected == true) {
-
+                    console.log(intersects[0])
+                    var dists = []
+                    self.positions.forEach ( (pos) => {
+                        dists.push(pos, new THREE.Vector3(
+                            intersects[0].x,
+                            intersects[0].y,
+                            intersects[0].z
+                        ))
+                    })
                 }
             }else{
                 controller.children[0].scale.z = 0;
@@ -497,7 +491,7 @@ class App{
     
 	render( ) {   
         const dt = this.clock.getDelta();
-        console.log(this.nodeSelected)
+        //console.log(this.nodeSelected)
 
         if (this.dir == -1) {
             this.earth.rotateY(-0.01)
