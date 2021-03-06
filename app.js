@@ -505,6 +505,30 @@ class App{
                     console.log(dists.indexOf(shortestDist))
                     console.log(self.allQuestions[dists.indexOf(shortestDist)])
                     console.log(self.allQuestions[dists.indexOf(shortestDist)].longitude)
+                    console.log(
+                        self.calcPosFromLatLonRad(
+                            self.allQuestions[dists.indexOf(shortestDist)].latitude, 
+                            self.allQuestions[dists.indexOf(shortestDist)].longitude
+                        )
+                    )
+                    console.log(
+                        self.calcPosFromLatLonRad(
+                            self.allQuestions[dists.indexOf(shortestDist)].latitude, 
+                            self.allQuestions[dists.indexOf(shortestDist)].longitude
+                        )[0]
+                    )
+                    console.log(
+                        self.calcPosFromLatLonRad(
+                            self.allQuestions[dists.indexOf(shortestDist)].latitude, 
+                            self.allQuestions[dists.indexOf(shortestDist)].longitude
+                        )[1]
+                    )
+                    console.log(
+                        self.calcPosFromLatLonRad(
+                            self.allQuestions[dists.indexOf(shortestDist)].latitude, 
+                            self.allQuestions[dists.indexOf(shortestDist)].longitude
+                        )[2]
+                    )
 
 
                     console.log(`${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[0]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[1]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[2]}`)
