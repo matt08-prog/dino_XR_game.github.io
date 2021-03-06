@@ -465,7 +465,7 @@ class App{
                     var dists = []
                     var shortestDist = 10000
 
-                    console.log(`positions: ${self.positions.length()}, data: ${self.allQuestions.length}`)
+                    console.log(`positions: ${self.positions.length}, data: ${self.allQuestions.length}`)
                     console.log(self.positions)
                     console.log(self.allQuestions)
 
