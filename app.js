@@ -495,8 +495,8 @@ class App{
                     var geometry = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
                     var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
                     object.position.x = self.d.x
-                    object.position.y = self.d.y
-                    object.position.z = self.d.z
+                    object.position.y = self.d.y + 1.1
+                    object.position.z = self.d.z - 1.2
                     this.scene.add(object)
 
                     dists.forEach ( (it) => {
