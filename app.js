@@ -489,14 +489,14 @@ class App{
                             intersects[0].y,
                             intersects[0].z
                         )))
-                        var d = pos
+                        self.d = pos
                     })
 
                     var geometry = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
                     var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    object.position.x = d.x
-                    object.position.y = d.y
-                    object.position.z = d.z
+                    object.position.x = self.d.x
+                    object.position.y = self.d.y
+                    object.position.z = self.d.z
                     this.scene.add(object)
 
                     dists.forEach ( (it) => {
