@@ -501,6 +501,12 @@ class App{
                     object1.position.y = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[1]
                     object1.position.z = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[2]
                     this.scene.add(object1)
+                    console.log(shortestDist)
+                    console.log(dists.indexOf(shortestDist))
+                    console.log(self.allQuestions[dists.indexOf(shortestDist)])
+                    console.log(self.allQuestions[dists.indexOf(shortestDist)].longitude)
+
+
                     console.log(`${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[0]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[1]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[2]}`)
                     console.log(shortestDist)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
