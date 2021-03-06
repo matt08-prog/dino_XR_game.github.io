@@ -462,6 +462,14 @@ class App{
                     this.nodeSelected == false
                     this.loading = true
                     console.log(intersects[0])
+
+                    var geometry = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
+                    var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+                    object.position.x = intersects[0].point.x
+                    object.position.y = intersects[0].point.y
+                    object.position.z = intersects[0].point.z
+                    this.scene.add(object)
+
                     var dists = []
                     var shortestDist = 10000
 
