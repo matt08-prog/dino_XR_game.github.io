@@ -480,7 +480,7 @@ class App{
 
                     var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
 
-                    console.log(`final pos: ${finalPos} `)
+                    console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
                 }
             }else{
