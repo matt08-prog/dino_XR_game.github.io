@@ -497,9 +497,9 @@ class App{
 
                     var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
                     var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    object1.position.x = intersects[0].point.x
-                    object1.position.y = intersects[0].point.y
-                    object1.position.z = intersects[0].point.z
+                    object1.position.x = self.allQuestions[dists.indexOf(shortestDist)].x
+                    object1.position.y = self.allQuestions[dists.indexOf(shortestDist)].y
+                    object1.position.z = self.allQuestions[dists.indexOf(shortestDist)].z
                     this.scene.add(object1)
 
                     console.log(shortestDist)
