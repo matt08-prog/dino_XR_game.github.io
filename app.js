@@ -66,6 +66,7 @@ class App{
     }
     
     initScene(){
+        this.loading = false
         this.nodeSelected = false
         this.dir = 0
         this.rad = 2.5
@@ -231,7 +232,9 @@ class App{
                             // if (this.buttonStates[key])
                         }
                         // console.log(this.buttonStates)
-                        if(this.buttonStates.a_button == 1 && this.buttonStates.xr_standard_trigger == 1) {
+                        if(this.buttonStates.a_button == 1 && 
+                            this.buttonStates.xr_standard_trigger == 1 && 
+                            self.loading == false) {
                             self.nodeSelected = true
                         }
                         // if(this.buttonStates[key].xr_standard_trigger == 1) {
@@ -454,16 +457,31 @@ class App{
                 this.highlight.visible = true;
                 controller.children[0].scale.z = intersects[0].distance;
                 controller.userData.selected = intersects[0].object;
+
                 if(this.nodeSelected == true) {
+                    this.nodeSelected == false
+                    this.loading = true
                     console.log(intersects[0])
                     var dists = []
+                    var shortestDist = 100
                     self.positions.forEach ( (pos) => {
-                        dists.push(pos, new THREE.Vector3(
+                        dists.push(distanceVector(pos, new THREE.Vector3(
                             intersects[0].x,
                             intersects[0].y,
                             intersects[0].z
-                        ))
+                        )))
                     })
+
+                    dists.forEach ( (it) => {
+                        if (it < shortestDist) {
+                            shortestDist = it
+                        }
+                    })
+
+                    var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
+
+                    console.log(`final pos: ${finalPos} `)
+
                 }
             }else{
                 controller.children[0].scale.z = 0;
