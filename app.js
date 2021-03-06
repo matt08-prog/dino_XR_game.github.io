@@ -465,7 +465,7 @@ class App{
                     var dists = []
                     var shortestDist = 100
                     self.positions.forEach ( (pos) => {
-                        dists.push(distanceVector(pos, new THREE.Vector3(
+                        dists.push(self.distanceVector(pos, new THREE.Vector3(
                             intersects[0].x,
                             intersects[0].y,
                             intersects[0].z
