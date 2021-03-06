@@ -488,6 +488,7 @@ class App{
                     dists.forEach ( (it) => {
                         if (it < shortestDist) {
                             shortestDist = it
+                            console.log(it)
                             console.log(self.allQuestions[dists.indexOf(it)])
                         }
                     })
