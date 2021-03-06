@@ -463,12 +463,12 @@ class App{
                     this.loading = true
                     console.log(intersects[0])
 
-                    var geometry = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
-                    var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    object.position.x = intersects[0].point.x
-                    object.position.y = intersects[0].point.y
-                    object.position.z = intersects[0].point.z
-                    this.scene.add(object)
+                    // var geometry = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
+                    // var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+                    // object.position.x = intersects[0].point.x
+                    // object.position.y = intersects[0].point.y
+                    // object.position.z = intersects[0].point.z
+                    // this.scene.add(object)
                     
 
                     var dists = []
@@ -489,7 +489,15 @@ class App{
                             intersects[0].y,
                             intersects[0].z
                         )))
+                        var d = pos
                     })
+
+                    var geometry = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
+                    var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+                    object.position.x = d.x
+                    object.position.y = d.y
+                    object.position.z = d.z
+                    this.scene.add(object)
 
                     dists.forEach ( (it) => {
                         if (it < shortestDist) {
