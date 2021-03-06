@@ -469,6 +469,7 @@ class App{
                     object.position.y = intersects[0].point.y
                     object.position.z = intersects[0].point.z
                     this.scene.add(object)
+                    
 
                     var dists = []
                     var shortestDist = 10000
@@ -478,7 +479,12 @@ class App{
                     console.log(self.allQuestions)
 
                     self.positions.forEach ( (pos) => {
-                        dists.push(self.distanceVector(pos, new THREE.Vector3(
+                        dists.push(self.distanceVector(
+                            new THREE.Vector3(
+                            pos.x + 1.1,
+                            pos.y - 1.2,
+                            pos.z), 
+                            new THREE.Vector3(
                             intersects[0].x,
                             intersects[0].y,
                             intersects[0].z
