@@ -497,9 +497,9 @@ class App{
 
                     var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
                     var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    object1.position.x = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[0]
-                    object1.position.y = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[1]
-                    object1.position.z = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[2]
+                    object1.position.x = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]
+                    object1.position.y = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]
+                    object1.position.z = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]
                     this.scene.add(object1)
                     console.log(shortestDist)
                     console.log(dists.indexOf(shortestDist))
@@ -535,7 +535,10 @@ class App{
                     )
 
 
-                    console.log(`${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]}`)
+                    console.log(`
+                        ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]}, 
+                        ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]}, 
+                        ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]}`)
                     console.log(shortestDist)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
