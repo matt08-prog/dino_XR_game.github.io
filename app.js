@@ -481,9 +481,9 @@ class App{
                     self.positions.forEach ( (pos) => {
                         dists.push(self.distanceVector(
                             new THREE.Vector3(
-                            pos.x + 1.1,
-                            pos.y - 1.2,
-                            pos.z), 
+                            pos.x,
+                            pos.y + 1.1,
+                            pos.z - 1.2), 
                             new THREE.Vector3(
                             intersects[0].x,
                             intersects[0].y,
