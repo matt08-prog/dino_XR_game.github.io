@@ -508,30 +508,34 @@ class App{
                     console.log(
                         self.calcPosFromLatLonRad(
                             self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                            self.allQuestions[dists.indexOf(shortestDist)].longitude
+                            self.allQuestions[dists.indexOf(shortestDist)].longitude,
+                            0.4
                         )
                     )
                     console.log(
                         self.calcPosFromLatLonRad(
                             self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                            self.allQuestions[dists.indexOf(shortestDist)].longitude
+                            self.allQuestions[dists.indexOf(shortestDist)].longitude,
+                            0.4
                         )[0]
                     )
                     console.log(
                         self.calcPosFromLatLonRad(
                             self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                            self.allQuestions[dists.indexOf(shortestDist)].longitude
+                            self.allQuestions[dists.indexOf(shortestDist)].longitude,
+                            0.4
                         )[1]
                     )
                     console.log(
                         self.calcPosFromLatLonRad(
                             self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                            self.allQuestions[dists.indexOf(shortestDist)].longitude
+                            self.allQuestions[dists.indexOf(shortestDist)].longitude,
+                            0.4
                         )[2]
                     )
 
 
-                    console.log(`${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[0]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[1]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude)[2]}`)
+                    console.log(`${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]}, ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]}`)
                     console.log(shortestDist)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
