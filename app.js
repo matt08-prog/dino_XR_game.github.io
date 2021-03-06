@@ -476,10 +476,11 @@ class App{
                         if (it < shortestDist) {
                             shortestDist = it
                         }
+                        console.log(self.allQuestions[dists.indexOf(it)])
                     })
 
                     var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
-
+                    console.log(shortestDist)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
                 }
