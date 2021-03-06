@@ -436,6 +436,7 @@ class App{
     }
 
     handleController( controller ){
+        const self = this
         if (controller.userData.selectPressed ){
             // selecting nodes for radio
             //********************************************************************************** */
