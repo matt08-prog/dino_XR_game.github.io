@@ -458,7 +458,7 @@ class App{
                 controller.children[0].scale.z = intersects[0].distance;
                 controller.userData.selected = intersects[0].object;
 
-                if(this.nodeSelected == true) {
+                if(this.nodeSelected == true && this.loading == false) {
                     this.nodeSelected == false
                     this.loading = true
                     console.log(intersects[0])
