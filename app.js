@@ -485,9 +485,9 @@ class App{
 
                     var v1 = intersects[0].point
                     var v2 = self.positions[0]
-                    var dx = v1.xtoFixed(2) - v2.xtoFixed(2);
-                    var dy = v1.ytoFixed(2) - v2.ytoFixed(2);
-                    var dz = v1.ztoFixed(2) - v2.ztoFixed(2);
+                    var dx = v1.x.toFixed(2) - v2.x.toFixed(2);
+                    var dy = v1.y.toFixed(2) - v2.y.toFixed(2);
+                    var dz = v1.z.toFixed(2) - v2.z.toFixed(2);
 
                     console.log(Math.sqrt( dx * dx + dy * dy + dz * dz ))
 
