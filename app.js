@@ -469,6 +469,13 @@ class App{
                     object.position.y = intersects[0].point.y
                     object.position.z = intersects[0].point.z
                     this.scene.add(object)
+
+                    var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
+                    var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+                    object1.position.x = positions[0].x
+                    object1.position.y = positions[0].y
+                    object1.position.z = positions[0].z
+                    this.scene.add(object1)
                     
                     var dists = []
                     var shortestDist = 10000
@@ -500,50 +507,50 @@ class App{
 
                     var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
 
-                    var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
-                    var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    object1.position.x = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]
-                    object1.position.y = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]
-                    object1.position.z = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]
-                    this.scene.add(object1)
-                    console.log(shortestDist)
-                    console.log(dists.indexOf(shortestDist))
-                    console.log(self.allQuestions[dists.indexOf(shortestDist)])
-                    console.log(self.allQuestions[dists.indexOf(shortestDist)].longitude)
-                    console.log(
-                        self.calcPosFromLatLonRad(
-                            self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                            self.allQuestions[dists.indexOf(shortestDist)].longitude,
-                            0.4
-                        )
-                    )
-                    console.log(
-                        self.calcPosFromLatLonRad(
-                            self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                            self.allQuestions[dists.indexOf(shortestDist)].longitude,
-                            0.4
-                        )[0]
-                    )
-                    console.log(
-                        self.calcPosFromLatLonRad(
-                            self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                            self.allQuestions[dists.indexOf(shortestDist)].longitude,
-                            0.4
-                        )[1]
-                    )
-                    console.log(
-                        self.calcPosFromLatLonRad(
-                            self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                            self.allQuestions[dists.indexOf(shortestDist)].longitude,
-                            0.4
-                        )[2]
-                    )
+                    // var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
+                    // var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+                    // object1.position.x = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]
+                    // object1.position.y = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]
+                    // object1.position.z = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]
+                    // this.scene.add(object1)
+                    // console.log(shortestDist)
+                    // console.log(dists.indexOf(shortestDist))
+                    // console.log(self.allQuestions[dists.indexOf(shortestDist)])
+                    // console.log(self.allQuestions[dists.indexOf(shortestDist)].longitude)
+                    // console.log(
+                    //     self.calcPosFromLatLonRad(
+                    //         self.allQuestions[dists.indexOf(shortestDist)].latitude, 
+                    //         self.allQuestions[dists.indexOf(shortestDist)].longitude,
+                    //         0.4
+                    //     )
+                    // )
+                    // console.log(
+                    //     self.calcPosFromLatLonRad(
+                    //         self.allQuestions[dists.indexOf(shortestDist)].latitude, 
+                    //         self.allQuestions[dists.indexOf(shortestDist)].longitude,
+                    //         0.4
+                    //     )[0]
+                    // )
+                    // console.log(
+                    //     self.calcPosFromLatLonRad(
+                    //         self.allQuestions[dists.indexOf(shortestDist)].latitude, 
+                    //         self.allQuestions[dists.indexOf(shortestDist)].longitude,
+                    //         0.4
+                    //     )[1]
+                    // )
+                    // console.log(
+                    //     self.calcPosFromLatLonRad(
+                    //         self.allQuestions[dists.indexOf(shortestDist)].latitude, 
+                    //         self.allQuestions[dists.indexOf(shortestDist)].longitude,
+                    //         0.4
+                    //     )[2]
+                    // )
 
 
-                    console.log(`
-                        ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]}, 
-                        ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]}, 
-                        ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]}`)
+                    // console.log(`
+                    //     ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]}, 
+                    //     ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]}, 
+                    //     ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]}`)
                     console.log(shortestDist)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
