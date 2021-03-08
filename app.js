@@ -472,9 +472,9 @@ class App{
 
                     var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
                     var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    object1.position.x = positions[0].x
-                    object1.position.y = positions[0].y
-                    object1.position.z = positions[0].z
+                    object1.position.x = self.positions[0].x
+                    object1.position.y = self.positions[0].y
+                    object1.position.z = self.positions[0].z
                     this.scene.add(object1)
                     
                     var dists = []
