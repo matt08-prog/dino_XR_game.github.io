@@ -488,8 +488,8 @@ class App{
                         dists.push(self.distanceVector(
                             new THREE.Vector3(
                             pos.x,
-                            pos.y + 1.1,
-                            pos.z - 1.2), 
+                            pos.y,
+                            pos.z), 
                             new THREE.Vector3(
                             intersects[0].x,
                             intersects[0].y,
