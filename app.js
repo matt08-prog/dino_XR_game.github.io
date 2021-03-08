@@ -479,6 +479,7 @@ class App{
                     object1.position.z = self.positions[0].z
                     this.scene.add(object1)
                     
+                    console.log(intersects[0].point.distanceTo(self.positions[0]))
                     console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
                     console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
 
