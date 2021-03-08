@@ -109,6 +109,8 @@ class App{
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
             self.globe = new THREE.Mesh( geometry, material );
             self.earth.add( self.globe );
+            const bbox = new THREE.Box3().setFromObject( self.globe );
+            console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
         } )
 
         //this.nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.002, 2 );
