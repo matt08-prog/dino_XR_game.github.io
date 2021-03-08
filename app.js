@@ -434,7 +434,7 @@ class App{
         var dx = v1.x - v2.x;
         var dy = v1.y - v2.y;
         var dz = v1.z - v2.z;
-    
+        
         return Math.sqrt( dx * dx + dy * dy + dz * dz );
     }
 
@@ -477,6 +477,19 @@ class App{
                     object1.position.z = self.positions[0].z
                     this.scene.add(object1)
                     
+                    console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
+                    console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
+                    console.log(self.distanceVector(
+                        new THREE.Vector3(
+                        self.positions[0].x,
+                        self.positions[0].y,
+                        self.positions[0].z), 
+                        new THREE.Vector3(
+                        intersects[0].x,
+                        intersects[0].y,
+                        intersects[0].z
+                    )))
+
                     var dists = []
                     var shortestDist = 10000
 
