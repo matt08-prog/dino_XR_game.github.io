@@ -481,6 +481,15 @@ class App{
                     
                     console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
                     console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
+
+                    var v1 = intersects[0].point
+                    var v2 = self.positions[0]
+                    var dx = v1.x - v2.x;
+                    var dy = v1.y - v2.y;
+                    var dz = v1.z - v2.z;
+
+                    console.log(Math.sqrt( dx * dx + dy * dy + dz * dz ))
+
                     console.log(self.distanceVector(
                         new THREE.Vector3(
                         self.positions[0].x,
