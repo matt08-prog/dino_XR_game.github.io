@@ -24,7 +24,7 @@ class App{
         this.clock = new THREE.Clock();
         
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
-		this.camera.position.set( 0, 1.6, 3 );
+		this.camera.position.set( 0, 1.6, -1.2);
         
 		this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color( 0x505050 );
@@ -79,6 +79,7 @@ class App{
         object.position.y = 0;
         object.position.z = 0;
 
+        this.rotation = 0
         this.scene.add( object );
 
         this.radius = 0.08;
@@ -86,21 +87,16 @@ class App{
         var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
         object1.position.x = 0;
-        object1.position.y = 1.1;
-        object1.position.z = -1.2;
+        object1.position.y = 0;
+        object1.position.z = 0;
 
         this.scene.add( object1 );
 
-        // var earthGeometry = new THREE.IcosahedronBufferGeometry( 2, 2 );
-        // var earth = new THREE.Mesh( earthGeometry, new THREE.MeshStandardMaterial(  );
-        // self.earth.position.y = 1.1
-        // self.earth.position.z = -1.2
-        // self.earth.rotation.y = 90
         this.radius = 0.4
         var loader = new THREE.TextureLoader();
         this.earth = new THREE.Group();
-        this.earth.position.y = 1.1
-        this.earth.position.z = -1.2
+        this.earth.position.y = 0
+        this.earth.position.z = 0
         this.positions = []
 
         var self = this
@@ -142,13 +138,10 @@ class App{
         const node = new THREE.Mesh( self.nodeGeometry, self.nodeMaterial );
 	
 	    node.position.x = this.calcPosFromLatLonRad( lat, lon, radius)[0]
-	    node.position.y = this.calcPosFromLatLonRad( lat, lon, radius)[1] + 1.1
-	    node.position.z = this.calcPosFromLatLonRad( lat, lon, radius)[2] - 1.2
-        node.lookAt(new THREE.Vector3(0, 1.1, -1.2))
+	    node.position.y = this.calcPosFromLatLonRad( lat, lon, radius)[1]
+	    node.position.z = this.calcPosFromLatLonRad( lat, lon, radius)[2]
+        node.lookAt(new THREE.Vector3(0, 0, 0))
         self.positions.push(new THREE.Vector3(node.position.x, node.position.y, node.position.z))
-        
-        node.position.y -= 1.1
-        node.position.z += 1.2
 
         //self.earth.add( node );
         node.updateMatrix()
@@ -546,9 +539,11 @@ class App{
         const dt = this.clock.getDelta();
 
         if (this.dir == -1) {
-            this.earth.rotateY(-0.01)
+            //this.rotation -= 0.01
+            //this.earth.rotateY(-0.01)
         } else if(this.dir == 1) {
-            this.earth.rotateY(0.01)
+            //this.rotation += 0.01
+            //this.earth.rotateY(0.01)
         }
 
         if (this.renderer.xr.isPresenting){
