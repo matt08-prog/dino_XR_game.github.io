@@ -27,8 +27,8 @@ class App{
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
 		this.camera.position.set( 0, 1.6, -2 );
         this.dolly.add( this.camera )
-        this.scene.add(this.dolly)
 		this.scene = new THREE.Scene();
+        this.scene.add(this.dolly)
         this.scene.background = new THREE.Color( 0x505050 );
 
 		this.scene.add( new THREE.HemisphereLight( 0x606060, 0x404040 ) );
