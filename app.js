@@ -472,12 +472,12 @@ class App{
                     object.position.z = intersects[0].point.z
                     this.scene.add(object)
 
-                    var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
-                    var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    object1.position.x = self.positions[0].x
-                    object1.position.y = self.positions[0].y
-                    object1.position.z = self.positions[0].z
-                    this.scene.add(object1)
+                    // var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
+                    // var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+                    // object1.position.x = self.positions[0].x
+                    // object1.position.y = self.positions[0].y
+                    // object1.position.z = self.positions[0].z
+                    // this.scene.add(object1)
                     // Distance to is best
                     console.log(intersects[0].point.distanceTo(self.positions[0]))
                     console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
@@ -525,7 +525,13 @@ class App{
                     })
 
                     var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
-
+                    var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
+                    var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+                    object1.position.x = self.positions[dists.indexOf(shortestDist)].x
+                    object1.position.y = self.positions[dists.indexOf(shortestDist)].y
+                    object1.position.z = self.positions[dists.indexOf(shortestDist)].z
+                    this.scene.add(object1)
+                    
                     // var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
                     // var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
                     // object1.position.x = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]
