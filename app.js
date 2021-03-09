@@ -24,7 +24,7 @@ class App{
         this.clock = new THREE.Clock();
         
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
-		this.camera.position.set( 0, 1.6, -1.2);
+		this.camera.position.set( 0, 0, -1.1);
         
 		this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color( 0x505050 );
