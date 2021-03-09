@@ -478,7 +478,7 @@ class App{
                     object1.position.y = self.positions[0].y
                     object1.position.z = self.positions[0].z
                     this.scene.add(object1)
-                    
+                    // Distance to is best
                     console.log(intersects[0].point.distanceTo(self.positions[0]))
                     console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
                     console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
@@ -513,16 +513,7 @@ class App{
                     console.log(self.allQuestions)
 
                     self.positions.forEach ( (pos) => {
-                        dists.push(self.distanceVector(
-                            new THREE.Vector3(
-                            pos.x,
-                            pos.y,
-                            pos.z), 
-                            new THREE.Vector3(
-                            intersects[0].x,
-                            intersects[0].y,
-                            intersects[0].z
-                        )))
+                        dists.push(intersects[0].point.distanceTo(pos))
                     })
 
                     dists.forEach ( (it) => {
