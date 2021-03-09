@@ -102,6 +102,7 @@ class App{
         this.earth.position.y = 1.1
         this.earth.position.z = -1.2
         this.positions = []
+        self.positions
 
         var self = this
         loader.load( './Assets/sphere.jpg', function ( texture ) {
@@ -127,6 +128,7 @@ class App{
             })
             var total = new THREE.Mesh(self.geom, self.nodeMaterial)
             self.earth.add(total)
+            self.earth.add(this.positions)
         })
         this.scene.add( this.earth )
 
@@ -145,6 +147,7 @@ class App{
 	    node.position.z = this.calcPosFromLatLonRad( lat, lon, radius)[2] - 1.2
         node.lookAt(new THREE.Vector3(0, 1.1, -1.2))
         self.positions.push(new THREE.Vector3(node.position.x, node.position.y, node.position.z))
+        
         node.position.y -= 1.1
         node.position.z += 1.2
 
@@ -472,13 +475,6 @@ class App{
                     object.position.z = intersects[0].point.z
                     this.scene.add(object)
 
-                    // var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
-                    // var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    // object1.position.x = self.positions[0].x
-                    // object1.position.y = self.positions[0].y
-                    // object1.position.z = self.positions[0].z
-                    // this.scene.add(object1)
-                    // Distance to is best
                     console.log(intersects[0].point.distanceTo(self.positions[0]))
                     console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
                     console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
@@ -531,70 +527,12 @@ class App{
                     object1.position.y = self.positions[dists.indexOf(shortestDist)].y
                     object1.position.z = self.positions[dists.indexOf(shortestDist)].z
                     this.scene.add(object1)
-                    
-                    // var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
-                    // var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    // object1.position.x = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]
-                    // object1.position.y = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]
-                    // object1.position.z = this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]
-                    // this.scene.add(object1)
-                    // console.log(shortestDist)
-                    // console.log(dists.indexOf(shortestDist))
-                    // console.log(self.allQuestions[dists.indexOf(shortestDist)])
-                    // console.log(self.allQuestions[dists.indexOf(shortestDist)].longitude)
-                    // console.log(
-                    //     self.calcPosFromLatLonRad(
-                    //         self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                    //         self.allQuestions[dists.indexOf(shortestDist)].longitude,
-                    //         0.4
-                    //     )
-                    // )
-                    // console.log(
-                    //     self.calcPosFromLatLonRad(
-                    //         self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                    //         self.allQuestions[dists.indexOf(shortestDist)].longitude,
-                    //         0.4
-                    //     )[0]
-                    // )
-                    // console.log(
-                    //     self.calcPosFromLatLonRad(
-                    //         self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                    //         self.allQuestions[dists.indexOf(shortestDist)].longitude,
-                    //         0.4
-                    //     )[1]
-                    // )
-                    // console.log(
-                    //     self.calcPosFromLatLonRad(
-                    //         self.allQuestions[dists.indexOf(shortestDist)].latitude, 
-                    //         self.allQuestions[dists.indexOf(shortestDist)].longitude,
-                    //         0.4
-                    //     )[2]
-                    // )
-
-
-                    // console.log(`
-                    //     ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]}, 
-                    //     ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]}, 
-                    //     ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]}`)
-                    //console.log(shortestDist)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
                 }
             }else{
                 controller.children[0].scale.z = 0;
             }
-
-            // const intersections = this.raycaster.intersectObjects( this.objects, true );
-
-            // if (intersections.length>0){
-
-            //     // intersects[0].object.add(this.highlight);
-            //     // this.highlight.visible = true;
-            //     controller.children[0].scale.z = intersections[0].distance;
-            //     controller.userData.selected = intersections[0].object;
-            // }else{
-            //     controller.children[0].scale.z = 0;
-            // }
         }
     }
     
@@ -607,7 +545,6 @@ class App{
     
 	render( ) {   
         const dt = this.clock.getDelta();
-        //console.log(this.nodeSelected)
 
         if (this.dir == -1) {
             this.earth.rotateY(-0.01)
