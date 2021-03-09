@@ -26,7 +26,7 @@ class App{
         this.user.position.set(0,0,0)
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
 		this.camera.position.set( 0, 1.6, -2 );
-        this.user.add( camera )
+        this.user.add( this.camera )
         
 		this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color( 0x505050 );
