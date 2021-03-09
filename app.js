@@ -24,7 +24,7 @@ class App{
         this.clock = new THREE.Clock();
         
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
-		this.camera.position.set( 0, -2.0, -2.1);
+		this.camera.position.set( 4, -2.0, -2.1);
         
 		this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color( 0x505050 );
@@ -43,7 +43,7 @@ class App{
 		container.appendChild( this.renderer.domElement );
         
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
-        this.controls.target.set(0, 0, 3.0);
+        this.controls.target.set(2, 0, 3.0);
         this.controls.update();
         
         this.stats = new Stats();
