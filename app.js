@@ -43,7 +43,7 @@ class App{
 		container.appendChild( this.renderer.domElement );
         
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
-        this.controls.target.set(0, 1.6, 0);
+        this.controls.target.set(0, 0, 1.1);
         this.controls.update();
         
         this.stats = new Stats();
