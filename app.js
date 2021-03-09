@@ -576,7 +576,7 @@ class App{
                     //     ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[0]}, 
                     //     ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[1]}, 
                     //     ${this.calcPosFromLatLonRad(self.allQuestions[dists.indexOf(shortestDist)].latitude, self.allQuestions[dists.indexOf(shortestDist)].longitude, 0.4)[2]}`)
-                    console.log(shortestDist)
+                    //console.log(shortestDist)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
                 }
