@@ -489,6 +489,9 @@ class App{
                     var dy = v1.y.toFixed(2) - v2.y.toFixed(2);
                     var dz = v1.z.toFixed(2) - v2.z.toFixed(2);
 
+                    console.log(`${intersects[0].point.x} ${intersects[0].point.y} ${intersects[0].point.z}`)
+                    console.log(`${self.positions[0].x} ${self.positions[0].y} ${self.positions[0].z}`)
+
                     console.log(Math.sqrt( dx * dx + dy * dy + dz * dz ))
 
                     console.log(self.distanceVector(
