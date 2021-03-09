@@ -102,7 +102,6 @@ class App{
         this.earth.position.y = 1.1
         this.earth.position.z = -1.2
         this.positions = []
-        self.positions
 
         var self = this
         loader.load( './Assets/sphere.jpg', function ( texture ) {
