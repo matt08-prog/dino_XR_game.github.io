@@ -540,7 +540,8 @@ class App{
     
 	render( ) {   
         const dt = this.clock.getDelta();
-
+        this.user.position.set(0,1.6, -2.0)
+        this.camera.set(0,1.6, -2.0)
         if (this.dir == -1) {
             //this.rotation -= 0.01
             //this.earth.rotateY(-0.01)
