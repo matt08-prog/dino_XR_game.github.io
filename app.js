@@ -309,7 +309,7 @@ class App{
         this.controllers = {};
         this.controllers.right = this.buildController( 0, line, modelFactory );
         this.controllers.left = this.buildController( 1, line, modelFactory );
-        this.dolly.position.set(0,1.6, -2.0)
+        this.dolly.position.set(0,2.0, -1.8)
     }
     
     buildController( index, line, modelFactory ){
@@ -540,7 +540,7 @@ class App{
     
 	render( ) {   
         const dt = this.clock.getDelta();
-        this.dolly.position.set(0,1.6, -2.0)
+        this.dolly.position.set(0,2.0, -1.8)
         if (this.dir == -1) {
             //this.rotation -= 0.01
             //this.earth.rotateY(-0.01)
