@@ -502,8 +502,8 @@ class App{
                     var shortestDist = 10000
 
                     console.log(`positions: ${self.positions.length}, data: ${self.allQuestions.length}`)
-                    console.log(self.positions)
-                    console.log(self.allQuestions)
+                    //console.log(self.positions)
+                    //console.log(self.allQuestions)
 
                     self.positions.forEach ( (pos) => {
                         dists.push(intersects[0].point.distanceTo(pos))
