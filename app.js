@@ -25,7 +25,7 @@ class App{
         this.dolly = new THREE.Object3D()
         this.dolly.position.set(0,0,0)
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
-		this.camera.position.set( 0, 1.6, -2 );
+		this.camera.position.set( 0, 0, 0);
         this.dolly.add( this.camera )
 		this.scene = new THREE.Scene();
         this.scene.add(this.dolly)
