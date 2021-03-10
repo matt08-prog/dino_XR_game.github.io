@@ -327,7 +327,7 @@ class App{
         if ( modelFactory ){
             grip = this.renderer.xr.getControllerGrip( index );
             grip.add( modelFactory.createControllerModel( grip ));
-            this.scene.add( grip );
+            this.dolly.add( grip );
         }
         
         return { controller, grip };
