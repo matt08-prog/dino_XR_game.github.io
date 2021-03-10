@@ -577,7 +577,7 @@ class App{
                 
                 this.getInputSources = false;
             }else if (this.useStandard && this.type!=""){
-                for(let inputSource of inputSources) {
+                for(let inputSource in inputSources) {
                 // inputSources.forEach( inputSource => {
                     const gp = inputSource.gamepad;
                     const thumbstick = (this.type=='thumbstick');
