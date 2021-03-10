@@ -60,7 +60,8 @@ class App{
         
         this.initScene();
         this.setupXR();
-        
+        this.getInputSources = true;
+
         window.addEventListener('resize', this.resize.bind(this) );
         
         this.renderer.setAnimationLoop( this.render.bind(this) );
