@@ -610,7 +610,7 @@ class App{
                             this.dir = -1
                             this.both += 1
                             console.log("left left")
-                        } else {
+                        } else if (this.both == 0){
                             this.dir = 0
                             console.log("left none")
                         }
