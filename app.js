@@ -468,7 +468,7 @@ class App{
                     this.loading = true
                     console.log(intersects[0])
 
-                    var geometry = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
+                    var geometry = new THREE.IcosahedronBufferGeometry( 0.03, 2 );
                     var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
                     object.position.x = intersects[0].point.x
                     object.position.y = intersects[0].point.y
@@ -521,12 +521,12 @@ class App{
                     })
 
                     var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
-                    var geometry1 = new THREE.IcosahedronBufferGeometry( 0.1, 2 );
-                    var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    object1.position.x = self.positions[dists.indexOf(shortestDist)].x
-                    object1.position.y = self.positions[dists.indexOf(shortestDist)].y
-                    object1.position.z = self.positions[dists.indexOf(shortestDist)].z
-                    this.scene.add(object1)
+                    // var geometry1 = new THREE.IcosahedronBufferGeometry( 0.0, 2 );
+                    // var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+                    // object1.position.x = self.positions[dists.indexOf(shortestDist)].x
+                    // object1.position.y = self.positions[dists.indexOf(shortestDist)].y
+                    // object1.position.z = self.positions[dists.indexOf(shortestDist)].z
+                    // this.scene.add(object1)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
                 }
