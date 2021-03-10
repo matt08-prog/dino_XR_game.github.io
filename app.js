@@ -320,7 +320,7 @@ class App{
         
         if (line) controller.add( line.clone() );
         
-        this.scene.add( controller );
+        this.dolly.add( controller );
         
         let grip;
         
