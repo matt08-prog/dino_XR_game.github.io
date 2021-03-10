@@ -22,13 +22,16 @@ class App{
 		document.body.appendChild( container );
         
         this.clock = new THREE.Clock();
+        this.orbitOrigin = new THREE.Object3D()
         this.dolly = new THREE.Object3D()
         this.dolly.position.set(0,0,0)
+        this.orbitOrigin.position.set(0,0,0)
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
 		this.camera.position.set( 0, 0, 0);
         this.dolly.add( this.camera )
 		this.scene = new THREE.Scene();
-        this.scene.add(this.dolly)
+        this.orbitOrigin.add(this.dolly)
+        this.scene.add(this.orbitOrigin)
         this.scene.background = new THREE.Color( 0x505050 );
 
 		this.scene.add( new THREE.HemisphereLight( 0x606060, 0x404040 ) );
@@ -544,11 +547,11 @@ class App{
         if (this.dir == -1) {
             //this.rotation -= 0.01
             //this.earth.rotateY(-0.01)
-            this.dolly.rotateY(-0.01)
+            this.orbitOrigin.rotateY(-0.01)
         } else if(this.dir == 1) {
             //this.rotation += 0.01
             //this.earth.rotateY(0.01)
-            this.dolly.rotateY(0.01)
+            this.orbitOrigin.rotateY(0.01)
 
         }
 
