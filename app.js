@@ -544,9 +544,12 @@ class App{
         if (this.dir == -1) {
             //this.rotation -= 0.01
             //this.earth.rotateY(-0.01)
+            this.dolly.rotateY(-0.01)
         } else if(this.dir == 1) {
             //this.rotation += 0.01
             //this.earth.rotateY(0.01)
+            this.dolly.rotateY(0.01)
+
         }
 
         if (this.renderer.xr.isPresenting){
