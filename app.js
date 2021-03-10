@@ -584,6 +584,7 @@ class App{
                     const btnPressed = gp.buttons[btnIndex].pressed;
                     const material = (btnPressed) ? this.materials[1] : this.materials[0];
                     if ( inputSource.handedness == 'right'){
+                        console.log("right")
                         // this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
                         if(gp.axes[offset] > 0) {
                             this.dir = 1
@@ -594,6 +595,7 @@ class App{
                         }
                     }else if ( inputSource.handedness == 'left'){
                         // this.lsphere.position.set( -0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
+                        console.log("left")
                         if(gp.axes[offset] > 0) {
                             this.dir = 1
                         } else if (gp.axes[offset] < 0) {
