@@ -591,20 +591,26 @@ class App{
                         // this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
                         if(gp.axes[offset] > 0) {
                             this.dir = 1
+                            console.log("right right")
                         } else if (gp.axes[offset] < 0) {
                             this.dir = -1
+                            console.log("right left")
                         } else {
                             this.dir = 0
+                            console.log("right none")
                         }
                     }else if ( inputSource.handedness == 'left'){
                         // this.lsphere.position.set( -0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
                         console.log("left")
                         if(gp.axes[offset] > 0) {
                             this.dir = 1
+                            console.log("left right")
                         } else if (gp.axes[offset] < 0) {
                             this.dir = -1
+                            console.log("left left")
                         } else {
                             this.dir = 0
+                            console.log("left none")
                         }
                     }
                 })
