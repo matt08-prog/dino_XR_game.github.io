@@ -542,6 +542,7 @@ class App{
     }
     
 	render( ) {   
+        
         const dt = this.clock.getDelta();
         // this.dolly.position.set(0,1.6,0.3)
         if (this.dir == -1) {
@@ -557,6 +558,50 @@ class App{
 
         if (this.renderer.xr.isPresenting){
             const self = this; 
+
+            if ( this.getInputSources ){    
+                const info = [];
+                
+                inputSources.forEach( inputSource => {
+                    const gp = inputSource.gamepad;
+                    const axes = gp.axes;
+                    const buttons = gp.buttons;
+                    const mapping = gp.mapping;
+                    this.useStandard = (mapping == 'xr-standard');
+                    const gamepad = { axes, buttons, mapping };
+                    const handedness = inputSource.handedness;
+                    const profiles = inputSource.profiles;
+                    this.type = "";
+                    profiles.forEach( profile => {
+                        if (profile.indexOf('touchpad')!=-1) this.type = 'touchpad';
+                        if (profile.indexOf('thumbstick')!=-1) this.type = 'thumbstick';
+                    });
+                    const targetRayMode = inputSource.targetRayMode;
+                    info.push({ gamepad, handedness, profiles, targetRayMode });
+                });
+                    
+                console.log( JSON.stringify(info) );
+                
+                this.getInputSources = false;
+            }else if (this.useStandard && this.type!=""){
+                inputSources.forEach( inputSource => {
+                    const gp = inputSource.gamepad;
+                    const thumbstick = (this.type=='thumbstick');
+                    const offset = (thumbstick) ? 2 : 0;
+                    const btnIndex = (thumbstick) ? 3 : 2;
+                    const btnPressed = gp.buttons[btnIndex].pressed;
+                    const material = (btnPressed) ? this.materials[1] : this.materials[0];
+                    if ( inputSource.handedness == 'right'){
+                        this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
+                        this.rsphere.material = material;
+                    }else if ( inputSource.handedness == 'left'){
+                        this.lsphere.position.set( -0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
+                        this.lsphere.material = material;
+                    }
+                })
+            }
+
+
             if (this.controllers ){
                 Object.values( this.controllers).forEach( ( value ) => {
                     self.handleController( value.controller );
