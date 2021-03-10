@@ -197,59 +197,59 @@ class App{
     }
     
     updateGamepadState(){
-        const session = this.renderer.xr.getSession();
-        const inputSrc = session.inputSources;
-        var self = this
-        inputSrc.forEach(( inputSource ) => {
-            //console.log(inputSource)
-            if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
-                //(inputSource.handedness)
-                // if (inputSource.handedness == "left") {
-                //     const inputSource = session.inputSources[0];
-                //     console.log("left     0")
-                // } else {
-                //     const inputSource = session.inputSources[1];
-                //     console.log("right    1")
-                // }
-                const gamepad = inputSource.gamepad;
-                try{
-                    Object.entries( this.buttonStates ).forEach( ( [ key, value ] ) => {
-                        // console.log(key)
-                        const buttonIndex = this.gamepadIndices[key].button;
-                        if ( key.indexOf('touchpad')!=-1 || key.indexOf('thumbstick')!=-1){
-                            const xAxisIndex = this.gamepadIndices[key].xAxis;
-                            const yAxisIndex = this.gamepadIndices[key].yAxis;
-                            this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
-                            this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
-                            if (this.buttonStates[key].xAxis < 0) {
-                                self.dir = -1
-                            } else if (this.buttonStates[key].xAxis > 0){
-                                self.dir = 1
-                            } else {
-                                self.dir = 0
-                            }
-                            this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
-                        }else{
-                            this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
-                            // if (this.buttonStates[key])
-                        }
-                        // console.log(this.buttonStates)
-                        if(this.buttonStates.a_button == 1 && 
-                            this.buttonStates.xr_standard_trigger == 1 && 
-                            self.loading == false) {
-                            self.nodeSelected = true
-                        }
-                        // if(this.buttonStates[key].xr_standard_trigger == 1) {
-                        //     console.log("changed")
-                        //     self.nodeSelected = true
-                        // }
-                        this.updateUI();
-                    });
-                }catch(e){
-                    console.warn(e);
-                }
-            }
-        })
+        // const session = this.renderer.xr.getSession();
+        // const inputSrc = session.inputSources;
+        // var self = this
+        // inputSrc.forEach(( inputSource ) => {
+        //     //console.log(inputSource)
+        //     if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
+        //         //(inputSource.handedness)
+        //         // if (inputSource.handedness == "left") {
+        //         //     const inputSource = session.inputSources[0];
+        //         //     console.log("left     0")
+        //         // } else {
+        //         //     const inputSource = session.inputSources[1];
+        //         //     console.log("right    1")
+        //         // }
+        //         const gamepad = inputSource.gamepad;
+        //         try{
+        //             Object.entries( this.buttonStates ).forEach( ( [ key, value ] ) => {
+        //                 // console.log(key)
+        //                 const buttonIndex = this.gamepadIndices[key].button;
+        //                 if ( key.indexOf('touchpad')!=-1 || key.indexOf('thumbstick')!=-1){
+        //                     const xAxisIndex = this.gamepadIndices[key].xAxis;
+        //                     const yAxisIndex = this.gamepadIndices[key].yAxis;
+        //                     this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
+        //                     this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
+        //                     if (this.buttonStates[key].xAxis < 0) {
+        //                         self.dir = -1
+        //                     } else if (this.buttonStates[key].xAxis > 0){
+        //                         self.dir = 1
+        //                     } else {
+        //                         self.dir = 0
+        //                     }
+        //                     this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
+        //                 }else{
+        //                     this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
+        //                     // if (this.buttonStates[key])
+        //                 }
+        //                 // console.log(this.buttonStates)
+        //                 if(this.buttonStates.a_button == 1 && 
+        //                     this.buttonStates.xr_standard_trigger == 1 && 
+        //                     self.loading == false) {
+        //                     self.nodeSelected = true
+        //                 }
+        //                 // if(this.buttonStates[key].xr_standard_trigger == 1) {
+        //                 //     console.log("changed")
+        //                 //     self.nodeSelected = true
+        //                 // }
+        //                 this.updateUI();
+        //             });
+        //         }catch(e){
+        //             console.warn(e);
+        //         }
+        //     }
+        // })
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
@@ -545,18 +545,10 @@ class App{
         
         const dt = this.clock.getDelta();
         // this.dolly.position.set(0,1.6,0.3)
-        if (this.dir == -1) {
-            //this.rotation -= 0.01
-            //this.earth.rotateY(-0.01)
-            this.orbitOrigin.rotateY(-0.01)
-        } else if(this.dir == 1) {
-            //this.rotation += 0.01
-            //this.earth.rotateY(0.01)
-            this.orbitOrigin.rotateY(0.01)
-
-        }
 
         if (this.renderer.xr.isPresenting){
+            const session = this.renderer.xr.getSession();
+            const inputSrc = session.inputSources;
             const self = this; 
 
             if ( this.getInputSources ){    
@@ -592,15 +584,33 @@ class App{
                     const btnPressed = gp.buttons[btnIndex].pressed;
                     const material = (btnPressed) ? this.materials[1] : this.materials[0];
                     if ( inputSource.handedness == 'right'){
-                        this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
-                        this.rsphere.material = material;
+                        // this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
+                        if(gp.axes[offset] > 0) {
+                            this.dir = 1
+                        } else if (gp.axes[offset] < 0) {
+                            this.dir = -1
+                        }
                     }else if ( inputSource.handedness == 'left'){
-                        this.lsphere.position.set( -0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
-                        this.lsphere.material = material;
+                        // this.lsphere.position.set( -0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
+                        if(gp.axes[offset] > 0) {
+                            this.dir = 1
+                        } else if (gp.axes[offset] < 0) {
+                            this.dir = -1
+                        }
                     }
                 })
             }
 
+            if (this.dir == -1) {
+                //this.rotation -= 0.01
+                //this.earth.rotateY(-0.01)
+                this.orbitOrigin.rotateY(-0.01)
+            } else if(this.dir == 1) {
+                //this.rotation += 0.01
+                //this.earth.rotateY(0.01)
+                this.orbitOrigin.rotateY(0.01)
+    
+            }
 
             if (this.controllers ){
                 Object.values( this.controllers).forEach( ( value ) => {
