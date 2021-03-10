@@ -619,7 +619,7 @@ class App{
                         console.log(gp.buttons[4])
                         console.log(btnPressed)
 
-                        if (gp.buttons[4] > 0) {
+                        if (gp.buttons[4].pressed == true) {
                             this.nodeSelected = true
                         }
                     }
