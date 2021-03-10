@@ -586,7 +586,6 @@ class App{
                     const offset = (thumbstick) ? 2 : 0;
                     const btnIndex = (thumbstick) ? 3 : 2;
                     const btnPressed = gp.buttons[btnIndex].pressed;
-                    const material = (btnPressed) ? this.materials[1] : this.materials[0];
                     if ( inputSource.handedness == 'right'){
                         console.log("right")
                         // this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
