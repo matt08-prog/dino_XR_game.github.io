@@ -550,10 +550,11 @@ class App{
             const session = this.renderer.xr.getSession();
             const inputSrc = session.inputSources;
             const self = this; 
-
+            console.log("1")
             if ( this.getInputSources ){    
                 const info = [];
-                
+                console.log("2")
+
                 inputSources.forEach( inputSource => {
                     const gp = inputSource.gamepad;
                     const axes = gp.axes;
@@ -576,7 +577,9 @@ class App{
                 
                 this.getInputSources = false;
             }else if (this.useStandard && this.type!=""){
+                console.log("2a")
                 inputSources.forEach( inputSource => {
+                    console.log("3")
                     const gp = inputSource.gamepad;
                     const thumbstick = (this.type=='thumbstick');
                     const offset = (thumbstick) ? 2 : 0;
