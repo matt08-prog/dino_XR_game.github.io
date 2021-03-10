@@ -616,6 +616,12 @@ class App{
                                 console.log("left none")
                             }
                         }
+                        console.log(gp.buttons[4])
+                        console.log(btnPressed)
+
+                        if (gp.buttons[4] > 0) {
+                            this.nodeSelected = true
+                        }
                     }
                 })
                 this.both = 0
