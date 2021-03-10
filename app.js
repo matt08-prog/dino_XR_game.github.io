@@ -586,6 +586,8 @@ class App{
                     const offset = (thumbstick) ? 2 : 0;
                     const btnIndex = (thumbstick) ? 3 : 2;
                     const btnPressed = gp.buttons[btnIndex].pressed;
+
+                    var both = 0
                     if ( inputSource.handedness == 'right'){
                         console.log("right")
                         // this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
@@ -595,8 +597,8 @@ class App{
                         } else if (gp.axes[offset] < 0) {
                             this.dir = -1
                             console.log("right left")
-                        } else {
-                            this.dir = 0
+                        } else{
+                            both += 1
                             console.log("right none")
                         }
                     }else if ( inputSource.handedness == 'left'){
@@ -609,9 +611,12 @@ class App{
                             this.dir = -1
                             console.log("left left")
                         } else {
-                            this.dir = 0
+                            both += 1
                             console.log("left none")
                         }
+                    }
+                    if (both == 2) {
+                        this.dir = 0
                     }
                 })
             }
