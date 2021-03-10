@@ -578,7 +578,7 @@ class App{
                 this.getInputSources = false;
             }else if (this.useStandard && this.type!=""){
                 inputSources.forEach( inputSource => {
-                    if (both == 0) {
+                    if (this.both == 0) {
                         const gp = inputSource.gamepad;
                         const thumbstick = (this.type=='thumbstick');
                         const offset = (thumbstick) ? 2 : 0;
