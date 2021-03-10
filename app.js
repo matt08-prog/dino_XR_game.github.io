@@ -551,10 +551,8 @@ class App{
             const session = this.renderer.xr.getSession();
             const inputSources = session.inputSources;
             const self = this; 
-            console.log("1")
             if ( this.getInputSources ){    
                 const info = [];
-                console.log("2")
 
                 inputSources.forEach( inputSource => {
                     const gp = inputSource.gamepad;
@@ -578,9 +576,7 @@ class App{
                 
                 this.getInputSources = false;
             }else if (this.useStandard && this.type!=""){
-                console.log("2a")
                 inputSources.forEach( inputSource => {
-                    console.log("3")
                     const gp = inputSource.gamepad;
                     const thumbstick = (this.type=='thumbstick');
                     const offset = (thumbstick) ? 2 : 0;
@@ -589,7 +585,7 @@ class App{
 
                     var both = 0
                     if ( inputSource.handedness == 'right'){
-                        console.log("right")
+                        // console.log("right")
                         // this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
                         if(gp.axes[offset] > 0) {
                             this.dir = 1
@@ -603,7 +599,7 @@ class App{
                         }
                     }else if ( inputSource.handedness == 'left'){
                         // this.lsphere.position.set( -0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
-                        console.log("left")
+                        // console.log("left")
                         if(gp.axes[offset] > 0) {
                             this.dir = 1
                             console.log("left right")
