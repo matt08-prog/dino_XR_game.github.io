@@ -76,6 +76,7 @@ class App{
         this.nodeSelected = false
         this.dir = 0
         this.rad = 2.5
+        this.both = 0
 
         this.radius = 0.08;
         var geometry = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
@@ -583,38 +584,42 @@ class App{
                     const btnIndex = (thumbstick) ? 3 : 2;
                     const btnPressed = gp.buttons[btnIndex].pressed;
 
-                    var both = 0
                     if ( inputSource.handedness == 'right'){
                         // console.log("right")
                         // this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
-                        if(gp.axes[offset] > 0) {
+                        if(gp.axes[offset] > 0 && this.both == 0) {
                             this.dir = 1
+                            this.both += 1
                             console.log("right right")
-                        } else if (gp.axes[offset] < 0) {
+                        } else if (gp.axes[offset] < 0 && this.both == 0) {
                             this.dir = -1
+                            this.both += 1
                             console.log("right left")
-                        } else{
-                            both += 1
+                        } else if (this.both == 0){
+                            this.dir = 0
                             console.log("right none")
                         }
                     }else if ( inputSource.handedness == 'left'){
                         // this.lsphere.position.set( -0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
                         // console.log("left")
-                        if(gp.axes[offset] > 0) {
+                        if(gp.axes[offset] > 0 && this.both == 0) {
                             this.dir = 1
+                            this.both += 1
                             console.log("left right")
-                        } else if (gp.axes[offset] < 0) {
+                        } else if (gp.axes[offset] < 0 && this.both == 0) {
                             this.dir = -1
+                            this.both += 1
                             console.log("left left")
                         } else {
-                            both += 1
+                            this.dir = 0
                             console.log("left none")
                         }
                     }
-                    if (both == 2) {
-                        this.dir = 0
-                    }
                 })
+                if (this.both == 2) {
+                    this.dir = 0
+                }
+                this.both = 0
             }
 
             if (this.dir == -1) {
