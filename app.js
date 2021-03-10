@@ -549,7 +549,7 @@ class App{
 
         if (this.renderer.xr.isPresenting){
             const session = this.renderer.xr.getSession();
-            const inputSrc = session.inputSources;
+            const inputSources = session.inputSources;
             const self = this; 
             console.log("1")
             if ( this.getInputSources ){    
