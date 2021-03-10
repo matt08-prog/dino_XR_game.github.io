@@ -309,7 +309,7 @@ class App{
         this.controllers = {};
         this.controllers.right = this.buildController( 0, line, modelFactory );
         this.controllers.left = this.buildController( 1, line, modelFactory );
-        this.dolly.position.set(0,1.6,0.3)
+        this.dolly.position.set(0,0,0.6)
     }
     
     buildController( index, line, modelFactory ){
