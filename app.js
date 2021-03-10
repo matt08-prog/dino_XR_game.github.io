@@ -616,9 +616,6 @@ class App{
                         }
                     }
                 })
-                if (this.both == 2) {
-                    this.dir = 0
-                }
                 this.both = 0
             }
 
