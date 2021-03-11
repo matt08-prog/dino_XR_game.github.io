@@ -93,6 +93,6 @@ class Radio{
                 // document.querySelector(".station_name").innerHTML = stationName;
             });
     }
-
-
 }
+
+export { Radio };
