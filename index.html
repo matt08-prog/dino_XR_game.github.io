@@ -24,9 +24,11 @@
         <script src="./libs/fas.js"></script>
         <script type="module">
             import { App } from './app.js';
+            import { Radio } from './radio.js';
 
             document.addEventListener("DOMContentLoaded", function(){
-                const app = new App();
+                const app = new App()
+                const radio = new Radio()
                 window.app = app;
             });
         </script>

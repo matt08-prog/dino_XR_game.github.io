@@ -116,14 +116,11 @@ class App{
             console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
         } )
 
-        //this.nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.002, 2 );
-        //this.nodeGeometry = new THREE.BoxGeometry(0.002, 0.002, 0.01)
         this.nodeGeometry = new THREE.BoxGeometry(0.002, 0.002, 0.01)
         this.nodeMaterial = new THREE.MeshLambertMaterial( { color: 0x00FF82 } )
         this.geom = new THREE.Geometry()
         $.getJSON("./Assets/coords.json", function(data) {
             self.allQuestions = data;
-            //console.log(self.allQuestions)
         }).then( () => {
             self.allQuestions.forEach( (value) => {
                 this.addNode(value.latitude, value.longitude, this.radius, self)
@@ -150,10 +147,8 @@ class App{
         node.lookAt(new THREE.Vector3(0, 0, 0))
         self.positions.push(new THREE.Vector3(node.position.x, node.position.y, node.position.z))
 
-        //self.earth.add( node );
         node.updateMatrix()
         self.geom.merge(node.geometry, node.matrix)
-        //THREE.GeometryUtils.merge(self.geom, node)
     }
 
     createUI(){
@@ -183,10 +178,6 @@ class App{
         })
         
         this.buttonStates = buttonStates;
-        //console.log(this.buttonStates)
-        // this.buttonStates.forEach( (it) => {
-        //     console.log(it)
-        // })
     }
     
     updateUI(){
@@ -480,8 +471,6 @@ class App{
 	render( ) {   
         
         const dt = this.clock.getDelta();
-        // this.dolly.position.set(0,1.6,0.3)
-
         if (this.renderer.xr.isPresenting){
             const session = this.renderer.xr.getSession();
             const inputSources = session.inputSources;
@@ -521,7 +510,6 @@ class App{
 
                         if ( inputSource.handedness == 'right'){
                             console.log("right")
-                            // this.rsphere.position.set( 0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
                             if(gp.axes[offset] > 0) {
                                 this.dir = 1
                                 this.both += 1
@@ -535,7 +523,6 @@ class App{
                                 console.log("right none")
                             }
                         }else if ( inputSource.handedness == 'left'){
-                            // this.lsphere.position.set( -0.5, 1.6, -1 ).add( this.vec3.set( gp.axes[offset], -gp.axes[offset + 1], 0 ));
                             console.log("left")
                             if(gp.axes[offset] > 0 && this.both == 0) {
                                 this.dir = 1
@@ -562,12 +549,8 @@ class App{
             }
 
             if (this.dir == -1) {
-                //this.rotation -= 0.01
-                //this.earth.rotateY(-0.01)
                 this.orbitOrigin.rotateY(-0.01)
             } else if(this.dir == 1) {
-                //this.rotation += 0.01
-                //this.earth.rotateY(0.01)
                 this.orbitOrigin.rotateY(0.01)
     
             }
