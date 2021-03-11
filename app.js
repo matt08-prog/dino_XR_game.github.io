@@ -19,6 +19,7 @@ const DEFAULT_PROFILE = 'generic-trigger';
 
 class App{
 	constructor(){
+        this.radio = new Radio()
 		const container = document.createElement( 'div' );
 		document.body.appendChild( container );
         
