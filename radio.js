@@ -57,6 +57,7 @@ class Radio{
 
     LoadNewTrack(link){
 		this.player.setAttribute("src", link);
+        console.log(link)
 		if(this.playing == true)
 		{
 			this.audio.load();
