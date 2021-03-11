@@ -197,62 +197,6 @@ class App{
             this.strStates = str;
         }
     }
-    
-    updateGamepadState(){
-        // const session = this.renderer.xr.getSession();
-        // const inputSrc = session.inputSources;
-        // var self = this
-        // inputSrc.forEach(( inputSource ) => {
-        //     //console.log(inputSource)
-        //     if (inputSource && inputSource.gamepad && this.gamepadIndices && this.ui && this.buttonStates){
-        //         //(inputSource.handedness)
-        //         // if (inputSource.handedness == "left") {
-        //         //     const inputSource = session.inputSources[0];
-        //         //     console.log("left     0")
-        //         // } else {
-        //         //     const inputSource = session.inputSources[1];
-        //         //     console.log("right    1")
-        //         // }
-        //         const gamepad = inputSource.gamepad;
-        //         try{
-        //             Object.entries( this.buttonStates ).forEach( ( [ key, value ] ) => {
-        //                 // console.log(key)
-        //                 const buttonIndex = this.gamepadIndices[key].button;
-        //                 if ( key.indexOf('touchpad')!=-1 || key.indexOf('thumbstick')!=-1){
-        //                     const xAxisIndex = this.gamepadIndices[key].xAxis;
-        //                     const yAxisIndex = this.gamepadIndices[key].yAxis;
-        //                     this.buttonStates[key].button = gamepad.buttons[buttonIndex].value; 
-        //                     this.buttonStates[key].xAxis = gamepad.axes[xAxisIndex].toFixed(2); 
-        //                     if (this.buttonStates[key].xAxis < 0) {
-        //                         self.dir = -1
-        //                     } else if (this.buttonStates[key].xAxis > 0){
-        //                         self.dir = 1
-        //                     } else {
-        //                         self.dir = 0
-        //                     }
-        //                     this.buttonStates[key].yAxis = gamepad.axes[yAxisIndex].toFixed(2); 
-        //                 }else{
-        //                     this.buttonStates[key] = gamepad.buttons[buttonIndex].value;
-        //                     // if (this.buttonStates[key])
-        //                 }
-        //                 // console.log(this.buttonStates)
-        //                 if(this.buttonStates.a_button == 1 && 
-        //                     this.buttonStates.xr_standard_trigger == 1 && 
-        //                     self.loading == false) {
-        //                     self.nodeSelected = true
-        //                 }
-        //                 // if(this.buttonStates[key].xr_standard_trigger == 1) {
-        //                 //     console.log("changed")
-        //                 //     self.nodeSelected = true
-        //                 // }
-        //                 this.updateUI();
-        //             });
-        //         }catch(e){
-        //             console.warn(e);
-        //         }
-        //     }
-        // })
-    }
 
     calcPosFromLatLonRad(lat,lon,radius){
   
@@ -277,9 +221,7 @@ class App{
         function onConnected( event ){
             const info = {};
             
-            fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {
-               // console.log( JSON.stringify(profile));
-                
+            fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
                 info.name = profile.profileId;
                 info.targetRayMode = event.data.targetRayMode;
 
@@ -293,8 +235,6 @@ class App{
 
                 self.createButtonStates( info.right );
                 
-                //console.log( JSON.stringify(info) );
-
                 self.updateControllers( info );
 
             } );
@@ -521,12 +461,6 @@ class App{
                     })
 
                     var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
-                    // var geometry1 = new THREE.IcosahedronBufferGeometry( 0.0, 2 );
-                    // var object1 = new THREE.Mesh( geometry1, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    // object1.position.x = self.positions[dists.indexOf(shortestDist)].x
-                    // object1.position.y = self.positions[dists.indexOf(shortestDist)].y
-                    // object1.position.z = self.positions[dists.indexOf(shortestDist)].z
-                    // this.scene.add(object1)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
                 }
@@ -645,10 +579,6 @@ class App{
             } 
             if (this.elapsedTime===undefined) this.elapsedTime = 0;
             this.elapsedTime += dt;
-            if (this.elapsedTime > 0.3){
-                this.updateGamepadState();
-                this.elapsedTime = 0;
-            }
         }else{
             this.stats.update();
         }
