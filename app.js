@@ -521,32 +521,24 @@ class App{
                             if(gp.axes[offset] > 0) {
                                 this.dir = 1
                                 this.both += 1
-                                console.log("right right")
                             } else if (gp.axes[offset] < 0) {
                                 this.dir = -1
                                 this.both += 1
-                                console.log("right left")
                             } else{
                                 this.dir = 0
-                                console.log("right none")
                             }
                         }else if ( inputSource.handedness == 'left'){
                             console.log("left")
                             if(gp.axes[offset] > 0 && this.both == 0) {
                                 this.dir = 1
                                 this.both += 1
-                                console.log("left right")
                             } else if (gp.axes[offset] < 0 && this.both == 0) {
                                 this.dir = -1
                                 this.both += 1
-                                console.log("left left")
                             } else if (this.both == 0){
                                 this.dir = 0
-                                console.log("left none")
                             }
                         }
-                        console.log(gp.buttons[4])
-                        console.log(btnPressed)
 
                         if (gp.buttons[4].pressed == true) {
                             this.nodeSelected = true
