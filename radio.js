@@ -72,7 +72,7 @@ class Radio{
         }
         var proxyurl = "https://cors-anywhere.herokuapp.com/"
         //var proxyurl = "https://cors.io/"
-        var link = "https://radio.garden/api/ara/content/page/" + input.id;
+        var link = "http://radio.garden/api/ara/content/page/" + input.id;
         let setting = { method: "Get"};
         fetch(proxyurl + link, setting)
             .then(res => res.json())
