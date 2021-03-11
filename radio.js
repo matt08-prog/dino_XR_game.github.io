@@ -25,6 +25,7 @@ class Radio{
         this.wasPlaying = false;
         this.station;
         this.reset = true;
+        console.log("radio")
     }
 
     PlayAudio()
