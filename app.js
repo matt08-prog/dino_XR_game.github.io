@@ -455,8 +455,8 @@ class App{
                     var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
                     var dat =
                         {
-                            latitude : Latitude,
-                            longitude : Longitude,
+                            latitude : finalPos.latitude,
+                            longitude : finalPos.longitude,
                             id : finalPos.id
                         }
                     radio.getStation(dat)
