@@ -517,7 +517,6 @@ class App{
                         const btnPressed = gp.buttons[btnIndex].pressed;
 
                         if ( inputSource.handedness == 'right'){
-                            console.log("right")
                             if(gp.axes[offset] > 0) {
                                 this.dir = 1
                                 this.both += 1
@@ -528,7 +527,6 @@ class App{
                                 this.dir = 0
                             }
                         }else if ( inputSource.handedness == 'left'){
-                            console.log("left")
                             if(gp.axes[offset] > 0 && this.both == 0) {
                                 this.dir = 1
                                 this.both += 1
