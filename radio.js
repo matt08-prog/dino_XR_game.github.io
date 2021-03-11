@@ -25,7 +25,7 @@ class Radio{
         this.wasPlaying = false;
         this.station;
         this.reset = true;
-        console.log("radio")
+        // console.log("radio")
     }
 
     PlayAudio()
@@ -64,14 +64,14 @@ class Radio{
 		}
 	}
 
-    getStation(obj, input){
+    getStation(input){
         if (this.reset)
         {
             this.reset = false;
-            this.station = CheckDists(input.latitude, input.longitude, obj);
-      }
+            // this.station = CheckDists(input.latitude, input.longitude, obj);
+        }
         var proxyurl = "https://cors-anywhere.herokuapp.com/"
-        var link = "http://radio.garden/api/ara/content/page/" + station.id;
+        var link = "http://radio.garden/api/ara/content/page/" + input.id;
         let setting = { method: "Get"};
         fetch(proxyurl + link, setting)
             .then(res => res.json())

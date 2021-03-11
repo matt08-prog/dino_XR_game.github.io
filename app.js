@@ -12,6 +12,7 @@ import {
 	fetchProfile,
 	MotionController
 } from './libs/three/jsm/motion-controllers.module.js';
+import { Radio } from './radio.js';
 
 const DEFAULT_PROFILES_PATH = 'https://cdn.jsdelivr.net/npm/@webxr-input-profiles/assets@1.0/dist/profiles';
 const DEFAULT_PROFILE = 'generic-trigger';
@@ -452,6 +453,13 @@ class App{
                     })
 
                     var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
+                    var dat =
+                        {
+                            latitude : Latitude,
+                            longitude : Longitude,
+                            id : finalPos.id
+                        }
+                    radio.getStation(dat)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
 
                 }
