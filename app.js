@@ -461,14 +461,12 @@ class App{
                         }
                     radio.getStation(dat)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
-
                 }
             }else{
                 controller.children[0].scale.z = 0;
             }
         }
     }
-    
     
     resize(){
         this.camera.aspect = window.innerWidth / window.innerHeight;
