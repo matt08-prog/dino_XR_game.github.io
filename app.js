@@ -460,7 +460,7 @@ class App{
                             longitude : finalPos.longitude,
                             id : finalPos.id
                         }
-                    radio.getStation(dat)
+                    this.radio.getStation(dat)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
                 }
             }else{
