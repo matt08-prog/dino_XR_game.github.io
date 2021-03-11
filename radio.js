@@ -70,8 +70,8 @@ class Radio{
             this.reset = false;
             // this.station = CheckDists(input.latitude, input.longitude, obj);
         }
-        // var proxyurl = "https://cors-anywhere.herokuapp.com/"
-        var proxyurl = "https://cors.io/"
+        var proxyurl = "https://cors-anywhere.herokuapp.com/"
+        //var proxyurl = "https://cors.io/"
         var link = "https://radio.garden/api/ara/content/page/" + input.id;
         let setting = { method: "Get"};
         fetch(proxyurl + link, setting)
