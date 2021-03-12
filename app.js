@@ -226,10 +226,10 @@ class App{
             const info = {};
             self.listener = new THREE.AudioListener()
             self.sound = new THREE.PositionalAudio( self.listener )
-            self.globe.add( sound )
             self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             self.camera.add( self.listener )
             self.mediaElement.play()
+            self.globe.add( self.sound )
             console.log("playing")
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
