@@ -230,6 +230,7 @@ class App{
         function onConnected( event ){
             const info = {};
             self.mediaElement.play()
+            console.log("playing")
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
                 info.name = profile.profileId;
