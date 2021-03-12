@@ -152,7 +152,7 @@ class App{
         var mediaElement = new Audio(link)
         mediaElement.crossOrigin = "anonymous"
         mediaElement.loop = true
-        mediaElement.play()
+        // mediaElement.play()
         this.sound.setMediaElementSource( mediaElement )
     }
 
@@ -221,6 +221,7 @@ class App{
     }
 
     setupXR(){
+        this.sound.play()
         this.renderer.xr.enabled = true;
         
         const button = new VRButton( this.renderer );
