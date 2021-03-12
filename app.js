@@ -221,7 +221,6 @@ class App{
     }
 
     setupXR(){
-        this.mediaElement.play()
         this.renderer.xr.enabled = true;
         
         const button = new VRButton( this.renderer );
@@ -230,7 +229,8 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            
+            this.mediaElement.play()
+
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
                 info.name = profile.profileId;
                 info.targetRayMode = event.data.targetRayMode;
