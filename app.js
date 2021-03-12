@@ -149,11 +149,11 @@ class App{
     setSound(link) {
         // var audioSourceNode = audioContext.createMediaStreamSource(stream);
         // this.sound.setMediaStreamSource(audioSourceNode)
-        var mediaElement = new Audio(link)
-        mediaElement.crossOrigin = "anonymous"
-        mediaElement.loop = true
+        this.mediaElement = new Audio(link)
+        this.mediaElement.crossOrigin = "anonymous"
+        this.mediaElement.loop = true
         // mediaElement.play()
-        this.sound.setMediaElementSource( mediaElement )
+        this.sound.setMediaElementSource( this.mediaElement )
     }
 
     addNode(lat, lon, radius, self){
@@ -221,7 +221,7 @@ class App{
     }
 
     setupXR(){
-        this.sound.play()
+        this.mediaElement.play()
         this.renderer.xr.enabled = true;
         
         const button = new VRButton( this.renderer );
