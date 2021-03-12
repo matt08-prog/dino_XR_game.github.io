@@ -22,7 +22,7 @@ class App{
         this.radio = new Radio(this)
 		const container = document.createElement( 'div' );
 		document.body.appendChild( container );
-        
+        this.THREE = THREE
         this.clock = new THREE.Clock();
         this.orbitOrigin = new THREE.Object3D()
         this.dolly = new THREE.Object3D()
@@ -225,9 +225,9 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            self.sound = new THREE.Audio( self.listener )
+            self.sound = new self.THREE.Audio( self.listener )
             self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            self.listener = new THREE.AudioListener()
+            self.listener = new self.THREE.AudioListener()
             self.camera.add( self.listener )
             self.mediaElement.play()
             console.log("playing")
