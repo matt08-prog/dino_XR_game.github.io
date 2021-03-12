@@ -28,9 +28,7 @@ class App{
         this.dolly = new THREE.Object3D()
         this.dolly.position.set(0,0,0)
         this.orbitOrigin.position.set(0,0,0)
-        this.listener = new THREE.AudioListener()
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
-        this.camera.add( this.listener )
 		this.camera.position.set( 0, 0, 0);
         this.dolly.add( this.camera )
 		this.scene = new THREE.Scene();
@@ -78,7 +76,6 @@ class App{
     
     initScene(){
         this.sound = new THREE.Audio( this.listener )
-        this.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
         this.loading = false
         this.nodeSelected = false
         this.dir = 0
@@ -229,6 +226,9 @@ class App{
         
         function onConnected( event ){
             const info = {};
+            self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            self.listener = new THREE.AudioListener()
+            self.camera.add( self.listener )
             self.mediaElement.play()
             console.log("playing")
 
