@@ -119,7 +119,7 @@ class App{
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
             self.globe = new THREE.Mesh( geometry, material );
             self.earth.add( self.globe );
-            self.globe.add(sound)
+            //self.globe.add(sound)
             const bbox = new THREE.Box3().setFromObject( self.globe );
             console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
         } )
@@ -147,9 +147,13 @@ class App{
     }
 
     setSound(link) {
-        this.sound.setMediaStreamSource(link)
-        this.setRefDistance( 20 )
-        this.sound.play()
+        // var audioSourceNode = audioContext.createMediaStreamSource(stream);
+        // this.sound.setMediaStreamSource(audioSourceNode)
+        var mediaElement = new Audio(link)
+        mediaElement.crossOrigin = "anonymous"
+        mediaElement.loop = true
+        mediaElement.play()
+        this.sound.setMediaElementSource( mediaElement )
     }
 
     addNode(lat, lon, radius, self){
