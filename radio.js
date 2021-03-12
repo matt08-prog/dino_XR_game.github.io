@@ -1,5 +1,6 @@
 class Radio{
-    constructor() {
+    constructor(app) {
+        this.app = app
         this.index = 0;
         this.next = true;
         this.Data;

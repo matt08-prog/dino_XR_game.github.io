@@ -19,7 +19,7 @@ const DEFAULT_PROFILE = 'generic-trigger';
 
 class App{
 	constructor(){
-        this.radio = new Radio()
+        this.radio = new Radio(this)
 		const container = document.createElement( 'div' );
 		document.body.appendChild( container );
         
@@ -28,7 +28,9 @@ class App{
         this.dolly = new THREE.Object3D()
         this.dolly.position.set(0,0,0)
         this.orbitOrigin.position.set(0,0,0)
+        this.listener = new THREE.AudioListener()
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
+        this.camera.add( this.listener )
 		this.camera.position.set( 0, 0, 0);
         this.dolly.add( this.camera )
 		this.scene = new THREE.Scene();
@@ -68,12 +70,15 @@ class App{
         
         this.renderer.setAnimationLoop( this.render.bind(this) );
 	}	
+
     
     random( min, max ){
         return Math.random() * (max-min) + min;
     }
     
     initScene(){
+        this.sound = new THREE.Audio( this.listener )
+        this.setSound("http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
         this.loading = false
         this.nodeSelected = false
         this.dir = 0
@@ -114,6 +119,7 @@ class App{
             var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
             self.globe = new THREE.Mesh( geometry, material );
             self.earth.add( self.globe );
+            self.globe.add(sound)
             const bbox = new THREE.Box3().setFromObject( self.globe );
             console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
         } )
@@ -138,6 +144,12 @@ class App{
         this.scene.add(this.highlight);
 
         this.ui = this.createUI();
+    }
+
+    setSound(link) {
+        this.sound.setMediaStreamSource(link)
+        this.setRefDistance( 20 )
+        this.sound.play()
     }
 
     addNode(lat, lon, radius, self){
