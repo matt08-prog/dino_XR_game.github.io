@@ -75,7 +75,6 @@ class App{
     }
     
     initScene(){
-        this.sound = new THREE.Audio( this.listener )
         this.loading = false
         this.nodeSelected = false
         this.dir = 0
@@ -226,6 +225,7 @@ class App{
         
         function onConnected( event ){
             const info = {};
+            self.sound = new THREE.Audio( self.listener )
             self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             self.listener = new THREE.AudioListener()
             self.camera.add( self.listener )
