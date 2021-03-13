@@ -255,7 +255,7 @@ class App{
             const mediaElement = new Audio( file );
             mediaElement.play();
 
-            audio.setMediaElementSource( mediaElement );
+            // audio.setMediaElementSource( mediaElement );
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
                 info.name = profile.profileId;
