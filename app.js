@@ -226,13 +226,13 @@ class App{
             const info = {};
             console.log("playing out")
 
-            self.listener = new THREE.AudioListener()
-            self.sound = new THREE.Audio( self.listener )
-            self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            self.mediaElement.crossOrigin = "anonymous"
-            self.mediaElement.loop = true
-            mediaElement.play()
-            self.sound.setMediaElementSource( self.mediaElement )
+            // self.listener = new THREE.AudioListener()
+            // self.sound = new THREE.Audio( self.listener )
+            // self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            // self.mediaElement.crossOrigin = "anonymous"
+            // self.mediaElement.loop = true
+            // mediaElement.play()
+            // self.sound.setMediaElementSource( self.mediaElement )
 
             // self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             // self.sound.setRefDistance(20)
