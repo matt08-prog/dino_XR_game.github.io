@@ -236,6 +236,8 @@ class App{
                 self.globe.add( self.sound )
                 console.log("playing")
             })
+            console.log("playing out")
+
 
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
