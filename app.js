@@ -226,19 +226,21 @@ class App{
             const info = {};
             self.listener = new THREE.AudioListener()
             self.sound = new THREE.PositionalAudio( self.listener )
-            // self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            const audioLoader = new THREE.AudioLoader()
-            audioLoader.load("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", function ( buffer ) {
-                sound.setBuffer( buffer )
-                self.sound.setRefDistance(1)
-                self.camera.add( self.listener )
-                self.mediaElement.play()
-                self.globe.add( self.sound )
-                console.log("playing")
-            })
-            console.log("playing out")
+            self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            self.sound.setRefDistance(1)
+            self.camera.add( self.listener )
+            self.mediaElement.play()
+            self.globe.add( self.sound )
+            console.log("playing")
 
-
+            // audioLoader.load("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", function ( buffer ) {
+            //     sound.setBuffer( buffer )
+            //     self.sound.setRefDistance(1)
+            //     self.camera.add( self.listener )
+            //     self.mediaElement.play()
+            //     self.globe.add( self.sound )
+            //     console.log("playing")
+            // })
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
                 info.name = profile.profileId;
