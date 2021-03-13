@@ -141,16 +141,6 @@ class App{
         this.ui = this.createUI();
     }
 
-    setSound(link) {
-        // var audioSourceNode = audioContext.createMediaStreamSource(stream);
-        // this.sound.setMediaStreamSource(audioSourceNode)
-        this.mediaElement = new Audio(link)
-        this.mediaElement.crossOrigin = "anonymous"
-        this.mediaElement.loop = true
-        // mediaElement.play()
-        this.sound.setMediaElementSource( this.mediaElement )
-    }
-
     addNode(lat, lon, radius, self){
         const node = new THREE.Mesh( self.nodeGeometry, self.nodeMaterial );
 	
@@ -215,6 +205,16 @@ class App{
     
     }
 
+    setSound(link) {
+        // var audioSourceNode = audioContext.createMediaStreamSource(stream);
+        // this.sound.setMediaStreamSource(audioSourceNode)
+        this.mediaElement = new Audio(link)
+        this.mediaElement.crossOrigin = "anonymous"
+        this.mediaElement.loop = true
+        // mediaElement.play()
+        this.sound.setMediaElementSource( this.mediaElement )
+    }
+
     setupXR(){
         this.renderer.xr.enabled = true;
         
@@ -251,9 +251,6 @@ class App{
             // })
 
             const file = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
-            const listener = new THREE.AudioListener();
-
-            const audio = new THREE.Audio( listener );
 
             const mediaElement = new Audio( file );
             mediaElement.play();
