@@ -224,7 +224,7 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            console.log("playing")
+            console.log("playing out")
 
             self.listener = new THREE.AudioListener()
             self.sound = new THREE.Audio( self.listener )
