@@ -253,7 +253,7 @@ class App{
             self.mediaElement = new Audio( file );
             self.mediaElement.crossOrigin = "anonymous"
             self.mediaElement.loop = true
-            mediaElement.play();
+            self.mediaElement.play();
             audio.setMediaElementSource( mediaElement );
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
