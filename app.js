@@ -227,7 +227,7 @@ class App{
             self.listener = new THREE.AudioListener()
             self.sound = new THREE.PositionalAudio( self.listener )
             self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            self.sound.setRefDistance(1)
+            self.sound.setRefDistance(20)
             self.camera.add( self.listener )
             self.mediaElement.play()
             self.globe.add( self.sound )
