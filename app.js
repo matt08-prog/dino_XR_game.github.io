@@ -249,14 +249,12 @@ class App{
             //     console.log("playing")
             // })
 
-            // self.listener = new THREE.AudioListener()
-            // self.sound = new THREE.Audio( self.listener )
             // const file = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
             // self.mediaElement = new Audio( file );
             // self.mediaElement.crossOrigin = "anonymous"
             // self.mediaElement.loop = true
             // self.mediaElement.play();
-            // self.sound.setMediaElementSource( self.mediaElement );
+            // audio.setMediaElementSource( mediaElement );
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
                 info.name = profile.profileId;
