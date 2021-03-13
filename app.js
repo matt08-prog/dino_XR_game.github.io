@@ -224,21 +224,20 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            // self.listener = new THREE.AudioListener()
-            // self.sound = new THREE.Audio( self.listener )
+            self.listener = new THREE.AudioListener()
+            self.sound = new THREE.Audio( self.listener )
 
-            // self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            // self.mediaElement.crossOrigin = "anonymous"
-            // self.mediaElement.loop = true
+            self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            self.mediaElement.crossOrigin = "anonymous"
+            self.mediaElement.loop = true
             // mediaElement.play()
-            // self.sound.setMediaElementSource( self.mediaElement )
+            self.sound.setMediaElementSource( self.mediaElement )
 
-            // const stereoNode = new StereoPannerNode(audioContext, { pan: 0 });
 
             // self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             // self.sound.setRefDistance(20)
             // self.camera.add( self.listener )
-            // self.mediaElement.play()
+            self.mediaElement.play()
             // self.globe.add( self.sound )
             console.log("playing")
             // self.audio = document.querySelector(".radio_player");
@@ -250,24 +249,6 @@ class App{
             //     self.globe.add( self.sound )
             //     console.log("playing")
             // })
-
-            // for legacy browsers
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-
-            const audioContext = new AudioContext();
-
-            // get the audio element
-            const audioElement = document.querySelector('audio');
-            audioElement.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
-            // pass it into the audio context
-            const track = audioContext.createMediaElementSource(audioElement);
-
-            const stereoNode = new StereoPannerNode(audioContext, { pan: 0 });
-
-            track.connect(stereoNode).connect(audioContext.destination);
-
-            audioElement.play()
-
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
                 info.name = profile.profileId;
