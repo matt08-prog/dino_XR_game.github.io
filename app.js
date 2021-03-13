@@ -254,7 +254,7 @@ class App{
             self.mediaElement.crossOrigin = "anonymous"
             self.mediaElement.loop = true
             self.mediaElement.play();
-            self.mediaElement.setMediaElementSource( mediaElement );
+            self.mediaElement.setMediaElementSource( self.mediaElement );
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
                 info.name = profile.profileId;
