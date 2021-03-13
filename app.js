@@ -228,7 +228,7 @@ class App{
 
             self.listener = new THREE.AudioListener()
             self.sound = new THREE.Audio( self.listener )
-            self.mediaElement = new Audio("https://cors-proxy.htmldriven.com/?url=http://radio.garden/api/ara/content/listen/bLh0ZBR6/channel.mp3")
+            self.mediaElement = new Audio("https://cors-proxy.htmldriven.com/?url=http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             self.mediaElement.crossOrigin = "anonymous"
             self.mediaElement.loop = true
             self.mediaElement.play()
