@@ -224,20 +224,20 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            self.listener = new THREE.AudioListener()
-            self.sound = new THREE.Audio( self.listener )
+            // self.listener = new THREE.AudioListener()
+            // self.sound = new THREE.Audio( self.listener )
 
-            self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            self.mediaElement.crossOrigin = "anonymous"
-            self.mediaElement.loop = true
+            // self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            // self.mediaElement.crossOrigin = "anonymous"
+            // self.mediaElement.loop = true
             // mediaElement.play()
-            self.sound.setMediaElementSource( self.mediaElement )
+            // self.sound.setMediaElementSource( self.mediaElement )
 
 
             // self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             // self.sound.setRefDistance(20)
             // self.camera.add( self.listener )
-            self.mediaElement.play()
+            // self.mediaElement.play()
             // self.globe.add( self.sound )
             console.log("playing")
             // self.audio = document.querySelector(".radio_player");
@@ -249,6 +249,16 @@ class App{
             //     self.globe.add( self.sound )
             //     console.log("playing")
             // })
+
+            const file = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
+            const listener = new THREE.AudioListener();
+
+            const audio = new THREE.Audio( listener );
+
+            const mediaElement = new Audio( file );
+            mediaElement.play();
+
+            audio.setMediaElementSource( mediaElement );
 
             fetchProfile( event.data, DEFAULT_PROFILES_PATH, DEFAULT_PROFILE ).then( ( { profile, assetPath } ) => {                
                 info.name = profile.profileId;
