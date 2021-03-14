@@ -228,6 +228,7 @@ class App{
 
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open( "GET", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", false ); // false for synchronous request
+            console.log(xmlHttp);
             xmlHttp.send( null );
             console.log(xmlHttp.responseText);
 
