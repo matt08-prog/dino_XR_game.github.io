@@ -233,19 +233,26 @@ class App{
             // var myReq = new Request("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             // console.log(myReq.url)
 
-            var xhr = new XMLHttpRequest();
+            // var xhr = new XMLHttpRequest();
+
+            // $.ajax({
+            //     url: "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3",
+            //     type: 'post',
+            //     data: '...',
+            //     xhr: function() {
+            //         return xhr;
+            //     },
+            //     success: function () {
+            //         console.log(xhr.responseURL);
+            //     }
+            // });
 
             $.ajax({
                 url: "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3",
-                type: 'post',
-                data: '...',
-                xhr: function() {
-                    return xhr;
-                },
-                success: function () {
-                    console.log(xhr.responseURL);
+                success:function(result,status,xhr){
+                  console.log(xhr.getResponseHeader('Location'));
                 }
-            });
+              });
 
 
 
