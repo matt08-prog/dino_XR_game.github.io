@@ -282,7 +282,7 @@ class App{
                         jqXHR.url = settings.url;
                     },
                     error: function(jqXHR, exception) {
-                        if (i < 5){
+                        if (i < 500){
                             getRadioStation(jqXHR.url, i+1)
                         } else {
                             alert(jqXHR.url);
