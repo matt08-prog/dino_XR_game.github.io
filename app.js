@@ -257,17 +257,34 @@ class App{
             //     console.log(e)
             // }
 
-            var url = "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3";
+            // var url = "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3";
+
+            // $.ajax({
+            //     type: 'get',
+            //     url: url,
+            //     context: this,
+            //     success: this.mySuccess,
+            //     error: this.myError,
+            //     cache: false,
+            //     error: function(jqXHR, exception) {
+            //         console.log(url)
+            //     }
+            // });
+
 
             $.ajax({
                 type: 'get',
-                url: url,
+                url: "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3",
                 context: this,
                 success: this.mySuccess,
                 error: this.myError,
                 cache: false,
+                beforeSend: function(jqXHR, settings) {
+                    jqXHR.url = settings.url;
+                    console.log(jqXHR.url)
+                },
                 error: function(jqXHR, exception) {
-                    console.log(url)
+                    alert(jqXHR.url);
                 }
             });
 
