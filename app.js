@@ -246,16 +246,30 @@ class App{
             //         console.log(xhr.responseURL);
             //     }
             // });
-            try {
-                $.ajax({
-                    url: "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3",
-                    success:function(result,status,xhr){
-                    console.log(xhr.getResponseHeader('Location'));
-                    }
-                });
-            } catch (e) {
-                console.log(e)
-            }
+            // try {
+            //     $.ajax({
+            //         url: "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3",
+            //         success:function(result,status,xhr){
+            //         console.log(xhr.getResponseHeader('Location'));
+            //         }
+            //     });
+            // } catch (e) {
+            //     console.log(e)
+            // }
+
+            var url = "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3";
+
+            $.ajax({
+                type: 'get',
+                url: url,
+                context: this,
+                success: this.mySuccess,
+                error: this.myError,
+                cache: false,
+                error: function(jqXHR, exception) {
+                    console.log(url)
+                }
+            });
 
 
 
