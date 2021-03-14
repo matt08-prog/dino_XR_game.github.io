@@ -224,11 +224,11 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            console.log("playing out")
+            console.log(decodeURIComponent("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"));
 
-            fetch("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3").then((res) => {
-                console.log(res.url)
-            })
+            // fetch("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3").then((res) => {
+            //     console.log(res.url)
+            // })
 
             // var xmlHttp = new XMLHttpRequest();
             // xmlHttp.open( "GET", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", false ); // false for synchronous request
