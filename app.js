@@ -230,8 +230,24 @@ class App{
             //     console.log(res.request.uri.href)
             // })
 
-            var myReq = new Request("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            console.log(myReq.url)
+            // var myReq = new Request("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            // console.log(myReq.url)
+
+            var xhr = new XMLHttpRequest();
+
+            $.ajax({
+                url: '/url',
+                type: 'post',
+                data: '...',
+                xhr: function() {
+                    return xhr;
+                },
+                success: function () {
+                    console.log(xhr.responseURL);
+                }
+            });
+
+
 
             // var xmlHttp = new XMLHttpRequest();
             // xmlHttp.open( "GET", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", false ); // false for synchronous request
