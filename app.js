@@ -298,7 +298,23 @@ class App{
                             console.log(jqXHR.url)
                         },
                         error: function(jqXHR, exception) {
-                            alert(jqXHR.url);
+                            console.log(jqXHR.url)
+                            var thirdURL = jqXHR.url
+
+                            $.ajax({
+                                type: 'get',
+                                url: thirdURL,
+                                context: this,
+                                success: this.mySuccess,
+                                error: this.myError,
+                                cache: false,
+                                beforeSend: function(jqXHR, settings) {
+                                    jqXHR.url = settings.url;
+                                },
+                                error: function(jqXHR, exception) {
+                                    alert(jqXHR.url);
+                                }
+                            });
                         }
                     });
                 }
