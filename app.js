@@ -287,6 +287,7 @@ class App{
                         } else {
                             // alert(context.url);
                             alert(this.url)
+                            alert(exception.url)
                         }
                     }
                 });
