@@ -275,8 +275,8 @@ class App{
                     type: 'get',
                     url: 'https://google.com',
                     context: this,
-                    success: this.mySuccess,
-                    error: this.myError,
+                    // success: this.mySuccess,
+                    // error: this.myError,
                     cache: false,
                     beforeSend: function(jqXHR, settings) {
                         jqXHR.url = settings.url;
