@@ -285,7 +285,7 @@ class App{
                         if (i < 1){
                             getRadioStation(jqXHR.url, i+1)
                         } else {
-                            alert(context.url);
+                            // alert(context.url);
                             alert(this.url)
                         }
                     }
