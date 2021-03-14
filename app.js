@@ -226,9 +226,9 @@ class App{
             const info = {};
             console.log(decodeURIComponent("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"));
 
-            // fetch("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3").then((res) => {
-            //     console.log(res.url)
-            // })
+            fetch("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3").then((res) => {
+                console.log(res.request.uri.href)
+            })
 
             // var xmlHttp = new XMLHttpRequest();
             // xmlHttp.open( "GET", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", false ); // false for synchronous request
