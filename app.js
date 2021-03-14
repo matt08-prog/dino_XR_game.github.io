@@ -270,55 +270,76 @@ class App{
             //         console.log(url)
             //     }
             // });
-
-
-            $.ajax({
-                type: 'get',
-                url: "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3",
-                context: this,
-                success: this.mySuccess,
-                error: this.myError,
-                cache: false,
-                beforeSend: function(jqXHR, settings) {
-                    jqXHR.url = settings.url;
-                    console.log(jqXHR.url)
-                },
-                error: function(jqXHR, exception) {
-                    console.log(jqXHR.url);
-                    var secondURL = jqXHR.url
-                    $.ajax({
-                        type: 'get',
-                        url: secondURL,
-                        context: this,
-                        success: this.mySuccess,
-                        error: this.myError,
-                        cache: false,
-                        beforeSend: function(jqXHR, settings) {
-                            jqXHR.url = settings.url;
-                            console.log(jqXHR.url)
-                        },
-                        error: function(jqXHR, exception) {
-                            console.log(jqXHR.url)
-                            var thirdURL = jqXHR.url
-
-                            $.ajax({
-                                type: 'get',
-                                url: thirdURL,
-                                context: this,
-                                success: this.mySuccess,
-                                error: this.myError,
-                                cache: false,
-                                beforeSend: function(jqXHR, settings) {
-                                    jqXHR.url = settings.url;
-                                },
-                                error: function(jqXHR, exception) {
-                                    alert(jqXHR.url);
-                                }
-                            });
+            function getRadioStation(link, i) {
+                $.ajax({
+                    type: 'get',
+                    url: 'https://google.com',
+                    context: this,
+                    success: this.mySuccess,
+                    error: this.myError,
+                    cache: false,
+                    beforeSend: function(jqXHR, settings) {
+                        jqXHR.url = settings.url;
+                    },
+                    error: function(jqXHR, exception) {
+                        if (i < 5){
+                            getRadioStation(jqXHR.url, i+1)
+                        } else {
+                            alert(jqXHR.url);
                         }
-                    });
-                }
-            });
+                    }
+                });
+            }
+            getRadioStation("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", 0)
+
+
+            // $.ajax({
+            //     type: 'get',
+            //     url: "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3",
+            //     context: this,
+            //     success: this.mySuccess,
+            //     error: this.myError,
+            //     cache: false,
+            //     beforeSend: function(jqXHR, settings) {
+            //         jqXHR.url = settings.url;
+            //         console.log(jqXHR.url)
+            //     },
+            //     error: function(jqXHR, exception) {
+            //         console.log(jqXHR.url);
+            //         var secondURL = jqXHR.url
+            //         $.ajax({
+            //             type: 'get',
+            //             url: secondURL,
+            //             context: this,
+            //             success: this.mySuccess,
+            //             error: this.myError,
+            //             cache: false,
+            //             beforeSend: function(jqXHR, settings) {
+            //                 jqXHR.url = settings.url;
+            //                 console.log(jqXHR.url)
+            //             },
+            //             error: function(jqXHR, exception) {
+            //                 console.log(jqXHR.url)
+            //                 var thirdURL = jqXHR.url
+
+            //                 $.ajax({
+            //                     type: 'get',
+            //                     url: thirdURL,
+            //                     context: this,
+            //                     success: this.mySuccess,
+            //                     error: this.myError,
+            //                     cache: false,
+            //                     beforeSend: function(jqXHR, settings) {
+            //                         jqXHR.url = settings.url;
+            //                     },
+            //                     error: function(jqXHR, exception) {
+            //                         alert(jqXHR.url);
+            //                     }
+            //                 });
+            //             }
+            //         });
+            //     }
+            // });
 
 
 
