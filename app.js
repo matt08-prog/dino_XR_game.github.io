@@ -273,7 +273,7 @@ class App{
             function getRadioStation(link, i) {
                 $.ajax({
                     type: 'get',
-                    url: 'https://google.com',
+                    url: link,
                     context: this,
                     // success: this.mySuccess,
                     // error: this.myError,
