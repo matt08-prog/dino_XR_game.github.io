@@ -226,11 +226,15 @@ class App{
             const info = {};
             console.log("playing out")
 
-            var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", false ); // false for synchronous request
-            console.log(xmlHttp);
-            xmlHttp.send( null );
-            console.log(xmlHttp.responseText);
+            fetch("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3").then((res) => {
+                console.log(res)
+            })
+
+            // var xmlHttp = new XMLHttpRequest();
+            // xmlHttp.open( "GET", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", false ); // false for synchronous request
+            // console.log(xmlHttp);
+            // xmlHttp.send( null );
+            // console.log(xmlHttp.responseText);
 
             // self.listener = new THREE.AudioListener()
             // self.sound = new THREE.Audio( self.listener )
