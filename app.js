@@ -227,7 +227,7 @@ class App{
             console.log("playing out")
 
             fetch("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3").then((res) => {
-                console.log(res)
+                console.log(res.url)
             })
 
             // var xmlHttp = new XMLHttpRequest();
