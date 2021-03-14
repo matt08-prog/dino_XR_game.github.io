@@ -236,7 +236,7 @@ class App{
             var xhr = new XMLHttpRequest();
 
             $.ajax({
-                url: '/url',
+                url: "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3",
                 type: 'post',
                 data: '...',
                 xhr: function() {
