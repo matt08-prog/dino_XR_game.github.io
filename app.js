@@ -282,15 +282,16 @@ class App{
                         jqXHR.url = settings.url;
                     },
                     error: function(jqXHR, exception) {
-                        if (i < 500){
+                        if (i < 1){
                             getRadioStation(jqXHR.url, i+1)
                         } else {
-                            alert(jqXHR.url);
+                            alert(context.url);
+                            alert(this.url)
                         }
                     }
                 });
             }
-            getRadioStation("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", 0)
+            getRadioStation("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", 1)
 
 
             // $.ajax({
