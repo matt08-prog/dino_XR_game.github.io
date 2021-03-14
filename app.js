@@ -227,11 +227,8 @@ class App{
             console.log("playing out")
 
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            .then( (res) => {
-                console.log(res)
-            })
-            // xmlHttp.send( null );
+            xmlHttp.open( "GET", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", false ); // false for synchronous request
+            xmlHttp.send( null );
             console.log(xmlHttp.responseText);
 
             // self.listener = new THREE.AudioListener()
