@@ -224,10 +224,35 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            // lgsrihngrhjhj
+
+            var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            var myAudio = document.querySelector('audio');
+            
+            // Create a MediaElementAudioSourceNode
+            // Feed the HTMLMediaElement into it
+            var source = audioCtx.createMediaElementSource(myAudio);
+            
+            // Create a stereo panner
+            var panNode = audioCtx.createStereoPanner();
+            
+            panNode.pan.value = -1;
+            
+            // connect the AudioBufferSourceNode to the gainNode
+            // and the gainNode to the destination, so we can play the
+            // music and adjust the panning using the controls
+            source.connect(panNode);
+            panNode.connect(audioCtx.destination);
+
+            // self.listener = new THREE.AudioListener()
+            // self.sound = new THREE.Audio( self.listener )
+            // self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            // self.mediaElement.crossOrigin = "anonymous"
+            // self.mediaElement.loop = true
+
+            // self.mediaElement.play()
+            // self.sound.setMediaElementSource( self.mediaElement )
 
             // const audioContext = new AudioContext();
-
             // // get the audio element
             // const audioElement = document.querySelector('audio');
             // console.log(audioElement.className)
@@ -238,18 +263,6 @@ class App{
 
             // track.connect(stereoNode).connect(audioContext.destination);
             // audioElement.play()
-
-            self.listener = new THREE.AudioListener()
-            self.sound = new THREE.Audio( self.listener )
-            self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            self.mediaElement.crossOrigin = "anonymous"
-            self.mediaElement.loop = true
-
-            // const audioContext = self.sound.context
-
-
-            self.mediaElement.play()
-            self.sound.setMediaElementSource( self.mediaElement )
 
 
         //     var stationID = "lWw8pNel"
