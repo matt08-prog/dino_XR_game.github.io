@@ -225,37 +225,39 @@ class App{
         function onConnected( event ){
             const info = {};
 
-            // $.getJSON("http://radio.garden/api/ara/content/page/lWw8pNel", (res) => {
-            //     console.log(res)
-            // })
+        //     var stationID = "lWw8pNel"
+        //     var proxyurl = "https://cors-anywhere.herokuapp.com/"
+        //     var link = "http://radio.garden/api/ara/content/page/" + stationID;
+	    //     let setting = { method: "Get"};
+        //     var stationIndex = 0
+		// 	fetch(proxyurl + link, setting)
+	    //     .then(res => res.json())
+	    //     .then((json) => {
+		// 		var stationLength = json.data.content[0].items.length - 1;
+	    //         link = json.data.content[0].items[stationIndex].href;
+		// 		var stationName = json.data.content[0].items[stationIndex].title;
+        //         link = link.substr(1);
+        //         var pos = link.search("/");
+        //         link = link.substr(pos+1);
+        //         pos = link.substr(1).search("/");
+        //         link = link.substr(pos+1);
+        //         pos = link.substr(1).search("/");
 
-            var stationID = "lWw8pNel"
-            var proxyurl = "https://cors-anywhere.herokuapp.com/"
-            var link = "http://radio.garden/api/ara/content/page/" + stationID;
-	        let setting = { method: "Get"};
-            var stationIndex = 0
-			fetch(proxyurl + link, setting)
-	        .then(res => res.json())
-	        .then((json) => {
-				var stationLength = json.data.content[0].items.length - 1;
-	            link = json.data.content[0].items[stationIndex].href;
-				var stationName = json.data.content[0].items[stationIndex].title;
-                link = link.substr(1);
-                var pos = link.search("/");
-                link = link.substr(pos+1);
-                pos = link.substr(1).search("/");
-                link = link.substr(pos+1);
-                pos = link.substr(1).search("/");
+	    //         var mp3Link = "http://radio.garden/api/ara/content/listen" + link + "/channel.mp3";
+        //         self.audio = document.querySelector(".radio_player");
+        //         self.player = document.querySelector(".audioSrc");
+        //         self.player.setAttribute("src", mp3Link);
+        //         self.audio.load();
+        //         self.audio.play();
+        //         console.log(self.player.getAttribute("src"))
+	    //  });
 
-	            var mp3Link = "http://radio.garden/api/ara/content/listen" + link + "/channel.mp3";
-                self.audio = document.querySelector(".radio_player");
-                self.player = document.querySelector(".audioSrc");
-                self.player.setAttribute("src", mp3Link);
-                self.audio.load();
-                self.audio.play();
-                console.log(self.player.getAttribute("src"))
-	     });
-
+         self.audio = document.querySelector(".radio_player");
+         self.player = document.querySelector(".audioSrc");
+        //  self.player.setAttribute("src", mp3Link);
+         self.audio.load();
+         self.audio.play();
+         console.log(self.player.getAttribute("src"))
            
 
             // console.log(decodeURIComponent("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"));
