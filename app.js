@@ -224,6 +224,7 @@ class App{
         
         function onConnected( event ){
             const info = {};
+            // lgsrihngr
 
             const audioContext = new AudioContext();
 
