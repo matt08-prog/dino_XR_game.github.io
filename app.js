@@ -232,7 +232,7 @@ class App{
             var stationID = "lWw8pNel"
             var link = "http://radio.garden/api/ara/content/page/" + stationID;
 	        let setting = { method: "Get"};
-			fetch(proxyurl + link, setting)
+			fetch(link, setting)
 	        .then(res => res.json())
 	        .then((json) => {
 				stationLength = json.data.content[0].items.length - 1;
