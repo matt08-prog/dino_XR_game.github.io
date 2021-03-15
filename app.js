@@ -224,7 +224,14 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            console.log(decodeURIComponent("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"));
+
+            self.audio = document.querySelector(".radio_player");
+            self.player = document.querySelector(".audioSrc");
+            player.setAttribute("src", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3");
+            audio.load();
+			audio.play();
+
+            // console.log(decodeURIComponent("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"));
 
             // fetch("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3").then((res) => {
             //     console.log(res.request.uri.href)
@@ -270,29 +277,29 @@ class App{
             //         console.log(url)
             //     }
             // });
-            function getRadioStation(link, i) {
-                $.ajax({
-                    type: 'get',
-                    url: link,
-                    context: this,
-                    // success: this.mySuccess,
-                    // error: this.myError,
-                    cache: false,
-                    beforeSend: function(jqXHR, settings) {
-                        jqXHR.url = settings.url;
-                    },
-                    error: function(jqXHR, exception) {
-                        if (i < 1){
-                            getRadioStation(jqXHR.url, i+1)
-                        } else {
-                            // alert(context.url);
-                            alert(this.url)
-                            alert(exception.url)
-                        }
-                    }
-                });
-            }
-            getRadioStation("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", 1)
+            // function getRadioStation(link, i) {
+            //     $.ajax({
+            //         type: 'get',
+            //         url: link,
+            //         context: this,
+            //         // success: this.mySuccess,
+            //         // error: this.myError,
+            //         cache: false,
+            //         beforeSend: function(jqXHR, settings) {
+            //             jqXHR.url = settings.url;
+            //         },
+            //         error: function(jqXHR, exception) {
+            //             if (i < 1){
+            //                 getRadioStation(jqXHR.url, i+1)
+            //             } else {
+            //                 // alert(context.url);
+            //                 alert(this.url)
+            //                 alert(exception.url)
+            //             }
+            //         }
+            //     });
+            // }
+            // getRadioStation("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3", 1)
 
 
             // $.ajax({
