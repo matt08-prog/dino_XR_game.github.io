@@ -230,7 +230,7 @@ class App{
 
             // get the audio element
             const audioElement = document.querySelector('audio');
-            console.log(audioElement.getAttribute('class'))
+            console.log(audioElement.className)
             // pass it into the audio context
             const track = audioContext.createMediaElementSource(audioElement);
 
