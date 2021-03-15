@@ -225,9 +225,9 @@ class App{
         function onConnected( event ){
             const info = {};
 
-            $.getJSON("http://radio.garden/api/ara/content/page/lWw8pNel", (res) => {
-                console.log(res)
-            })
+            // $.getJSON("http://radio.garden/api/ara/content/page/lWw8pNel", (res) => {
+            //     console.log(res)
+            // })
 
             var stationID = "lWw8pNel"
             var proxyurl = "https://cors-anywhere.herokuapp.com/"
