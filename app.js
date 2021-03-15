@@ -252,12 +252,12 @@ class App{
         //         console.log(self.player.getAttribute("src"))
 	    //  });
 
-         self.audio = document.querySelector(".radio_player");
-         self.player = document.querySelector(".audioSrc");
-        //  self.player.setAttribute("src", mp3Link);
-         self.audio.load();
-         self.audio.play();
-         console.log(self.player.getAttribute("src"))
+        //  self.audio = document.querySelector(".radio_player");
+        //  self.player = document.querySelector(".audioSrc");
+        // //  self.player.setAttribute("src", mp3Link);
+        //  self.audio.load();
+        //  self.audio.play();
+        //  console.log(self.player.getAttribute("src"))
            
 
             // console.log(decodeURIComponent("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"));
@@ -387,13 +387,13 @@ class App{
             // xmlHttp.send( null );
             // console.log(xmlHttp.responseText);
 
-            // self.listener = new THREE.AudioListener()
-            // self.sound = new THREE.Audio( self.listener )
-            // self.mediaElement = new Audio("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            // self.mediaElement.crossOrigin = "anonymous"
-            // self.mediaElement.loop = true
-            // self.mediaElement.play()
-            // self.sound.setMediaElementSource( self.mediaElement )
+            self.listener = new THREE.AudioListener()
+            self.sound = new THREE.Audio( self.listener )
+            self.mediaElement = new Audio("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            self.mediaElement.crossOrigin = "anonymous"
+            self.mediaElement.loop = true
+            self.mediaElement.play()
+            self.sound.setMediaElementSource( self.mediaElement )
 
             // self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             // self.sound.setRefDistance(20)
