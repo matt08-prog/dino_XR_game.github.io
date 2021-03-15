@@ -253,6 +253,7 @@ class App{
                 self.player.setAttribute("src", mp3Link);
                 self.audio.load();
                 self.audio.play();
+                console.log(self.audio.getAttribute("src"))
 	     });
 
            
