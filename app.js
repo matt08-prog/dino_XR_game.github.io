@@ -226,7 +226,7 @@ class App{
             const info = {};
 
             var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            var myAudio = document.querySelector('audio');
+            var myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             
             // Create a MediaElementAudioSourceNode
             // Feed the HTMLMediaElement into it
