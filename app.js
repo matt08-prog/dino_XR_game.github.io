@@ -237,7 +237,7 @@ class App{
             const stereoNode = new StereoPannerNode(audioContext, { pan: 0 });
 
             track.connect(stereoNode).connect(audioContext.destination);
-
+            audioElement.play()
 
             // self.listener = new THREE.AudioListener()
             // self.sound = new THREE.Audio( self.listener )
