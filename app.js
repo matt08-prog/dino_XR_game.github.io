@@ -227,7 +227,7 @@ class App{
 
             self.audio = document.querySelector(".radio_player");
             self.player = document.querySelector(".audioSrc");
-            self.player.setAttribute("src", "https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3");
+            self.player.setAttribute("src", "http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3");
             self.audio.load();
 			self.audio.play();
 
