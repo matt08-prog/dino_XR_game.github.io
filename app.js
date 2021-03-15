@@ -225,6 +225,28 @@ class App{
         function onConnected( event ){
             const info = {};
 
+            const audioContext = new AudioContext();
+
+            // get the audio element
+            const audioElement = document.querySelector('audio');
+
+            // pass it into the audio context
+            const track = audioContext.createMediaElementSource(audioElement);
+
+            const stereoNode = new StereoPannerNode(audioContext, { pan: 0 });
+
+            track.connect(stereoNode).connect(audioContext.destination);
+
+
+            // self.listener = new THREE.AudioListener()
+            // self.sound = new THREE.Audio( self.listener )
+            // self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            // self.mediaElement.crossOrigin = "anonymous"
+            // self.mediaElement.loop = true
+            // self.mediaElement.play()
+            // self.sound.setMediaElementSource( self.mediaElement )
+
+
         //     var stationID = "lWw8pNel"
         //     var proxyurl = "https://cors-anywhere.herokuapp.com/"
         //     var link = "http://radio.garden/api/ara/content/page/" + stationID;
@@ -386,14 +408,6 @@ class App{
             // console.log(xmlHttp);
             // xmlHttp.send( null );
             // console.log(xmlHttp.responseText);
-
-            self.listener = new THREE.AudioListener()
-            self.sound = new THREE.Audio( self.listener )
-            self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            self.mediaElement.crossOrigin = "anonymous"
-            self.mediaElement.loop = true
-            self.mediaElement.play()
-            self.sound.setMediaElementSource( self.mediaElement )
 
             // self.setSound("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
             // self.sound.setRefDistance(20)
