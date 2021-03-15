@@ -230,10 +230,11 @@ class App{
             })
 
             var stationID = "lWw8pNel"
+            var proxyurl = "https://cors-anywhere.herokuapp.com/"
             var link = "http://radio.garden/api/ara/content/page/" + stationID;
 	        let setting = { method: "Get"};
             var stationIndex = 0
-			fetch(link, setting)
+			fetch(proxyurl + link, setting)
 	        .then(res => res.json())
 	        .then((json) => {
 				var stationLength = json.data.content[0].items.length - 1;
