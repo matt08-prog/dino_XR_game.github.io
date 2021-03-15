@@ -246,7 +246,7 @@ class App{
                 link = link.substr(pos+1);
                 pos = link.substr(1).search("/");
 
-	            mp3Link = "http://radio.garden/api/ara/content/listen" + link + "/channel.mp3";
+	            var mp3Link = "http://radio.garden/api/ara/content/listen" + link + "/channel.mp3";
                 self.audio = document.querySelector(".radio_player");
                 self.player = document.querySelector(".audioSrc");
                 self.player.setAttribute("src", mp3Link);
