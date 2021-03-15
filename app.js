@@ -235,7 +235,7 @@ class App{
             // Create a stereo panner
             var panNode = audioCtx.createStereoPanner();
             
-            panNode.pan.value = -1;
+            panNode.pan.value = 0;
             
             // connect the AudioBufferSourceNode to the gainNode
             // and the gainNode to the destination, so we can play the
