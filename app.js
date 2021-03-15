@@ -228,12 +228,32 @@ class App{
             $.getJSON("http://radio.garden/api/ara/content/page/lWw8pNel", (res) => {
                 console.log(res)
             })
-            
-            self.audio = document.querySelector(".radio_player");
-            self.player = document.querySelector(".audioSrc");
-            self.player.setAttribute("src", "http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3");
-            self.audio.load();
-			self.audio.play();
+
+            var stationID = "lWw8pNel"
+            var link = "http://radio.garden/api/ara/content/page/" + stationID;
+	        let setting = { method: "Get"};
+			fetch(proxyurl + link, setting)
+	        .then(res => res.json())
+	        .then((json) => {
+				stationLength = json.data.content[0].items.length - 1;
+	            link = json.data.content[0].items[stationIndex].href;
+				stationName = json.data.content[0].items[stationIndex].title;
+                link = link.substr(1);
+                pos = link.search("/");
+                link = link.substr(pos+1);
+                pos = link.substr(1).search("/");
+                link = link.substr(pos+1);
+                pos = link.substr(1).search("/");
+
+	            mp3Link = "http://radio.garden/api/ara/content/listen" + link + "/channel.mp3";
+                self.audio = document.querySelector(".radio_player");
+                self.player = document.querySelector(".audioSrc");
+                self.player.setAttribute("src", mp3Link);
+                self.audio.load();
+                self.audio.play();
+	     });
+
+           
 
             // console.log(decodeURIComponent("https://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"));
 
