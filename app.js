@@ -226,7 +226,7 @@ class App{
             const info = {};
 
             var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            var myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            var myAudio = document.querySelector('audio')
             myAudio.crossOrigin = "anonymous"
             // Create a MediaElementAudioSourceNode
             // Feed the HTMLMediaElement into it
@@ -242,6 +242,7 @@ class App{
             // music and adjust the panning using the controls
             source.connect(panNode);
             panNode.connect(audioCtx.destination);
+            myAudio.play()
 
             // self.listener = new THREE.AudioListener()
             // self.sound = new THREE.Audio( self.listener )
