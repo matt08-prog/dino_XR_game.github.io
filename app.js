@@ -226,26 +226,30 @@ class App{
             const info = {};
             // lgsrihngr
 
-            const audioContext = new AudioContext();
+            // const audioContext = new AudioContext();
 
-            // get the audio element
-            const audioElement = document.querySelector('audio');
-            console.log(audioElement.className)
-            // pass it into the audio context
-            const track = audioContext.createMediaElementSource(audioElement);
+            // // get the audio element
+            // const audioElement = document.querySelector('audio');
+            // console.log(audioElement.className)
+            // // pass it into the audio context
+            // const track = audioContext.createMediaElementSource(audioElement);
 
-            const stereoNode = new StereoPannerNode(audioContext, { pan: 0 });
+            // const stereoNode = new StereoPannerNode(audioContext, { pan: 0 });
 
-            track.connect(stereoNode).connect(audioContext.destination);
-            audioElement.play()
+            // track.connect(stereoNode).connect(audioContext.destination);
+            // audioElement.play()
 
-            // self.listener = new THREE.AudioListener()
-            // self.sound = new THREE.Audio( self.listener )
-            // self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            // self.mediaElement.crossOrigin = "anonymous"
-            // self.mediaElement.loop = true
-            // self.mediaElement.play()
-            // self.sound.setMediaElementSource( self.mediaElement )
+            self.listener = new THREE.AudioListener()
+            self.sound = new THREE.Audio( self.listener )
+            self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            self.mediaElement.crossOrigin = "anonymous"
+            self.mediaElement.loop = true
+
+            // const audioContext = self.sound.context
+
+
+            self.mediaElement.play()
+            self.sound.setMediaElementSource( self.mediaElement )
 
 
         //     var stationID = "lWw8pNel"
