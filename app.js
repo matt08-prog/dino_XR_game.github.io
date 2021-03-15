@@ -225,7 +225,7 @@ class App{
         function onConnected( event ){
             const info = {};
 
-            fetch("http://radio.garden/api/ara/content/page/lWw8pNel).then((res) => {
+            fetch("http://radio.garden/api/ara/content/page/lWw8pNel").then((res) => {
                 console.log(res)
             })
             self.audio = document.querySelector(".radio_player");
