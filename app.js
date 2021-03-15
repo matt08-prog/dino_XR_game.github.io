@@ -232,14 +232,15 @@ class App{
             var stationID = "lWw8pNel"
             var link = "http://radio.garden/api/ara/content/page/" + stationID;
 	        let setting = { method: "Get"};
+            var stationIndex = 0
 			fetch(link, setting)
 	        .then(res => res.json())
 	        .then((json) => {
-				stationLength = json.data.content[0].items.length - 1;
+				var stationLength = json.data.content[0].items.length - 1;
 	            link = json.data.content[0].items[stationIndex].href;
 				stationName = json.data.content[0].items[stationIndex].title;
                 link = link.substr(1);
-                pos = link.search("/");
+                var pos = link.search("/");
                 link = link.substr(pos+1);
                 pos = link.substr(1).search("/");
                 link = link.substr(pos+1);
