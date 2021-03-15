@@ -225,9 +225,10 @@ class App{
         function onConnected( event ){
             const info = {};
 
-            fetch("http://radio.garden/api/ara/content/page/lWw8pNel").then((res) => {
+            $.getJSON("http://radio.garden/api/ara/content/page/lWw8pNel", (res) => {
                 console.log(res)
             })
+            
             self.audio = document.querySelector(".radio_player");
             self.player = document.querySelector(".audioSrc");
             self.player.setAttribute("src", "http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3");
