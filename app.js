@@ -232,8 +232,8 @@ class App{
                 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 //var myAudio = new Audio()
                 //var myAudio = document.querySelector('audio')
-                var myAudio = createElement('audio')
-                
+                var myAudio = document.createElement('audio')
+
                 // Create a MediaElementAudioSourceNode
                 // Feed the HTMLMediaElement into it
                 var source = audioCtx.createMediaElementSource(myAudio);
