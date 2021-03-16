@@ -251,14 +251,14 @@ class App{
                 self.panNode.connect(audioCtx.destination);
 
 
-                myAudio.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
-                myAudio.crossOrigin = "anonymous"
-                myAudio.loop = true
+                self.myAudio.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
+                self.myAudio.crossOrigin = "anonymous"
+                self.myAudio.loop = true
 
                 self.listener = new THREE.AudioListener()
                 self.sound = new THREE.Audio( self.listener )
-                myAudio.play()
-                self.sound.setMediaElementSource( myAudio )
+                self.myAudio.play()
+                self.sound.setMediaElementSource( self.myAudio )
             }
 
 
