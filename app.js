@@ -231,7 +231,7 @@ class App{
                 self.playAudio = false
                 // var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 var audioCtx = new AudioContext();
-                self.myAudio = new Audio("http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+                self.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
                 //var myAudio = document.querySelector('audio')
                 // self.myAudio = document.createElement('audio')
 
