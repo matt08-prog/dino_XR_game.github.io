@@ -228,28 +228,28 @@ class App{
             if (self.playAudio)
             {   
                 self.playAudio = false
-                var context = new AudioContext();
+                self.context = new AudioContext();
                 self.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
                 self.myAudio.crossOrigin = "anonymous"
                 self.myAudio.loop = true
 
                 //create a source node to capture the audio from your video element
-                source = context.createMediaElementSource(self.myAudio);
+                self.source = context.createMediaElementSource(self.myAudio);
 
                 //Create the splitter and the merger
-                splitter = context.createChannelSplitter();
-                merger = context.createChannelMerger();
+                self.splitter = self.context.createChannelSplitter();
+                self.merger = self.context.createChannelMerger();
 
                 //route the source audio to the splitter. This is a stereo connection.
-                source.connect(splitter);
+                self.source.connect(self.splitter);
 
                 //route output 0 (left) from the splitter to input 0 (left) on the merger. This is a mono connection, carrying the left output signal to the left input of the Merger.
-                splitter.connect(merger, 0, 0);
+                self.splitter.connect(self.merger, 0, 0);
                 //route output 0 (left) from the splitter to input 1 (right) on the merger. This is a mono connection as well, carrying the left output signal to the right input of the Merger.
-                splitter.connect(merger, 0, 1);
+                self.splitter.connect(self.merger, 0, 1);
 
                 //finally, connect the merger to the destination. This is a stereo connection.
-                merger.connect(context.destination);
+                self.merger.connect(self.context.destination);
 
                 self.myAudio.play()
             }
