@@ -231,34 +231,33 @@ class App{
                 self.playAudio = false
                 // var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 var audioCtx = new AudioContext();
-                //var myAudio = new Audio()
+                var myAudio = new Audio()
                 //var myAudio = document.querySelector('audio')
-                self.myAudio = document.createElement('audio')
+                // self.myAudio = document.createElement('audio')
 
                 // Create a MediaElementAudioSourceNode
                 // Feed the HTMLMediaElement into it
                 self.source = audioCtx.createMediaElementSource(self.myAudio);
 
-                // Create a stereo panner
-                self.panNode = audioCtx.createStereoPanner();
+                // // Create a stereo panner
+                // self.panNode = audioCtx.createStereoPanner();
                 
-                self.panNode.pan.value = 0;
+                // self.panNode.pan.value = 0;
                 
-                // connect the AudioBufferSourceNode to the gainNode
-                // and the gainNode to the destination, so we can play the
-                // music and adjust the panning using the controls
-                self.source.connect(self.panNode);
-                self.panNode.connect(audioCtx.destination);
+                // // connect the AudioBufferSourceNode to the gainNode
+                // // and the gainNode to the destination, so we can play the
+                // // music and adjust the panning using the controls
+                // self.source.connect(self.panNode);
+                // self.panNode.connect(audioCtx.destination);
 
+                // self.myAudio.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
+                // self.myAudio.crossOrigin = "anonymous"
+                // self.myAudio.loop = true
 
-                self.myAudio.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
-                self.myAudio.crossOrigin = "anonymous"
-                self.myAudio.loop = true
-
-                self.listener = new THREE.AudioListener()
-                self.sound = new THREE.Audio( self.listener )
-                self.myAudio.play()
-                self.sound.setMediaElementSource( self.myAudio )
+                // self.listener = new THREE.AudioListener()
+                // self.sound = new THREE.Audio( self.listener )
+                // self.myAudio.play()
+                // self.sound.setMediaElementSource( self.myAudio )
             }
 
 
