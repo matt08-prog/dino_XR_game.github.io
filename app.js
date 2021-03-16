@@ -234,7 +234,7 @@ class App{
                 self.myAudio.loop = true
 
                 //create a source node to capture the audio from your video element
-                self.source = context.createMediaElementSource(self.myAudio);
+                self.source = self.context.createMediaElementSource(self.myAudio);
 
                 //Create the splitter and the merger
                 self.splitter = self.context.createChannelSplitter();
