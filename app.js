@@ -74,6 +74,7 @@ class App{
     }
     
     initScene(){
+        this.playAudio = true
         this.loading = false
         this.nodeSelected = false
         this.dir = 0
@@ -225,31 +226,38 @@ class App{
         function onConnected( event ){
             const info = {};
 
-            var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            var myAudio = new Audio()
-            //var myAudio = document.querySelector('audio')
-            myAudio.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
-            myAudio.crossOrigin = "anonymous"
-            myAudio.loop = true
-            // Create a MediaElementAudioSourceNode
-            // Feed the HTMLMediaElement into it
-            var source = audioCtx.createMediaElementSource(myAudio);
-            
-            // Create a stereo panner
-            var panNode = audioCtx.createStereoPanner();
-            
-            panNode.pan.value = 0;
-            
-            // connect the AudioBufferSourceNode to the gainNode
-            // and the gainNode to the destination, so we can play the
-            // music and adjust the panning using the controls
-            source.connect(panNode);
-            panNode.connect(audioCtx.destination);
+            if (self.playAudio)
+            {   
+                self.playAudio = false
+                var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                var myAudio = new Audio()
+                //var myAudio = document.querySelector('audio')
+                
+                // Create a MediaElementAudioSourceNode
+                // Feed the HTMLMediaElement into it
+                var source = audioCtx.createMediaElementSource(myAudio);
 
-            self.listener = new THREE.AudioListener()
-            self.sound = new THREE.Audio( self.listener )
-            myAudio.play()
-            self.sound.setMediaElementSource( myAudio )
+                // Create a stereo panner
+                var panNode = audioCtx.createStereoPanner();
+                
+                panNode.pan.value = 0;
+                
+                // connect the AudioBufferSourceNode to the gainNode
+                // and the gainNode to the destination, so we can play the
+                // music and adjust the panning using the controls
+                source.connect(panNode);
+                panNode.connect(audioCtx.destination);
+
+
+                myAudio.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
+                myAudio.crossOrigin = "anonymous"
+                myAudio.loop = true
+                
+                self.listener = new THREE.AudioListener()
+                self.sound = new THREE.Audio( self.listener )
+                myAudio.play()
+                self.sound.setMediaElementSource( myAudio )
+            }
 
 
 
