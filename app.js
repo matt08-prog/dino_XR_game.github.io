@@ -249,6 +249,10 @@ class App{
             myAudio.play()
             self.sound.setMediaElementSource( myAudio )
 
+
+
+
+            
             // self.listener = new THREE.AudioListener()
             // self.sound = new THREE.Audio( self.listener )
             // self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
