@@ -231,7 +231,7 @@ class App{
                 self.playAudio = false
                 // var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 var audioCtx = new AudioContext();
-                var myAudio = new Audio()
+                self.myAudio = new Audio()
                 //var myAudio = document.querySelector('audio')
                 // self.myAudio = document.createElement('audio')
 
