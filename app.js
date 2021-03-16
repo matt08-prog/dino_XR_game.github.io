@@ -226,8 +226,8 @@ class App{
             const info = {};
 
             var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            //var myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            var myAudio = document.querySelector('audio')
+            var myAudio = new Audio()
+            //var myAudio = document.querySelector('audio')
             myAudio.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
             myAudio.crossOrigin = "anonymous"
             myAudio.loop = true
@@ -254,7 +254,7 @@ class App{
 
 
 
-
+            // *********************************************   working *****************************************************************
             // self.listener = new THREE.AudioListener()
             // self.sound = new THREE.Audio( self.listener )
             // self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
@@ -263,6 +263,7 @@ class App{
 
             // self.mediaElement.play()
             // self.sound.setMediaElementSource( self.mediaElement )
+            // ****************************************************************************************************
 
             // const audioContext = new AudioContext();
             // // get the audio element
