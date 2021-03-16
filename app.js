@@ -227,7 +227,8 @@ class App{
 
             var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             //var myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-            var myAudio = document.createElement('audio')
+            var myAudio = document.querySelector('audio')
+            myAudio.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
             myAudio.crossOrigin = "anonymous"
             myAudio.loop = true
             // Create a MediaElementAudioSourceNode
