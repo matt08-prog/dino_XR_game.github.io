@@ -226,7 +226,8 @@ class App{
             const info = {};
 
             var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            var myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            //var myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
+            var myAudio = document.createElement('audio')
             myAudio.crossOrigin = "anonymous"
             myAudio.loop = true
             // Create a MediaElementAudioSourceNode
@@ -252,7 +253,7 @@ class App{
 
 
 
-            
+
             // self.listener = new THREE.AudioListener()
             // self.sound = new THREE.Audio( self.listener )
             // self.mediaElement = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
