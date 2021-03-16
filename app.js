@@ -248,7 +248,7 @@ class App{
                 // and the gainNode to the destination, so we can play the
                 // music and adjust the panning using the controls
                 self.source.connect(self.panNode);
-                self.panNode.connect(self.destination);
+                self.panNode.connect(audioCtx.destination);
 
 
                 myAudio.src = "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3"
