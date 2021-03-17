@@ -789,6 +789,8 @@ class App{
                         console.log("1")
                         self.loadAudio(dat.id)
                     }
+                } else {
+                    controller.children[0].scale.z = 0 
                 }
             }else{
                 controller.children[0].scale.z = 0;
