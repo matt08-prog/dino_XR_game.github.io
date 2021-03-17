@@ -715,13 +715,14 @@ class App{
             const intersects = this.raycaster.intersectObjects( this.earth.children, true );
 
             if (intersects.length>0){
-
+                console.log("hit something")
                 intersects[0].object.add(this.highlight);
                 this.highlight.visible = true;
                 controller.children[0].scale.z = intersects[0].distance;
                 controller.userData.selected = intersects[0].object;
 
                 if(this.nodeSelected == true && this.loading == false && this.canplay == true) {
+                    console.log("selected node")
                     this.canplay = false
                     this.nodeSelected == false
                     this.loading = true
