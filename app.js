@@ -802,7 +802,6 @@ class App{
                             longitude : finalPos.longitude,
                             id : finalPos.id
                         }
-                    this.radio.getStation(dat)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
                     if (self.bPlayAudio)
                     {   
