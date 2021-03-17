@@ -74,7 +74,7 @@ class App{
     }
     
     initScene(){
-        this.playAudio = true
+        this.bPlayAudio = true
         this.loading = false
         this.nodeSelected = false
         this.dir = 0
