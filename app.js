@@ -274,7 +274,6 @@ class App{
         this.merger.connect(this.context.destination);
 
         this.myAudio.play()
-        this.nodeSelected = true
         this.loading = false
     }
 
@@ -704,7 +703,10 @@ class App{
         if (controller.userData.selectPressed ){
             // selecting nodes for radio
             //********************************************************************************** */
-
+            if(self.wasPressed == false){
+                self.wasPressed = true
+                this.nodeSelected = true
+            }
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
             this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
@@ -797,6 +799,8 @@ class App{
             }else{
                 controller.children[0].scale.z = 0;
             }
+        } else {
+            self.wasPressed = false
         }
     }
     
