@@ -12,14 +12,12 @@ import {
 	fetchProfile,
 	MotionController
 } from './libs/three/jsm/motion-controllers.module.js';
-import { Radio } from './radio.js';
 
 const DEFAULT_PROFILES_PATH = 'https://cdn.jsdelivr.net/npm/@webxr-input-profiles/assets@1.0/dist/profiles';
 const DEFAULT_PROFILE = 'generic-trigger';
 
 class App{
 	constructor(){
-        this.radio = new Radio(this)
 		const container = document.createElement( 'div' );
 		document.body.appendChild( container );
         this.clock = new THREE.Clock();
@@ -238,7 +236,7 @@ class App{
             .then((json) => {
                 console.log("3")
                 console.log(json)
-                findInJSON(json)
+                this.findInJSON(json)
                 this.stationLength = json.data.content[0].items.length - 1;
                 //link = json.data.content[0].items[this.stationLength].href;
                 //this.stationName = json.data.content[0].items[this.stationIndex].title;
