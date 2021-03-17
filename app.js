@@ -216,6 +216,34 @@ class App{
         this.sound.setMediaElementSource( this.mediaElement )
     }
 
+    loadAudio(){
+        this.context = new AudioContext();
+        this.radioCode = lWw8pNel
+        this.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/" + this.radioCode + "/channel.mp3")
+        this.myAudio.crossOrigin = "anonymous"
+        this.myAudio.loop = true
+
+        //create a source node to capture the audio from your video element
+        this.source = this.context.createMediaElementSource(this.myAudio);
+
+        //Create the splitter and the merger
+        this.splitter = this.context.createChannelSplitter();
+        this.merger = this.context.createChannelMerger();
+
+        //route the source audio to the splitter. This is a stereo connection.
+        this.source.connect(this.splitter);
+
+        //route output 0 (left) from the splitter to input 0 (left) on the merger. This is a mono connection, carrying the left output signal to the left input of the Merger.
+        this.splitter.connect(this.merger, 0, 0);
+        //route output 0 (left) from the splitter to input 1 (right) on the merger. This is a mono connection as well, carrying the left output signal to the right input of the Merger.
+        this.splitter.connect(this.merger, 0, 1);
+
+        //finally, connect the merger to the destination. This is a stereo connection.
+        this.merger.connect(this.context.destination);
+
+        this.myAudio.play()
+    }
+
     setupXR(){
         this.renderer.xr.enabled = true;
         
@@ -228,30 +256,7 @@ class App{
             if (self.playAudio)
             {   
                 self.playAudio = false
-                self.context = new AudioContext();
-                self.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/lWw8pNel/channel.mp3")
-                self.myAudio.crossOrigin = "anonymous"
-                self.myAudio.loop = true
-
-                //create a source node to capture the audio from your video element
-                self.source = self.context.createMediaElementSource(self.myAudio);
-
-                //Create the splitter and the merger
-                self.splitter = self.context.createChannelSplitter();
-                self.merger = self.context.createChannelMerger();
-
-                //route the source audio to the splitter. This is a stereo connection.
-                self.source.connect(self.splitter);
-
-                //route output 0 (left) from the splitter to input 0 (left) on the merger. This is a mono connection, carrying the left output signal to the left input of the Merger.
-                self.splitter.connect(self.merger, 0, 0);
-                //route output 0 (left) from the splitter to input 1 (right) on the merger. This is a mono connection as well, carrying the left output signal to the right input of the Merger.
-                self.splitter.connect(self.merger, 0, 1);
-
-                //finally, connect the merger to the destination. This is a stereo connection.
-                self.merger.connect(self.context.destination);
-
-                self.myAudio.play()
+                self.loadAudio()
             }
         // *********************************************   working *****************************************************************
             // if (self.playAudio)
