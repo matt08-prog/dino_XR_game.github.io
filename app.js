@@ -78,6 +78,13 @@ class App{
         this.rad = 2.5
         this.both = 0
 
+        this.nodeGeometry = new THREE.IcosahedronBufferGeometry( 0.02, 2 );
+        this.nodeObject = new THREE.Mesh( this.nodeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+        this.nodeObject.position.x = 0
+        this.nodeObject.position.y = 0
+        this.nodeObject.position.z = 0
+        this.scene.add(this.nodeObject)
+
         this.radius = 0.08;
         var geometry = new THREE.IcosahedronBufferGeometry( this.radius, 2 );
         var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
@@ -731,12 +738,9 @@ class App{
                     this.loading = true
                     console.log(intersects[0])
 
-                    var geometry = new THREE.IcosahedronBufferGeometry( 0.03, 2 );
-                    var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-                    object.position.x = intersects[0].point.x
-                    object.position.y = intersects[0].point.y
-                    object.position.z = intersects[0].point.z
-                    this.scene.add(object)
+                    self.nodeObject.position.x = intersects[0].point.x
+                    self.nodeObject.position.y = intersects[0].point.y
+                    self.nodeObject.position.z = intersects[0].point.z
 
                     console.log(intersects[0].point.distanceTo(self.positions[0]))
                     console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
