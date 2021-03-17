@@ -216,6 +216,16 @@ class App{
         this.sound.setMediaElementSource( this.mediaElement )
     }
 
+    findInJSON(json) {
+        for(var o in json) {
+            console.log(`${o}: ${json[o]}`)
+            if(o == "href"){
+                this.link = json[o]
+            }
+            this.findInJSON(o)
+        }
+    }
+
     loadAudio(input){
         console.log("2")
         // var input = "lWw8pNel"
@@ -228,26 +238,24 @@ class App{
             .then((json) => {
                 console.log("3")
                 console.log(json)
-                for(var o in json) {
-                    console.log(o)
-                }
+                findInJSON(json)
                 this.stationLength = json.data.content[0].items.length - 1;
-                link = json.data.content[0].items[this.stationLength].href;
+                //link = json.data.content[0].items[this.stationLength].href;
                 //this.stationName = json.data.content[0].items[this.stationIndex].title;
-                link = link.substr(1);
-                this.pos = link.search("/");
-                link = link.substr(this.pos+1);
-                this.pos = link.substr(1).search("/");
-                link = link.substr(this.pos+1);
-                this.pos = link.substr(1).search("/");
-                this.mp3Link = "http://radio.garden/api/ara/content/listen" + link + "/channel.mp3";
+                this.link = this.link.substr(1);
+                this.pos = this.link.search("/");
+                this.link = this.link.substr(this.pos+1);
+                this.pos = this.link.substr(1).search("/");
+                this.link = this.link.substr(this.pos+1);
+                this.pos = this.link.substr(1).search("/");
+                this.mp3Link = "http://radio.garden/api/ara/content/listen" + this.link + "/channel.mp3";
                 //this.LoadNewTrack(this.mp3Link);
                 //this.shouldChange = true;
                 // Replace with altering app's UI
                 // document.querySelector(".lat").innerHTML = Latitude;
                 // document.querySelector(".long").innerHTML = Longitude;
                 // document.querySelector(".station_name").innerHTML = stationName;
-                this.playAudio(link)
+                this.playAudio(this.link)
             });
     }
 
