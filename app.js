@@ -705,7 +705,7 @@ class App{
             //********************************************************************************** */
             if(self.wasPressed == false){
                 self.wasPressed = true
-                this.nodeSelected = true
+                this.canplay = true
             }
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
@@ -721,7 +721,8 @@ class App{
                 controller.children[0].scale.z = intersects[0].distance;
                 controller.userData.selected = intersects[0].object;
 
-                if(this.nodeSelected == true && this.loading == false) {
+                if(this.nodeSelected == true && this.loading == false && this.canplay == true) {
+                    this.canplay = false
                     this.nodeSelected == false
                     this.loading = true
                     console.log(intersects[0])
