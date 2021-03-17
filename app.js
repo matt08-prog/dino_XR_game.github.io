@@ -305,12 +305,12 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            if (self.bPlayAudio)
-            {   
-                self.bPlayAudio = false
-                console.log("1")
-                self.loadAudio("YL18htnX")
-            }
+            // if (self.bPlayAudio)
+            // {   
+            //     self.bPlayAudio = false
+            //     console.log("1")
+            //     self.loadAudio("YL18htnX")
+            // }
         // *********************************************   working *****************************************************************
             // if (self.playAudio)
             // {   
