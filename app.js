@@ -244,7 +244,7 @@ class App{
                 // document.querySelector(".lat").innerHTML = Latitude;
                 // document.querySelector(".long").innerHTML = Longitude;
                 // document.querySelector(".station_name").innerHTML = stationName;
-                this.playAudio(this.mp3Link)
+                this.playAudio(link)
             });
     }
 
