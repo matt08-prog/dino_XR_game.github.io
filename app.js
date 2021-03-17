@@ -217,9 +217,37 @@ class App{
     }
 
     loadAudio(){
+        var input = "lWw8pNel"
+        var proxyurl = "https://cors-anywhere.herokuapp.com/"
+        //var proxyurl = "https://cors.io/"
+        var link = "http://radio.garden/api/ara/content/page/" + input;
+        let setting = { method: "Get"};
+        fetch(proxyurl + link, setting)
+            .then(res => res.json())
+            .then((json) => {
+                this.stationLength = json.data.content[0].items.length - 1;
+                link = json.data.content[0].items[this.stationIndex].href;
+                this.stationName = json.data.content[0].items[this.stationIndex].title;
+                link = link.substr(1);
+                this.pos = link.search("/");
+                link = link.substr(this.pos+1);
+                this.pos = link.substr(1).search("/");
+                link = link.substr(this.pos+1);
+                this.pos = link.substr(1).search("/");
+                this.mp3Link = "http://radio.garden/api/ara/content/listen" + link + "/channel.mp3";
+                this.LoadNewTrack(this.mp3Link);
+                this.shouldChange = true;
+                // Replace with altering app's UI
+                // document.querySelector(".lat").innerHTML = Latitude;
+                // document.querySelector(".long").innerHTML = Longitude;
+                // document.querySelector(".station_name").innerHTML = stationName;
+                this.playAudio(this.mp3Link)
+            });
+    }
+
+    playAudio(radioCode){
         this.context = new AudioContext();
-        this.radioCode = "lWw8pNel"
-        this.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/" + this.radioCode + "/channel.mp3")
+        this.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/" + radioCode + "/channel.mp3")
         this.myAudio.crossOrigin = "anonymous"
         this.myAudio.loop = true
 
@@ -253,9 +281,9 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            if (self.playAudio)
+            if (self.bPlayAudio)
             {   
-                self.playAudio = false
+                self.bPlayAudio = false
                 self.loadAudio()
             }
         // *********************************************   working *****************************************************************
