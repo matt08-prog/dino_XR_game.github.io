@@ -217,6 +217,7 @@ class App{
     }
 
     loadAudio(){
+        console.log("2")
         var input = "lWw8pNel"
         var proxyurl = "https://cors-anywhere.herokuapp.com/"
         //var proxyurl = "https://cors.io/"
@@ -225,6 +226,7 @@ class App{
         fetch(proxyurl + link, setting)
             .then(res => res.json())
             .then((json) => {
+                console.log("3")
                 this.stationLength = json.data.content[0].items.length - 1;
                 link = json.data.content[0].items[this.stationIndex].href;
                 this.stationName = json.data.content[0].items[this.stationIndex].title;
@@ -285,6 +287,7 @@ class App{
             if (self.bPlayAudio)
             {   
                 self.bPlayAudio = false
+                console.log("1")
                 self.loadAudio()
             }
         // *********************************************   working *****************************************************************
