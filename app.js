@@ -6,7 +6,6 @@ import { Stats } from './libs/stats.module.js';
 import { OrbitControls } from './libs/three/jsm/OrbitControls.js';
 import { SpotLightVolumetricMaterial } from './libs/SpotLightVolumetricMaterial.js';
 import { XRControllerModelFactory } from './libs/three/jsm/XRControllerModelFactory.js';
-import { CanvasUI } from './libs/CanvasUI.js';
 import {
 	Constants as MotionControllerConstants,
 	fetchProfile,
@@ -137,7 +136,6 @@ class App{
         this.highlight.scale.set(1.2, 1.2, 1.2);
         this.scene.add(this.highlight);
 
-        this.ui = this.createUI();
     }
 
     addNode(lat, lon, radius, self){
@@ -151,18 +149,6 @@ class App{
 
         node.updateMatrix()
         self.geom.merge(node.geometry, node.matrix)
-    }
-
-    createUI(){
-        const config = {
-            panelSize: { height: 0.5 },
-            height: 500,
-            body: { type: "text" }
-        }
-        const ui = new CanvasUI( { body: "" }, config );
-        ui.mesh.position.set(0, 2.0, -1.8);
-        this.scene.add( ui.mesh );
-        return ui;
     }
     
     //{"trigger":{"button":0},"touchpad":{"button":2,"xAxis":0,"yAxis":1}},"squeeze":{"button":1},"thumbstick":{"button":3,"xAxis":2,"yAxis":3},"button":{"button":6}}}
@@ -180,15 +166,6 @@ class App{
         })
         
         this.buttonStates = buttonStates;
-    }
-    
-    updateUI(){
-        const str = JSON.stringify( this.buttonStates );
-        if (this.strStates === undefined || ( str != this.strStates )){
-            this.ui.updateElement( 'body', str );
-            this.ui.update(); 
-            this.strStates = str;
-        }
     }
 
     calcPosFromLatLonRad(lat,lon,radius){
@@ -727,6 +704,7 @@ class App{
                 this.canplay = true
                 self.shouldCast = true
             }
+            console.log(`${self.wasPressed}, ${this.canplay}, ${self.shouldCast = true}, ${this.nodeSelected}, ${this.loading}`)
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
             this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
@@ -823,6 +801,7 @@ class App{
             }
         } else {
             self.wasPressed = false
+            self.shouldCast = true
         }
     }
     
