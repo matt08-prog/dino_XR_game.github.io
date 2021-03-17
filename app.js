@@ -216,9 +216,9 @@ class App{
         this.sound.setMediaElementSource( this.mediaElement )
     }
 
-    loadAudio(){
+    loadAudio(input){
         console.log("2")
-        var input = "lWw8pNel"
+        // var input = "lWw8pNel"
         var proxyurl = "https://cors-anywhere.herokuapp.com/"
         //var proxyurl = "https://cors.io/"
         var link = "http://radio.garden/api/ara/content/page/" + input;
@@ -285,12 +285,12 @@ class App{
         
         function onConnected( event ){
             const info = {};
-            if (self.bPlayAudio)
-            {   
-                self.bPlayAudio = false
-                console.log("1")
-                self.loadAudio()
-            }
+            // if (self.bPlayAudio)
+            // {   
+            //     self.bPlayAudio = false
+            //     console.log("1")
+            //     self.loadAudio()
+            // }
         // *********************************************   working *****************************************************************
             // if (self.playAudio)
             // {   
@@ -783,6 +783,12 @@ class App{
                         }
                     this.radio.getStation(dat)
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
+                    if (self.bPlayAudio)
+                    {   
+                        self.bPlayAudio = false
+                        console.log("1")
+                        self.loadAudio(dat.id)
+                    }
                 }
             }else{
                 controller.children[0].scale.z = 0;
