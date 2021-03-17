@@ -214,13 +214,23 @@ class App{
         this.sound.setMediaElementSource( this.mediaElement )
     }
 
-    findInJSON(json) {
-        for(var o in json) {
-            console.log(`${o}: ${json[o]}`)
-            if(o == "href"){
-                this.link = json[o]
+    findInJSON(obj) {
+        // for(var o in json) {
+        //     console.log(`${o}: ${json[o]}`)
+        //     if(o == "href"){
+        //         this.link = json[o]
+        //     }
+        //     this.findInJSON(o)
+        // }
+        for (var k in obj)
+        {
+            if (typeof obj[k] == "object" && obj[k] !== null) {
+                console.log(`${k}: ${obj[k]}`)
+                if(k == "href") {
+                    this.link = obj[k]
+                }
+                eachRecursive(obj[k]);
             }
-            this.findInJSON(o)
         }
     }
 
