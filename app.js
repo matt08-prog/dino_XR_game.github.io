@@ -227,6 +227,7 @@ class App{
             .then(res => res.json())
             .then((json) => {
                 console.log("3")
+                console.log(json)
                 this.stationLength = json.data.content[0].items.length - 1;
                 link = json.data.content[0].items[this.stationIndex].href;
                 this.stationName = json.data.content[0].items[this.stationIndex].title;
