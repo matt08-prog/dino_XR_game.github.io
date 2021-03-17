@@ -224,12 +224,12 @@ class App{
         // }
         for (var k in obj)
         {
+            console.log(`${k}: ${obj[k]}`)
             if (typeof obj[k] == "object" && obj[k] !== null) {
-                console.log(`${k}: ${obj[k]}`)
-                if(k == "href") {
-                    this.link = obj[k]
-                }
                 this.findInJSON(obj[k]);
+            }
+            if(k == "href") {
+                this.link = obj[k]
             }
         }
     }
