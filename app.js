@@ -229,7 +229,7 @@ class App{
                 if(k == "href") {
                     this.link = obj[k]
                 }
-                eachRecursive(obj[k]);
+                this.findInJSON(obj[k]);
             }
         }
     }
