@@ -218,7 +218,7 @@ class App{
 
     loadAudio(){
         this.context = new AudioContext();
-        this.radioCode = lWw8pNel
+        this.radioCode = "lWw8pNel"
         this.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/" + this.radioCode + "/channel.mp3")
         this.myAudio.crossOrigin = "anonymous"
         this.myAudio.loop = true
