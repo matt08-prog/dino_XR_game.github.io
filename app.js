@@ -230,7 +230,7 @@ class App{
                 console.log(json)
                 this.stationLength = json.data.content[0].items.length - 1;
                 link = json.data.content[0].items[this.stationLength].href;
-                this.stationName = json.data.content[0].items[this.stationIndex].title;
+                //this.stationName = json.data.content[0].items[this.stationIndex].title;
                 link = link.substr(1);
                 this.pos = link.search("/");
                 link = link.substr(this.pos+1);
