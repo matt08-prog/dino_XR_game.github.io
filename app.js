@@ -802,6 +802,8 @@ class App{
         } else {
             self.wasPressed = false
             self.shouldCast = true
+            self.nodeSelected = false
+            self.loading = false
         }
     }
     
