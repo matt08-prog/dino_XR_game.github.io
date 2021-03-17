@@ -706,6 +706,7 @@ class App{
             if(self.wasPressed == false){
                 self.wasPressed = true
                 this.canplay = true
+                self.shouldCast = true
             }
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
@@ -718,11 +719,16 @@ class App{
                 console.log("hit something")
                 intersects[0].object.add(this.highlight);
                 this.highlight.visible = true;
-                controller.children[0].scale.z = intersects[0].distance;
+                if(self.shouldCast){
+                    controller.children[0].scale.z = intersects[0].distance;
+                } else{
+                    controller.children[0].scale.z = 0;
+                }
                 controller.userData.selected = intersects[0].object;
 
                 if(this.nodeSelected == true && this.loading == false && this.canplay == true) {
                     console.log("selected node")
+                    self.shouldCast = false
                     this.canplay = false
                     this.nodeSelected == false
                     this.loading = true
@@ -795,11 +801,7 @@ class App{
                         console.log("1")
                         self.loadAudio(dat.id)
                     }
-                } else {
-                    controller.children[0].scale.z = 0 
                 }
-            }else{
-                controller.children[0].scale.z = 0;
             }
         } else {
             self.wasPressed = false
