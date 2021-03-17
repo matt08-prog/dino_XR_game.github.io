@@ -274,6 +274,8 @@ class App{
         this.merger.connect(this.context.destination);
 
         this.myAudio.play()
+        this.nodeSelected = true
+        this.loading = false
     }
 
     setupXR(){
