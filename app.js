@@ -238,8 +238,8 @@ class App{
                 link = link.substr(this.pos+1);
                 this.pos = link.substr(1).search("/");
                 this.mp3Link = "http://radio.garden/api/ara/content/listen" + link + "/channel.mp3";
-                this.LoadNewTrack(this.mp3Link);
-                this.shouldChange = true;
+                //this.LoadNewTrack(this.mp3Link);
+                //this.shouldChange = true;
                 // Replace with altering app's UI
                 // document.querySelector(".lat").innerHTML = Latitude;
                 // document.querySelector(".long").innerHTML = Longitude;
