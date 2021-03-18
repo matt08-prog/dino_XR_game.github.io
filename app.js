@@ -732,7 +732,7 @@ class App{
                 controller.userData.selected = intersects[0].object;
 
                 if(this.nodeSelected == true && this.loading == false && this.canplay == true && this.wasPressed == true) {
-                    // console.log("selected node")
+                    console.log("selected node")
                     this.wasPressed = false
                     self.shouldCast = false
                     this.canplay = false
