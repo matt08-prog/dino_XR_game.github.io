@@ -866,13 +866,12 @@ class App{
                                 this.wasPressed = true
                                 console.log(this.controllers.right)
                                 console.log(this.controllers.right.controller)
-                                this.handleInput(this.controllers.right.controller)
                                 this.shouldGo = true
                             } else if(gp.buttons[0].pressed == false) {
                                 this.wasPressed = false
                                 this.shouldGo = false
                             }
-
+                            this.handleInput(this.controllers.right.controller)
                         }else if ( inputSource.handedness == 'left'){
                             if(gp.axes[offset] > 0 && this.both == 0) {
                                 this.dir = 1
