@@ -709,7 +709,7 @@ class App{
     handleInput(controller){
         // selecting nodes for radio
         //********************************************************************************** */
-        console.log(`${this.wasPressed}, ${this.canplay}, ${this.shouldCast}, ${this.nodeSelected}, ${this.loading}`)
+        console.log(`${this.wasPressed}, ${this.shouldCast}, ${this.nodeSelected}, ${this.loading}`)
         if (this.wasPressed){
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
@@ -723,31 +723,30 @@ class App{
                 console.log(this.wasPressed)
                 intersects[0].object.add(this.highlight);
                 this.highlight.visible = true;
-                if(self.shouldCast){
+                if(this.shouldCast){
                     controller.children[0].scale.z = intersects[0].distance;
                 } else{
                     controller.children[0].scale.z = 0;
                 }
                 controller.userData.selected = intersects[0].object;
 
-                if(this.nodeSelected == true && this.loading == false && this.canplay == true) {
+                if(this.nodeSelected == true && this.loading == false) {
                     this.wasPressed = false
-                    self.shouldCast = false
-                    this.canplay = false
+                    this.shouldCast = false
                     this.nodeSelected == false
                     this.loading = true
                     // console.log(intersects[0])
 
-                    self.nodeObject.position.x = intersects[0].point.x
-                    self.nodeObject.position.y = intersects[0].point.y
-                    self.nodeObject.position.z = intersects[0].point.z
+                    this.nodeObject.position.x = intersects[0].point.x
+                    this.nodeObject.position.y = intersects[0].point.y
+                    this.nodeObject.position.z = intersects[0].point.z
 
                     // console.log(intersects[0].point.distanceTo(self.positions[0]))
                     // console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
                     // console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
 
                     var v1 = intersects[0].point
-                    var v2 = self.positions[0]
+                    var v2 = this.positions[0]
                     var dx = v1.x.toFixed(2) - v2.x.toFixed(2);
                     var dy = v1.y.toFixed(2) - v2.y.toFixed(2);
                     var dz = v1.z.toFixed(2) - v2.z.toFixed(2);
@@ -755,7 +754,7 @@ class App{
                     var dists = []
                     var shortestDist = 10000
 
-                    self.positions.forEach ( (pos) => {
+                    this.positions.forEach ( (pos) => {
                         dists.push(intersects[0].point.distanceTo(pos))
                     })
 
@@ -765,7 +764,7 @@ class App{
                         }
                     })
 
-                    var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
+                    var finalPos = this.allQuestions[dists.indexOf(shortestDist)]
                     var dat =
                         {
                             latitude : finalPos.latitude,
@@ -775,11 +774,11 @@ class App{
                     console.log("before final")
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
                     console.log("after final")
-                    if (self.bPlayAudio)
+                    if (this.bPlayAudio)
                     {   
-                        self.bPlayAudio = false
+                        this.bPlayAudio = false
                         console.log("1")
-                        self.loadAudio(dat.id)
+                        this.loadAudio(dat.id)
                     }
                 }
             }
