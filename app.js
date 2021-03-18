@@ -803,6 +803,7 @@ class App{
                 }
             }
         } else {
+            console.log("not pressed")
             self.wasPressed = true
             self.shouldCast = true
             self.nodeSelected = false
