@@ -709,98 +709,100 @@ class App{
     handleInput(controller){
         // selecting nodes for radio
         //********************************************************************************** */
-        console.log(`${self.wasPressed}, ${this.canplay}, ${self.shouldCast = true}, ${this.nodeSelected}, ${this.loading}`)
-        this.workingMatrix.identity().extractRotation( controller.matrixWorld );
+        console.log(`${this.wasPressed}, ${this.canplay}, ${this.shouldCast}, ${this.nodeSelected}, ${this.loading}`)
+        if (this.wasPressed){
+            this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
-        this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
-        this.raycaster.ray.direction.set( 0, 0, - 1 ).applyMatrix4( this.workingMatrix );
+            this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
+            this.raycaster.ray.direction.set( 0, 0, - 1 ).applyMatrix4( this.workingMatrix );
 
-        const intersects = this.raycaster.intersectObjects( this.earth.children, true );
+            const intersects = this.raycaster.intersectObjects( this.earth.children, true );
 
-        if (intersects.length>0){
-            // console.log("hit something")
-            console.log(this.wasPressed)
-            intersects[0].object.add(this.highlight);
-            this.highlight.visible = true;
-            if(self.shouldCast){
-                controller.children[0].scale.z = intersects[0].distance;
-            } else{
-                controller.children[0].scale.z = 0;
-            }
-            controller.userData.selected = intersects[0].object;
+            if (intersects.length>0){
+                // console.log("hit something")
+                console.log(this.wasPressed)
+                intersects[0].object.add(this.highlight);
+                this.highlight.visible = true;
+                if(self.shouldCast){
+                    controller.children[0].scale.z = intersects[0].distance;
+                } else{
+                    controller.children[0].scale.z = 0;
+                }
+                controller.userData.selected = intersects[0].object;
 
-            if(this.nodeSelected == true && this.loading == false && this.canplay == true && this.wasPressed == true) {
-                this.wasPressed = false
-                self.shouldCast = false
-                this.canplay = false
-                this.nodeSelected == false
-                this.loading = true
-                // console.log(intersects[0])
+                if(this.nodeSelected == true && this.loading == false && this.canplay == true) {
+                    this.wasPressed = false
+                    self.shouldCast = false
+                    this.canplay = false
+                    this.nodeSelected == false
+                    this.loading = true
+                    // console.log(intersects[0])
 
-                self.nodeObject.position.x = intersects[0].point.x
-                self.nodeObject.position.y = intersects[0].point.y
-                self.nodeObject.position.z = intersects[0].point.z
+                    self.nodeObject.position.x = intersects[0].point.x
+                    self.nodeObject.position.y = intersects[0].point.y
+                    self.nodeObject.position.z = intersects[0].point.z
 
-                // console.log(intersects[0].point.distanceTo(self.positions[0]))
-                // console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
-                // console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
+                    // console.log(intersects[0].point.distanceTo(self.positions[0]))
+                    // console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
+                    // console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
 
-                var v1 = intersects[0].point
-                var v2 = self.positions[0]
-                var dx = v1.x.toFixed(2) - v2.x.toFixed(2);
-                var dy = v1.y.toFixed(2) - v2.y.toFixed(2);
-                var dz = v1.z.toFixed(2) - v2.z.toFixed(2);
+                    var v1 = intersects[0].point
+                    var v2 = self.positions[0]
+                    var dx = v1.x.toFixed(2) - v2.x.toFixed(2);
+                    var dy = v1.y.toFixed(2) - v2.y.toFixed(2);
+                    var dz = v1.z.toFixed(2) - v2.z.toFixed(2);
 
-                // console.log(`${intersects[0].point.x} ${intersects[0].point.y} ${intersects[0].point.z}`)
-                // console.log(`${self.positions[0].x} ${self.positions[0].y} ${self.positions[0].z}`)
+                    // console.log(`${intersects[0].point.x} ${intersects[0].point.y} ${intersects[0].point.z}`)
+                    // console.log(`${self.positions[0].x} ${self.positions[0].y} ${self.positions[0].z}`)
 
-                // console.log(Math.sqrt( dx * dx + dy * dy + dz * dz ))
+                    // console.log(Math.sqrt( dx * dx + dy * dy + dz * dz ))
 
-                // console.log(self.distanceVector(
-                //     new THREE.Vector3(
-                //     self.positions[0].x,
-                //     self.positions[0].y,
-                //     self.positions[0].z), 
-                //     new THREE.Vector3(
-                //     intersects[0].x,
-                //     intersects[0].y,
-                //     intersects[0].z
-                // )))
+                    // console.log(self.distanceVector(
+                    //     new THREE.Vector3(
+                    //     self.positions[0].x,
+                    //     self.positions[0].y,
+                    //     self.positions[0].z), 
+                    //     new THREE.Vector3(
+                    //     intersects[0].x,
+                    //     intersects[0].y,
+                    //     intersects[0].z
+                    // )))
 
-                var dists = []
-                var shortestDist = 10000
+                    var dists = []
+                    var shortestDist = 10000
 
-                // console.log(`positions: ${self.positions.length}, data: ${self.allQuestions.length}`)
-                // console.log(self.positions)
-                // console.log(self.allQuestions)
+                    // console.log(`positions: ${self.positions.length}, data: ${self.allQuestions.length}`)
+                    // console.log(self.positions)
+                    // console.log(self.allQuestions)
 
-                self.positions.forEach ( (pos) => {
-                    dists.push(intersects[0].point.distanceTo(pos))
-                })
+                    self.positions.forEach ( (pos) => {
+                        dists.push(intersects[0].point.distanceTo(pos))
+                    })
 
-                dists.forEach ( (it) => {
-                    if (it < shortestDist) {
-                        shortestDist = it
-                        // console.log(it)
-                        // console.log(self.allQuestions[dists.indexOf(it)])
+                    dists.forEach ( (it) => {
+                        if (it < shortestDist) {
+                            shortestDist = it
+                            // console.log(it)
+                            // console.log(self.allQuestions[dists.indexOf(it)])
+                        }
+                    })
+
+                    var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
+                    var dat =
+                        {
+                            latitude : finalPos.latitude,
+                            longitude : finalPos.longitude,
+                            id : finalPos.id
+                        }
+                    console.log("before final")
+                    console.log(`final pos: ${JSON.stringify(finalPos)}`)
+                    console.log("after final")
+                    if (self.bPlayAudio)
+                    {   
+                        self.bPlayAudio = false
+                        console.log("1")
+                        self.loadAudio(dat.id)
                     }
-                })
-
-                var finalPos = self.allQuestions[dists.indexOf(shortestDist)]
-                var dat =
-                    {
-                        latitude : finalPos.latitude,
-                        longitude : finalPos.longitude,
-                        id : finalPos.id
-                    }
-                console.log("before final")
-                console.log(`final pos: ${JSON.stringify(finalPos)}`)
-                console.log("after final")
-                if (self.bPlayAudio)
-                {   
-                    self.bPlayAudio = false
-                    console.log("1")
-                    self.loadAudio(dat.id)
                 }
             }
         }
