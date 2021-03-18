@@ -864,6 +864,9 @@ class App{
                             }
                             if(gp.buttons[0].pressed == true && this.wasPressed == false){
                                 this.wasPressed = true
+                                Object.values( this.controllers).forEach( ( value ) => {
+                                    console.log(value.controller)
+                                });
                                 console.log(this.controllers.right)
                                 this.handleInput(this.controllers.right.controller)
                             } else if(gp.buttons[0].pressed == false) {
