@@ -254,8 +254,8 @@ class App{
 
     playAudio(radioCode){
         this.context = new AudioContext();
-        console.log("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/" + radioCode + "/channel.mp3")
-        this.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen/" + radioCode + "/channel.mp3")
+        console.log("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen" + radioCode + "/channel.mp3")
+        this.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen" + radioCode + "/channel.mp3")
         this.myAudio.crossOrigin = "anonymous"
         this.myAudio.loop = true
 
