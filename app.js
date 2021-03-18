@@ -122,7 +122,7 @@ class App{
             self.earth.add( self.globe );
             //self.globe.add(sound)
             const bbox = new THREE.Box3().setFromObject( self.globe );
-            console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
+            // console.log(`min:${bbox.min.x.toFixed(2)},${bbox.min.y.toFixed(2)},${bbox.min.z.toFixed(2)} -  max:${bbox.max.x.toFixed(2)},${bbox.max.y.toFixed(2)},${bbox.max.z.toFixed(2)}`);
         } )
 
         this.nodeGeometry = new THREE.BoxGeometry(0.002, 0.002, 0.01)
@@ -209,7 +209,7 @@ class App{
         // }
         for (var k in obj)
         {
-            console.log(`${k}: ${obj[k]}`)
+            // console.log(`${k}: ${obj[k]}`)
             if (typeof obj[k] == "object" && obj[k] !== null) {
                 this.findInJSON(obj[k]);
             }
@@ -230,7 +230,7 @@ class App{
             .then(res => res.json())
             .then((json) => {
                 console.log("3")
-                console.log(json)
+                // console.log(json)
                 this.findInJSON(json)
                 this.stationLength = json.data.content[0].items.length - 1;
                 //link = json.data.content[0].items[this.stationLength].href;
@@ -712,7 +712,7 @@ class App{
                 this.canplay = true
                 self.shouldCast = true
             }
-            console.log(`${self.wasPressed}, ${this.canplay}, ${self.shouldCast = true}, ${this.nodeSelected}, ${this.loading}`)
+            // console.log(`${self.wasPressed}, ${this.canplay}, ${self.shouldCast = true}, ${this.nodeSelected}, ${this.loading}`)
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
             this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
@@ -721,7 +721,7 @@ class App{
             const intersects = this.raycaster.intersectObjects( this.earth.children, true );
 
             if (intersects.length>0){
-                console.log("hit something")
+                // console.log("hit something")
                 intersects[0].object.add(this.highlight);
                 this.highlight.visible = true;
                 if(self.shouldCast){
@@ -732,21 +732,21 @@ class App{
                 controller.userData.selected = intersects[0].object;
 
                 if(this.nodeSelected == true && this.loading == false && this.canplay == true && this.wasPressed == true) {
-                    console.log("selected node")
+                    // console.log("selected node")
                     this.wasPressed = false
                     self.shouldCast = false
                     this.canplay = false
                     this.nodeSelected == false
                     this.loading = true
-                    console.log(intersects[0])
+                    // console.log(intersects[0])
 
                     self.nodeObject.position.x = intersects[0].point.x
                     self.nodeObject.position.y = intersects[0].point.y
                     self.nodeObject.position.z = intersects[0].point.z
 
-                    console.log(intersects[0].point.distanceTo(self.positions[0]))
-                    console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
-                    console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
+                    // console.log(intersects[0].point.distanceTo(self.positions[0]))
+                    // console.log(`${intersects[0].point.x}, ${intersects[0].point.y}, ${intersects[0].point.z}`)
+                    // console.log(`${self.positions[0].x}, ${self.positions[0].x}, ${self.positions[0].x}`)
 
                     var v1 = intersects[0].point
                     var v2 = self.positions[0]
@@ -754,28 +754,28 @@ class App{
                     var dy = v1.y.toFixed(2) - v2.y.toFixed(2);
                     var dz = v1.z.toFixed(2) - v2.z.toFixed(2);
 
-                    console.log(`${intersects[0].point.x} ${intersects[0].point.y} ${intersects[0].point.z}`)
-                    console.log(`${self.positions[0].x} ${self.positions[0].y} ${self.positions[0].z}`)
+                    // console.log(`${intersects[0].point.x} ${intersects[0].point.y} ${intersects[0].point.z}`)
+                    // console.log(`${self.positions[0].x} ${self.positions[0].y} ${self.positions[0].z}`)
 
-                    console.log(Math.sqrt( dx * dx + dy * dy + dz * dz ))
+                    // console.log(Math.sqrt( dx * dx + dy * dy + dz * dz ))
 
-                    console.log(self.distanceVector(
-                        new THREE.Vector3(
-                        self.positions[0].x,
-                        self.positions[0].y,
-                        self.positions[0].z), 
-                        new THREE.Vector3(
-                        intersects[0].x,
-                        intersects[0].y,
-                        intersects[0].z
-                    )))
+                    // console.log(self.distanceVector(
+                    //     new THREE.Vector3(
+                    //     self.positions[0].x,
+                    //     self.positions[0].y,
+                    //     self.positions[0].z), 
+                    //     new THREE.Vector3(
+                    //     intersects[0].x,
+                    //     intersects[0].y,
+                    //     intersects[0].z
+                    // )))
 
                     var dists = []
                     var shortestDist = 10000
 
-                    console.log(`positions: ${self.positions.length}, data: ${self.allQuestions.length}`)
-                    console.log(self.positions)
-                    console.log(self.allQuestions)
+                    // console.log(`positions: ${self.positions.length}, data: ${self.allQuestions.length}`)
+                    // console.log(self.positions)
+                    // console.log(self.allQuestions)
 
                     self.positions.forEach ( (pos) => {
                         dists.push(intersects[0].point.distanceTo(pos))
@@ -784,8 +784,8 @@ class App{
                     dists.forEach ( (it) => {
                         if (it < shortestDist) {
                             shortestDist = it
-                            console.log(it)
-                            console.log(self.allQuestions[dists.indexOf(it)])
+                            // console.log(it)
+                            // console.log(self.allQuestions[dists.indexOf(it)])
                         }
                     })
 
@@ -847,7 +847,7 @@ class App{
                     info.push({ gamepad, handedness, profiles, targetRayMode });
                 });
                     
-                console.log( JSON.stringify(info) );
+                // console.log( JSON.stringify(info) );
                 
                 this.getInputSources = false;
             }else if (this.useStandard && this.type!=""){
