@@ -864,14 +864,13 @@ class App{
                             }
                             if(gp.buttons[0].pressed == true && this.wasPressed == false){
                                 this.wasPressed = true
-                                Object.values( this.controllers).forEach( ( value ) => {
-                                    console.log(value.controller)
-                                });
                                 console.log(this.controllers.right)
                                 console.log(this.controllers.right.controller)
-                                this.handleInput(this.controllers.right.controller)
+                                // this.handleInput(this.controllers.right.controller)
+                                this.shouldGo = true
                             } else if(gp.buttons[0].pressed == false) {
                                 this.wasPressed = false
+                                this.shouldGo = false
                             }
 
                         }else if ( inputSource.handedness == 'left'){
@@ -904,8 +903,10 @@ class App{
 
             if (this.controllers ){
                 Object.values( this.controllers).forEach( ( value ) => {
-                    // self.handleController( value.controller );
-                    console.log(value.controller)
+                    if(this.shouldGo){
+                        self.handleController( value.controller );
+                    }
+                    //console.log(value.controller)
                 });
             } 
             if (this.elapsedTime===undefined) this.elapsedTime = 0;
