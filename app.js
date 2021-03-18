@@ -709,7 +709,7 @@ class App{
     handleInput(controller){
         // selecting nodes for radio
         //********************************************************************************** */
-        // console.log(`${self.wasPressed}, ${this.canplay}, ${self.shouldCast = true}, ${this.nodeSelected}, ${this.loading}`)
+        console.log(`${self.wasPressed}, ${this.canplay}, ${self.shouldCast = true}, ${this.nodeSelected}, ${this.loading}`)
         this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
         this.raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
@@ -866,7 +866,7 @@ class App{
                                 this.wasPressed = true
                                 console.log(this.controllers.right)
                                 console.log(this.controllers.right.controller)
-                                // this.handleInput(this.controllers.right.controller)
+                                this.handleInput(this.controllers.right.controller)
                                 this.shouldGo = true
                             } else if(gp.buttons[0].pressed == false) {
                                 this.wasPressed = false
@@ -902,12 +902,12 @@ class App{
             }
 
             if (this.controllers ){
-                Object.values( this.controllers).forEach( ( value ) => {
-                    if(this.shouldGo){
-                        self.handleController( value.controller );
-                    }
-                    //console.log(value.controller)
-                });
+                // Object.values( this.controllers).forEach( ( value ) => {
+                //     if(this.shouldGo){
+                //         self.handleController( value.controller );
+                //     }
+                //     //console.log(value.controller)
+                // });
             } 
             if (this.elapsedTime===undefined) this.elapsedTime = 0;
             this.elapsedTime += dt;
