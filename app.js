@@ -465,6 +465,7 @@ class App{
         // selecting nodes for radio
         //********************************************************************************** */
         // console.log(`${this.wasPressed}, ${this.shouldCast}, ${this.nodeSelected}, ${this.loading}`)
+        console.log(this.nodeSelected)
         if (this.wasPressed){
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
