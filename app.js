@@ -620,6 +620,8 @@ class App{
 
                         if (gp.buttons[4].pressed == true) {
                             this.nodeSelected = true
+                        } else {
+                            this.nodeSelected = false
                         }
                     }
                 })
