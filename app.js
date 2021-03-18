@@ -571,7 +571,7 @@ class App{
         line.scale.z = 0;
         
         this.controllers = {};
-        this.dolly.position.set(0,-0.6,1.0)
+        this.dolly.position.set(0,-0.8,1.0)
         this.controllers.right = this.buildController( 0, line, modelFactory );
         this.controllers.left = this.buildController( 1, line, modelFactory );
     }
