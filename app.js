@@ -71,6 +71,7 @@ class App{
     }
     
     initScene(){
+        this.shouldCast = true
         this.wasPressed = false
         this.bPlayAudio = true
         this.loading = false
