@@ -707,11 +707,6 @@ class App{
         if (controller.userData.selectPressed ){
             // selecting nodes for radio
             //********************************************************************************** */
-            if(self.wasPressed == false){
-                self.wasPressed = true
-                this.canplay = true
-                self.shouldCast = true
-            }
             // console.log(`${self.wasPressed}, ${this.canplay}, ${self.shouldCast = true}, ${this.nodeSelected}, ${this.loading}`)
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
@@ -722,6 +717,7 @@ class App{
 
             if (intersects.length>0){
                 // console.log("hit something")
+                console.log(this.wasPressed)
                 intersects[0].object.add(this.highlight);
                 this.highlight.visible = true;
                 if(self.shouldCast){
@@ -732,7 +728,6 @@ class App{
                 controller.userData.selected = intersects[0].object;
 
                 if(this.nodeSelected == true && this.loading == false && this.canplay == true && this.wasPressed == true) {
-                    console.log("selected node")
                     this.wasPressed = false
                     self.shouldCast = false
                     this.canplay = false
@@ -812,6 +807,7 @@ class App{
             self.shouldCast = true
             self.nodeSelected = false
             self.loading = false
+            this.canplay = true
         }
     }
     
