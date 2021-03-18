@@ -752,28 +752,8 @@ class App{
                     var dy = v1.y.toFixed(2) - v2.y.toFixed(2);
                     var dz = v1.z.toFixed(2) - v2.z.toFixed(2);
 
-                    // console.log(`${intersects[0].point.x} ${intersects[0].point.y} ${intersects[0].point.z}`)
-                    // console.log(`${self.positions[0].x} ${self.positions[0].y} ${self.positions[0].z}`)
-
-                    // console.log(Math.sqrt( dx * dx + dy * dy + dz * dz ))
-
-                    // console.log(self.distanceVector(
-                    //     new THREE.Vector3(
-                    //     self.positions[0].x,
-                    //     self.positions[0].y,
-                    //     self.positions[0].z), 
-                    //     new THREE.Vector3(
-                    //     intersects[0].x,
-                    //     intersects[0].y,
-                    //     intersects[0].z
-                    // )))
-
                     var dists = []
                     var shortestDist = 10000
-
-                    // console.log(`positions: ${self.positions.length}, data: ${self.allQuestions.length}`)
-                    // console.log(self.positions)
-                    // console.log(self.allQuestions)
 
                     self.positions.forEach ( (pos) => {
                         dists.push(intersects[0].point.distanceTo(pos))
@@ -782,8 +762,6 @@ class App{
                     dists.forEach ( (it) => {
                         if (it < shortestDist) {
                             shortestDist = it
-                            // console.log(it)
-                            // console.log(self.allQuestions[dists.indexOf(it)])
                         }
                     })
 
