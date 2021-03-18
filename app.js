@@ -737,7 +737,7 @@ class App{
                 if(this.nodeSelected == true && this.loading == false) {
                     this.wasPressed = false
                     this.shouldCast = false
-                    this.nodeSelected == false
+                    this.nodeSelected = false
                     this.loading = true
                     // console.log(intersects[0])
 
