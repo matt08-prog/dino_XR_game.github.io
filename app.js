@@ -896,9 +896,10 @@ class App{
             }
 
             if (this.controllers ){
-                Object.values( this.controllers).forEach( ( value ) => {
-                    self.handleController( value.controller );
-                });
+                self.handleController( value.controllers[0] )
+                // Object.values( this.controllers).forEach( ( value ) => {
+                //     self.handleController( value.controller );
+                // });
             } 
             if (this.elapsedTime===undefined) this.elapsedTime = 0;
             this.elapsedTime += dt;
