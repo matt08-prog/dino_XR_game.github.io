@@ -706,7 +706,7 @@ class App{
         const self = this
     }
 
-    handleInput(){
+    handleInput(controller){
         // selecting nodes for radio
         //********************************************************************************** */
         // console.log(`${self.wasPressed}, ${this.canplay}, ${self.shouldCast = true}, ${this.nodeSelected}, ${this.loading}`)
@@ -864,7 +864,7 @@ class App{
                             }
                             if(gp.buttons[0].pressed == true && this.wasPressed == false){
                                 this.wasPressed = true
-                                this.handleInput()
+                                this.handleInput(this.controllers.right)
                             } else if(gp.buttons[0].pressed == false) {
                                 this.wasPressed = false
                             }
