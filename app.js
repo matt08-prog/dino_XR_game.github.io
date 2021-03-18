@@ -571,7 +571,7 @@ class App{
         line.scale.z = 0;
         
         this.controllers = {};
-        this.dolly.position.set(0,-1.0,1.0)
+        this.dolly.position.set(0,-1.25,1.0)
         this.controllers.right = this.buildController( 0, line, modelFactory );
         this.controllers.left = this.buildController( 1, line, modelFactory );
     }
@@ -864,7 +864,8 @@ class App{
                             }
                             if(gp.buttons[0].pressed == true && this.wasPressed == false){
                                 this.wasPressed = true
-                                this.handleInput(this.controllers.right)
+                                console.log(this.controllers.right)
+                                this.handleInput(inputSource.targetRaySpace)
                             } else if(gp.buttons[0].pressed == false) {
                                 this.wasPressed = false
                             }
