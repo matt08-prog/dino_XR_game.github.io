@@ -796,7 +796,9 @@ class App{
                             longitude : finalPos.longitude,
                             id : finalPos.id
                         }
+                    console.log("before final")
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
+                    console.log("after final")
                     if (self.bPlayAudio)
                     {   
                         self.bPlayAudio = false
