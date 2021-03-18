@@ -713,7 +713,7 @@ class App{
     handleInput(controller){
         // selecting nodes for radio
         //********************************************************************************** */
-        console.log(`${this.wasPressed}, ${this.shouldCast}, ${this.nodeSelected}, ${this.loading}`)
+        // console.log(`${this.wasPressed}, ${this.shouldCast}, ${this.nodeSelected}, ${this.loading}`)
         if (this.wasPressed){
             this.workingMatrix.identity().extractRotation( controller.matrixWorld );
 
@@ -724,7 +724,7 @@ class App{
 
             if (intersects.length>0){
                 // console.log("hit something")
-                console.log(this.wasPressed)
+                // console.log(this.wasPressed)
                 intersects[0].object.add(this.highlight);
                 this.highlight.visible = true;
                 if(this.shouldCast){
@@ -775,13 +775,13 @@ class App{
                             longitude : finalPos.longitude,
                             id : finalPos.id
                         }
-                    console.log("before final")
+                    // console.log("before final")
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
-                    console.log("after final")
+                    // console.log("after final")
                     if (this.bPlayAudio)
                     {   
                         this.bPlayAudio = false
-                        console.log("1")
+                        // console.log("1")
                         this.loadAudio(dat.id)
                     }
                 }
