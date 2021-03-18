@@ -905,7 +905,7 @@ class App{
             if (this.controllers ){
                 Object.values( this.controllers).forEach( ( value ) => {
                     // self.handleController( value.controller );
-                    //console.log(value.controller)
+                    console.log(value.controller)
                 });
             } 
             if (this.elapsedTime===undefined) this.elapsedTime = 0;
