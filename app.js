@@ -279,7 +279,10 @@ class App{
         this.merger.connect(this.context.destination);
 
         this.myAudio.play()
-        this.loading = false
+        this.myAudio.on('playing',function(){
+            console.log("Push playing be playing them playing yeah its playing it");
+            this.loading = false
+        });
     }
 
     setupXR(){
@@ -844,9 +847,8 @@ class App{
                             }
                             if(gp.buttons[0].pressed == true && this.wasPressed == false){
                                 this.wasPressed = true
-                                console.log(this.controllers.right)
-                                console.log(this.controllers.right.controller)
                                 this.shouldGo = true
+                                this.shouldCast = true
                             } else if(gp.buttons[0].pressed == false) {
                                 this.wasPressed = false
                                 this.shouldGo = false
