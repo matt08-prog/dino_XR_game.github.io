@@ -279,10 +279,10 @@ class App{
         this.merger.connect(this.context.destination);
 
         this.myAudio.play()
-        this.myAudio.on('playing',function(){
+        this.myAudio.onplay = () => {
             console.log("Push playing be playing them playing yeah its playing it");
             this.loading = false
-        });
+        };
     }
 
     setupXR(){
