@@ -865,7 +865,7 @@ class App{
                             if(gp.buttons[0].pressed == true && this.wasPressed == false){
                                 this.wasPressed = true
                                 console.log(this.controllers.right)
-                                this.handleInput(inputSource.targetRaySpace)
+                                this.handleInput(this.controllers.right.controller)
                             } else if(gp.buttons[0].pressed == false) {
                                 this.wasPressed = false
                             }
