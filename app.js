@@ -250,12 +250,12 @@ class App{
         // this.myAudio.crossOrigin = "anonymous"
         // this.myAudio.loop = true
 
-        this.myAudio = this.document.createElement("AUDIO")
+        this.myAudio = document.createElement("AUDIO")
         this.myAudio.setAttribute("preload", "auto")
         this.myAudio.setAttribute("crossOrigin", "anonymous")
         this.myAudio.setAttribute("loop", "true")
         this.myAudio.setAttribute("src", "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen" + radioCode + "/channel.mp3")
-        this.document.body.appendChild(this.myAudio)
+        document.body.appendChild(this.myAudio)
 
 
 
