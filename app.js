@@ -252,7 +252,9 @@ class App{
         // this.myAudio.loop = true
 
         var elem = document.querySelector("audio");
-        elem.remove();
+        if(elem != null && elem != undefined) {
+            elem.remove();
+        }
 
         this.myAudio = document.createElement("AUDIO")
         this.myAudio.setAttribute("preload", "auto")
