@@ -251,6 +251,9 @@ class App{
         // this.myAudio.crossOrigin = "anonymous"
         // this.myAudio.loop = true
 
+        var elem = document.querySelector("audio");
+        elem.parentNode.removeChild(elem);
+        
         this.myAudio = document.createElement("AUDIO")
         this.myAudio.setAttribute("preload", "auto")
         this.myAudio.setAttribute("crossOrigin", "anonymous")
