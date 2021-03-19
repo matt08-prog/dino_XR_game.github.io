@@ -486,7 +486,7 @@ class App{
                 }
                 controller.userData.selected = intersects[0].object;
 
-                if(this.nodeSelected == true && this.loading == false) {
+                if(this.nodeSelected == true && this.loading == false){
                     this.wasPressed = false
                     this.shouldCast = false
                     this.nodeSelected = false
@@ -530,12 +530,12 @@ class App{
                     // console.log("before final")
                     console.log(`final pos: ${JSON.stringify(finalPos)}`)
                     // console.log("after final")
-                    if (this.bPlayAudio)
-                    {   
-                        this.bPlayAudio = false
+                    // if (this.bPlayAudio)
+                    // {   
+                    //     this.bPlayAudio = false
                         // console.log("1")
                         this.loadAudio(dat.id)
-                    }
+                    // }
                 }
             }
         }
