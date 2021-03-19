@@ -190,16 +190,6 @@ class App{
     
     }
 
-    setSound(link) {
-        // var audioSourceNode = audioContext.createMediaStreamSource(stream);
-        // this.sound.setMediaStreamSource(audioSourceNode)
-        this.mediaElement = new Audio(link)
-        this.mediaElement.crossOrigin = "anonymous"
-        this.mediaElement.loop = true
-        // mediaElement.play()
-        this.sound.setMediaElementSource( this.mediaElement )
-    }
-
     findInJSON(obj) {
         // for(var o in json) {
         //     console.log(`${o}: ${json[o]}`)
@@ -256,9 +246,18 @@ class App{
     playAudio(radioCode){
         this.context = new AudioContext();
         console.log("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen" + radioCode + "/channel.mp3")
-        this.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen" + radioCode + "/channel.mp3")
-        this.myAudio.crossOrigin = "anonymous"
-        this.myAudio.loop = true
+        // this.myAudio = new Audio("https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen" + radioCode + "/channel.mp3")
+        // this.myAudio.crossOrigin = "anonymous"
+        // this.myAudio.loop = true
+
+        this.myAudio = this.document.createElement("AUDIO")
+        this.myAudio.setAttribute("preload", "auto")
+        this.myAudio.setAttribute("crossOrigin", "anonymous")
+        this.myAudio.setAttribute("loop", "true")
+        this.myAudio.setAttribute("src", "https://cors-anywhere.herokuapp.com/http://radio.garden/api/ara/content/listen" + radioCode + "/channel.mp3")
+        this.document.body.appendChild(this.myAudio)
+
+
 
         //create a source node to capture the audio from your video element
         this.source = this.context.createMediaElementSource(this.myAudio);
